@@ -1,0 +1,134 @@
+@charset "euc-kr";
+
+/*********************************************************
+Huation UX R&D Team (http://www.huation.com/)
+Author : huation (2014.05.28)
+*********************************************************/
+
+#wrap {position:relative;background:url(../images/layout/header_bg.gif) repeat-x;}
+
+/* login */
+#wrapLogin {overflow:hidden;position:absolute;top:50%;left:50%;margin-top:-132px; margin-left:-316px; width:633px;border-bottom:2px solid #e4e4e4;}
+#wrapLogin .headerLogin {position:relative;float:left;padding:24px 0 0 24px;width:177px;height:240px;border:1px solid #3ba90d;background:url(../images/layout/login_ti_bg.jpg) repeat-x;}
+#wrapLogin .headerLogin h2 {padding-top:6px;color:#fff;font-size:13px;font-weight:bold;}
+#wrapLogin .headerLogin .copyright {position:absolute;bottom:20px;}
+#wrapLogin .contentLogin {float:left;padding:50px 70px;height:164px;border:1px solid #3ba90d;border-left:0 none;}
+#wrapLogin .contentLogin .con dt {float:left;width:79px;line-height:34px;color:#333;font-weight:bold;}
+#wrapLogin .contentLogin .con dd {padding-bottom:10px;}
+#wrapLogin .contentLogin .con dd .text {padding:0 10px 2px;width:188px;height:31px;line-height:31px;border:1px solid #3ba90d;color:#333;font-size:16px;font-weight:bold;}
+#wrapLogin .contentLogin .idCheck {margin-top:-2px;padding-left:79px;}
+#wrapLogin .contentLogin .idCheck .check {margin-top:1px;margin-left:0;}
+#wrapLogin .contentLogin .loginBtn {padding:25px 0 0 79px;}
+/* login Error */
+#wrapLogin .contentLoginError {float:left;padding:50px;width:329px;height:164px;border:1px solid #3ba90d;border-left:0 none;}
+#wrapLogin .contentLoginError p {padding-top:30px;height:81px;line-height:25px;border:1px solid #ddd;background:#fafafa;text-align:center;}
+#wrapLogin .contentLoginError p .code {color:#333;font-weight:bold;}
+#wrapLogin .contentLoginError p .message {color:#ff6600;font-weight:bold;}
+#wrapLogin .contentLoginError .Bbtn_areaC {padding-top:20px;}
+
+/* header */
+#header {overflow:auto;margin:0 auto;width:1200px;height:117px;}
+#header h1 {float:left;padding-top:57px;}
+/* gnb */
+#header .gnb {position:relative;}
+#header .gnb ul {position:absolute;top:0;right:0;font-size:11px;}
+#header .gnb ul li {float:left;padding:5px 12px 6px 9px;background:url(../images/layout/gnb_bar.gif) no-repeat right 8px;}
+#header .gnb ul li.last {padding-right:0;background:none;}
+#header .gnb ul li.pic {position:absolute;top:26px;right:983px;padding:0;width:72px;height:88px;}
+#header .gnb ul li.pwmodify a {padding-left:13px;background:url(../images/layout/gnb_icon_01.gif) no-repeat 0 2px;}
+#header .gnb ul li .user_name {color:#00a651;}
+/* lnb */
+#header .lnb {float:right;padding-top:26px;letter-spacing:-1px;}
+#header .lnb > li {float:left;padding-top:17px;height:71px;text-align:center;font-size:14px;font-weight:bold;}
+#header .lnb > li > a {padding-top:38px;width:100px;background:url(../images/layout/lnb_icon.gif) no-repeat;}
+#header .lnb > li > a.on {color:#00a651;}
+#header .lnb li.lnb_01 a {background-position:34px 0;}
+#header .lnb li.lnb_01 a:hover,
+#header .lnb li.lnb_01 a.on {background-position:-46px 0;}
+#header .lnb li.lnb_02 a {background-position:34px -80px;}
+#header .lnb li.lnb_02 a:hover,
+#header .lnb li.lnb_02 a.on {background-position:-46px -80px;}
+#header .lnb li.lnb_03 a {background-position:34px -160px;}
+#header .lnb li.lnb_03 a:hover,
+#header .lnb li.lnb_03 a.on {background-position:-46px -160px;}
+#header .lnb li.lnb_04 a {background-position:34px -240px;}
+#header .lnb li.lnb_04 a:hover,
+#header .lnb li.lnb_04 a.on {background-position:-46px -240px;}
+#header .lnb li.lnb_05 a {background-position:34px -320px;}
+#header .lnb li.lnb_05 a:hover,
+#header .lnb li.lnb_05 a.on {background-position:-46px -320px;}
+#header .lnb li.lnb_06 a {background-position:34px -400px;}
+#header .lnb li.lnb_06 a:hover,
+#header .lnb li.lnb_06 a.on {background-position:-46px -400px;}
+#header .lnb li.lnb_07 a {background-position:34px -480px;}
+#header .lnb li.lnb_07 a:hover,
+#header .lnb li.lnb_07 a.on {background-position:-46px -480px;}
+#header .lnb li.lnb_08 a {background-position:34px -640px;}
+#header .lnb li.lnb_08 a:hover,
+#header .lnb li.lnb_08 a.on {background-position:-46px -640px;}
+#header .lnb li.sms {border-left:1px solid #ddd;border-right:1px solid #ddd;background:#fafafa;}
+#header .lnb li.sms a {background-position:34px -560px;}
+#header .lnb li.sms a:hover {background-position:-46px -560px;}
+/* snb */
+#header .lnb .snb {position:absolute;left:0;top:117px;width:100%;background:url(../images/layout/snb_bg.gif) repeat-x;}
+#header .lnb .snb ul {margin:0 auto;width:1204px;}
+#header .lnb .snb ul li {float:left;height:36px;}
+#header .lnb .snb ul li a {padding:7px 20px 0;height:29px;color:#fff;}
+#header .lnb .snb ul li a:hover {text-decoration:underline;}
+#header .lnb .snb ul li a.on {border-left:1px solid #3ba90d;border-right:1px solid #3ba90d;background:#fff url(../images/layout/snb_icon.gif) no-repeat center 27px;color:#00a651;}
+#header .lnb .snb ul li a.on:hover {text-decoration:none;}
+
+/* visual */
+#visual {clear:both;background:url(../images/main/visual_bg.gif) repeat-x 50% 0;text-align:center;}
+#visual .visual_area {margin:0 auto;width:1200px;height:201px;}
+
+/* container */
+#container {margin:0 auto;padding-bottom:30px;width:1200px;}
+/* sub_contents */
+#content {padding-top:55px;width:100%;}
+#content .content_navi {padding:0 0 28px 20px;background:url(../images/layout/cont_navi_icon_01.gif) no-repeat 0 2px;font-size:11px;}
+#content h3 {padding-bottom:15px;line-height:28px;font-size:28px;color:#444;font-weight:bold;}/* 컨텐츠 타이틀 */
+#content h3 span {padding-top:4px;border-top:4px solid #3ba90d;}
+#content > .con {position:relative;width:100%;}/* 컨텐츠 데이터 영역 */
+#content > .con .conTop_area {position:absolute;right:0;top:-42px;}/* 컨텐츠 상단 영역 */
+#content > .con .con_sub {position:relative;padding-bottom:30px;}/* 서브 컨텐츠 데이터 영역 */
+#content > .con .con_sub.last {padding-bottom:0;}
+#content > .con .con_sub.last_display {margin-top:30px;}/* 서브 컨텐츠 데이터 영역 마지막 영역이나 상황에따라 display됨. 영역이 보여졌을대 위 영역과의 공간 설정 */
+#content > .con .con_sub .conTop_area {position:absolute;right:0;top:-12px;}/* 서브 컨텐츠 상단 영역 */
+#content > .con .con_sub h4 {padding:0 0 15px 20px;background:url(../images/common/ti_h4.gif) no-repeat;font-size:16px;color:#00a651;font-weight:bold;}/* 서브 컨텐츠 타이틀 */
+
+/* footer */
+#footer {border-top:3px solid #ddd;}
+#footer .footer_area {overflow:auto;margin:0 auto;padding:12px 0;width:1200px;}
+#footer .footer_area .logo {float:left;padding-top:1px;}
+#footer .footer_area .copyright {float:left;padding:5px 0 0 412px;font-size:11px;}
+#footer .footer_area .sitelink {float:right;}
+#footer .footer_area .sitelink li {float:left;padding-left:5px;}
+#footer .footer_area .sitelink li select {height:20px;border:1px solid #ccc;font-size:11px;}
+
+/* win popup */
+#wrapWp {padding:7px;}
+#headerWp {}
+#headerWp h1 {padding:0 15px;height:32px;line-height:30px;border:1px solid #2a8e00;background:#3ba90d;font-size:13px;color:#fff;font-weight:bold;}
+#headerWp h1 span {color:#fff000;}
+#contentWp {padding:20px 0 13px;}
+#contentWp .conTop_area {float:right;padding-bottom:15px;}/* 리스트, 등록 컨텐츠 상단 영역(사업자등록번호, 우편번호 조회 제외) */
+/* tab Title(SMS전송 메뉴) */
+#headerWp .tabTi {padding:0 5px;height:32px;line-height:32px;border:1px solid #2a8e00;background:#3ba90d;font-size:13px;color:#fff;font-weight:bold;}
+#headerWp .tabTi li {float:left;margin-top:0;height:32px;}
+#headerWp .tabTi li a {padding:0 30px 0;height:33px;line-height:33px;color:#fff;}
+#headerWp .tabTi li a:hover {text-decoration:underline;}
+#headerWp .tabTi li a.on {border-left:1px solid #2a8e00;border-right:1px solid #2a8e00;background:#fff url(../images/layout/snb_icon.gif) no-repeat center 27px;color:#00a651;}
+#headerWp .tabTi li a.on:hover {text-decoration:none;}
+
+/* layer popup */
+#wrapLp {padding:7px;border:1px solid #999;background:#fff;}
+#headerLp {}
+#headerLp h1 {padding:0 15px;height:32px;line-height:30px;border:1px solid #2a8e00;background:#3ba90d;font-size:13px;color:#fff;font-weight:bold;}
+#headerLp h1 span {color:#fff000;}
+/* 제이쿼리 타이틀 재설정 */
+.ui-dialog .ui-dialog-titlebar {padding:0 15px !important;height:32px;line-height:30px;border:1px solid #2a8e00;background:#3ba90d;font-size:13px;color:#fff;font-weight:bold;}
+.ui-dialog .ui-dialog-title {margin:0;}
+/* //제이쿼리 타이틀 재설정 */
+#contentLp {padding:20px 0 23px;}
+#contentLp .conTop_area {float:right;padding-bottom:15px;}/* 리스트, 등록 컨텐츠 상단 영역(사업자등록번호, 우편번호 조회 제외) */

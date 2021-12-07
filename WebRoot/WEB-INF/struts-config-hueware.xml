@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<!-- ========== Data Sources Definitions =================================== --> 
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+
+		<!--
+			If you have non XDoclet forms, define them in a file called struts-forms.xml and
+			place it in your merge directory.
+		-->
+	</form-beans>  
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<!--
+		Define your exceptions in a file called global-exceptions.xml and place
+		it in your merge directory.
+	-->
+	<global-forwards>
+		<forward name="moveBackFoward"
+			path="/jsp/hueware/common/moveMsgForward.jsp" />
+	</global-forwards>
+	<!-- ========== Global Forward Definitions =================================== -->
+	<!--
+		Define your forwards in a file called global-forwards.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		<action path="/B_Login"
+			type="com.huation.hueware.login.action.LoginAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="loginForm"
+				path="/jsp/hueware/common/loginForm.jsp" redirect="false" />
+			<forward name="loginError"
+				path="/jsp/hueware/common/loginError.jsp" redirect="false" />
+			<forward name="loginOut"
+				path="/jsp/hueware/common/loginForm.jsp" redirect="false" />
+			<forward name="adminMain"
+				path="/jsp/hueware/common/adminMain.jsp" redirect="false" />
+				
+		</action>
+		<action path="/B_User"
+			type="com.huation.hueware.user.action.UserAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="passwdEdit"
+				path="/jsp/hueware/user/passwdEdit.jsp" redirect="false" />
+			<forward name="pwResult"
+				path="/jsp/hueware/user/encPwdXML.jsp" redirect="false" />
+			<forward name="userPageList"
+				path="/jsp/hueware/user/userPageList.jsp" redirect="false" />
+			<forward name="userRegistForm"
+				path="/jsp/hueware/user/userRegistForm.jsp" redirect="false" />
+			<forward name="userView"
+				path="/jsp/hueware/user/userView.jsp" redirect="false" />
+			<forward name="userlist"
+				path="/jsp/hueware/user/userList.jsp" redirect="false" />
+			<forward name="userModifyForm"
+				path="/jsp/hueware/user/userModifyForm.jsp" redirect="false" />
+			<forward name="userXML"
+				path="/jsp/hueware/user/userXML.jsp" redirect="false" />
+			<forward name="userExcelList"
+				path="/jsp/hueware/user/userExcelList.jsp" redirect="false" />
+			<forward name="photoUpload"
+				path="/jsp/hueware/user/photoUpload.jsp" redirect="false" />
+			<forward name="photoModifyUpload"
+				path="/jsp/hueware/user/photoModifyUpload.jsp" redirect="false" />
+		</action>
+		<action path="/B_Code"
+			type="com.huation.hueware.code.action.CodeAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="codePageList"
+				path="/jsp/hueware/code/codePageList.jsp" redirect="false" />
+			<forward name="codeDetailList"
+				path="/jsp/hueware/code/codeDetailList.jsp" redirect="false" />
+			<forward name="codeRegistForm"
+				path="/jsp/hueware/code/codeRegistForm.jsp" redirect="false" />
+			<forward name="codeView"
+				path="/jsp/hueware/code/codeView.jsp" redirect="false" />
+			<forward name="existCode"
+				path="/jsp/hueware/code/existCode.jsp" redirect="false" />
+			<forward name="codePageExcelList"
+				path="/jsp/hueware/code/codePageExcelList.jsp" redirect="false" />
+		</action>
+		<action path="/B_Common"
+			type="com.huation.hueware.common.action.CommonAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="postlist"
+				path="/jsp/hueware/common/postList.jsp" redirect="false" />
+			<forward name="postlist2"
+				path="/jsp/hueware/common/postList2.jsp" redirect="false" />	
+			<forward name="userlist"
+				path="/jsp/hueware/common/userList.jsp" redirect="false" />
+			<forward name="userlist2"
+				path="/jsp/hueware/common/userList2.jsp" redirect="false" />	
+			<forward name="complist"
+				path="/jsp/hueware/common/compList.jsp" redirect="false" />
+				<!-- 2013_03_20(수)shbyeon. complist_Ic추가(세금계산서용도)팝업 -->
+			<forward name="complist_Ic"
+				path="/jsp/hueware/common/compList_Ic.jsp" redirect="false" />
+				<!-- 2013_04_16(화)shbyeon. 견적서 최초발행 용 팝업-->
+								
+				<forward name="complist_baro"
+				path="/jsp/hueware/common/compList_baro.jsp" redirect="false" />
+				
+			<forward name="projectcodelist"
+				path="/jsp/hueware/common/projectCodeList.jsp" redirect="false" />	
+			<forward name="publicnolist"
+				path="/jsp/hueware/common/publicNoList.jsp" redirect="false" />
+			<forward name="publicnolistcontract"
+				path="/jsp/hueware/common/publicNoListConY.jsp" redirect="false" />
+			<forward name="searchPublicNoConY_Cm"
+				path="/jsp/hueware/common/publicNoListConY_Cm.jsp" redirect="false" />		
+			<forward name="searchPublicNoConY_Pj"
+				path="/jsp/hueware/common/publicNoListConY_Pj.jsp" redirect="false" />
+			<forward name="searchContractNoConN_Pj"
+				path="/jsp/hueware/common/contractNoListConN_Pj.jsp" redirect="false" />				
+			<forward name="publicnolistcontract_baro"
+				path="/jsp/hueware/common/publicNoListConY_baro.jsp" redirect="false" />	
+				
+				<!-- 세금계산서용 팝업 계약관리창 -->
+			<forward name="searchContractNoConY_baro"
+				path="/jsp/hueware/common/contractNoList_baro.jsp" redirect="false" />
+			<forward name="searchPublicNoConY_Cm"
+				path="/jsp/hueware/common/publicNoListConY_Cm.jsp" redirect="false" />		
+				
+				<forward name="publicnolistcontract_baro"
+				path="/jsp/hueware/common/publicNoListConY_baro.jsp" redirect="false" />	
+				
+				<!-- 세금계산서용 팝업 계약관리창 -->
+				<forward name="searchContractNoConY_baro"
+				path="/jsp/hueware/common/contractNoList_baro.jsp" redirect="false" />
+				
+			<forward name="compnolist"
+				path="/jsp/hueware/common/compNoList.jsp" redirect="false" />
+			<forward name="companyView"
+				path="/jsp/hueware/common/companyView.jsp" redirect="false" />
+			<forward name="groupFrame"
+				path="/jsp/hueware/common/group/groupFrame.jsp" redirect="false" />
+			<forward name="groupTree"
+				path="/jsp/hueware/common/group/groupTree.jsp" redirect="false" />
+			<forward name="mainPage"
+				path="/jsp/hueware/common/main/main.jsp" redirect="false" />
+				<!-- 2013_03_26(화)shbyeon. 업체명 중복체크 추가 -->
+			<forward name="compNameChkXML"
+				path="/jsp/hueware/common/compNameChkXML.jsp" redirect="false" />
+		</action>
+		<action path="/B_Company"
+			type="com.huation.hueware.company.action.CompanyAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="companyPageList"
+				path="/jsp/hueware/company/companyPageList.jsp" redirect="false" />
+			<forward name="companyRegistForm"
+				path="/jsp/hueware/company/companyRegist.jsp" redirect="false" />
+			<forward name="companyView"
+				path="/jsp/hueware/company/companyEdit.jsp" redirect="false" />
+			<forward name="companyExcelList"
+				path="/jsp/hueware/company/companyExcelList.jsp" redirect="false" />
+			
+						<!-- 2014_08_21(목). 부적격 업체 관리 추가 -->
+			<forward name="companyUnfit"
+				path="/jsp/hueware/company/companyUnfit.jsp" redirect="false" />	
+		</action>
+		<action path="/B_BankManage"
+			type="com.huation.hueware.bankmanage.action.BankManageAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="bankPageList"
+				path="/jsp/hueware/bankmanage/bankPageList.jsp" redirect="false" />
+			<forward name="bankRegistForm"
+				path="/jsp/hueware/bankmanage/bankRegist.jsp" redirect="false" />
+			<forward name="bankView"
+				path="/jsp/hueware/bankmanage/bankEdit.jsp" redirect="false" />
+			<forward name="bankExcelList"
+				path="/jsp/hueware/bankmanage/bankExcelList.jsp" redirect="false" />
+			<forward name="acNumberChkXML"
+				path="/jsp/hueware/bankmanage/acNumberChkXML.jsp" redirect="false" />	
+		</action>
+		<action path="/B_Estimate"
+			type="com.huation.hueware.estimate.action.EstimateAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="estimatePageList"
+				path="/jsp/hueware/estimate/estimatePageList.jsp" redirect="false" />
+			<forward name="estimateRegistForm"
+				path="/jsp/hueware/estimate/estimateRegist.jsp" redirect="false" />
+			<forward name="estimateView"
+				path="/jsp/hueware/estimate/estimateEdit.jsp" redirect="false" />
+			<forward name="invoiceDetailList"
+				path="/jsp/hueware/estimate/invoiceDetailList.jsp" redirect="false" />
+			<forward name="estimateExcelList"
+				path="/jsp/hueware/estimate/estimateExcelList.jsp" redirect="false" />
+			<forward name="contractCodeUnissued"
+			    path="/jsp/hueware/estimate/contractCodeUnissued.jsp" redirect="false" />
+			<forward name="contractCodeUnissuedExcelList"
+			    path="/jsp/hueware/estimate/contractCodeUnissuedExcelList.jsp" redirect="false" />
+		</action>
+		<action path="/B_Invoice"
+			type="com.huation.hueware.invoice.action.InvoiceAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="invoicePageList"
+				path="/jsp/hueware/invoice/invoicePageList.jsp" redirect="false" />
+			<forward name="invoiceRegistForm"
+				path="/jsp/hueware/invoice/invoiceRegist.jsp" redirect="false" />
+			<forward name="invoiceView"
+				path="/jsp/hueware/invoice/invoiceEdit.jsp" redirect="false" />
+			<forward name="invoiceExcelList"
+				path="/jsp/hueware/invoice/invoiceExcelList.jsp" redirect="false" />
+			<forward name="RegistTaxInvoice"
+				path="/jsp/hueware/invoice/RegistTaxInvoice.jsp" redirect="false" />
+			<forward name="invoiceUnissuedList"
+				path="/jsp/hueware/invoice/invoiceUnissued.jsp" redirect="false" />
+			<forward name="invoiceUnissuedExcelList"
+				path="/jsp/hueware/invoice/invoiceUnissuedExcelList.jsp" redirect="false" />
+		</action>
+		
+		<action path="/B_BaroInvoice"
+			type="com.huation.hueware.baroinvoice.action.BaroInvoiceAction" parameter="cmd"
+			unknown="false" validate="false">
+			
+				<forward name="baroInvoicePageList"
+				path="/jsp/hueware/baroinvoice/baroInvoicePageList.jsp" redirect="false" />
+				
+				<forward name="baroInvoiceView"
+				path="/jsp/hueware/baroinvoice/baroInvoiceEdit.jsp" redirect="false" />
+			
+				<forward name="baroRegist"
+				path="/jsp/hueware/baroinvoice/baroInvoiceRegist.jsp" redirect="false" />
+			
+				<forward name="baroRegistForm"
+				path="/jsp/hueware/baroinvoice/baroInvoiceRegist.jsp" redirect="false" />
+				
+				<forward name="editInvoiceRegist1"
+				path="/jsp/hueware/baroinvoice/editInvoiceRegist1.jsp" redirect="false" />
+				
+				<forward name="editInvoiceRegist2"
+				path="/jsp/hueware/baroinvoice/editInvoiceRegist2.jsp" redirect="false" />
+				
+				<forward name="editInvoiceRegist3"
+				path="/jsp/hueware/baroinvoice/editInvoiceRegist3.jsp" redirect="false" />
+				
+				<forward name="editInvoiceRegist4"
+				path="/jsp/hueware/baroinvoice/editInvoiceRegist4.jsp" redirect="false" />
+				
+				<forward name="editInvoiceRegist5"
+				path="/jsp/hueware/baroinvoice/editInvoiceRegist5.jsp" redirect="false" />
+				
+				<forward name="inverseRegistForm"
+				path="/jsp/hueware/baroinvoice/inverseRegist.jsp" redirect="false" />
+				
+				<forward name="modifyInvoiceFlag"
+				path="/jsp/hueware/baroinvoice/modifyInvoiceFlag.jsp" redirect="false" />
+				
+				<forward name="outstandingBondList"
+				path="/jsp/hueware/baroinvoice/outstandingBondList.jsp" redirect="false" />
+				
+				<forward name="outstandingBondExcelList"
+				path="/jsp/hueware/baroinvoice/outstandingBondExcelList.jsp" redirect="false" />
+				
+		</action>
+		
+		<action path="/B_Project"
+			type="com.huation.hueware.project.action.ProjectAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="projectPageList"
+				path="/jsp/hueware/project/projectPageList.jsp" redirect="false" />
+			<forward name="projectPageListAll"
+				path="/jsp/hueware/project/projectPageListAll.jsp" redirect="false" />	
+			<forward name="projectRegistForm"
+				path="/jsp/hueware/project/projectRegistForm.jsp" redirect="false" />
+			<forward name="projectView"
+				path="/jsp/hueware/project/projectEdit.jsp" redirect="false" />
+			<forward name="projectListExcel"
+				path="/jsp/hueware/project/projectListExcel.jsp" redirect="false" />
+		</action>
+		<action path="/N_Project"
+			type="com.huation.hueware.project.action.NonProjectAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="projectPageList_Non"
+				path="/jsp/hueware/non_project/projectPageList_Non.jsp" redirect="false" />
+			<forward name="projectPageListNonAll"
+				path="/jsp/hueware/non_project/projectPageListNonAll.jsp" redirect="false" />				
+			<forward name="projectRegistForm_Non"
+				path="/jsp/hueware/non_project/projectRegistForm_Non.jsp" redirect="false" />
+			<forward name="projectView_Non"
+				path="/jsp/hueware/non_project/projectEdit_Non.jsp" redirect="false" />
+			<forward name="projectListExcel_Non"
+				path="/jsp/hueware/non_project/projectListExcel_Non.jsp" redirect="false" />				
+		</action>
+		<action path="/B_Project_H"
+			type="com.huation.hueware.project_h.action.Project_H_Action" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="projectPageList_H"
+				path="/jsp/hueware/project_h/projectPageList_H.jsp" redirect="false" />
+			<forward name="projectRegistForm_H"
+				path="/jsp/hueware/project_h/projectRegistForm_H.jsp" redirect="false" />
+			<forward name="projectView_H"
+				path="/jsp/hueware/project_h/projectEdit_H.jsp" redirect="false" />
+			<forward name="projectListExcel_H"
+				path="/jsp/hueware/project_h/projectListExcel_H.jsp" redirect="false" />
+		</action>
+		<action path="/N_Project_H"
+			type="com.huation.hueware.project_h.action.NonProject_H_Action" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="projectPageList_Non_H"
+				path="/jsp/hueware/non_project_h/projectPageList_Non_H.jsp" redirect="false" />
+			<forward name="projectRegistForm_Non_H"
+				path="/jsp/hueware/non_project_h/projectRegistForm_Non_H.jsp" redirect="false" />
+			<forward name="projectView_Non_H"
+				path="/jsp/hueware/non_project_h/projectEdit_Non_H.jsp" redirect="false" />
+			<forward name="projectListExcel_Non_H"
+				path="/jsp/hueware/non_project_h/projectListExcel_Non_H.jsp" redirect="false" />
+		</action>
+		<action path="/H_Group"
+			type="com.huation.hueware.config.action.GroupAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="groupManage"
+				path="/jsp/hueware/config/groupManage.jsp" redirect="false" />
+			<forward name="groupTreeList"
+				path="/jsp/hueware/config/groupTreeList.jsp" redirect="false" />
+			<forward name="groupView"
+				path="/jsp/hueware/config/groupView.jsp" redirect="false" />
+			<forward name="groupXML"
+				path="/jsp/hueware/config/groupXML.jsp" redirect="false" />
+			<forward name="groupOrderList"
+				path="/jsp/hueware/config/groupOrderList.jsp" redirect="false" />
+		</action>
+		<action path="/H_Auth"
+			type="com.huation.hueware.config.action.AuthAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="authManage"
+				path="/jsp/hueware/config/authManage.jsp" redirect="false" />
+			<forward name="authGroupTree"
+				path="/jsp/hueware/config/authGroupTree.jsp" redirect="false" />
+			<forward name="authMenuTree"
+				path="/jsp/hueware/config/authMenuTree.jsp" redirect="false" />
+			<forward name="userAuthMenuTree"
+				path="/jsp/hueware/config/userAuthMenuTree.jsp" redirect="false" />
+		</action>
+		<action path="/B_About"
+			type="com.huation.hueware.about.action.AboutAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="notifyPageList"
+				path="/jsp/hueware/about/notifyPageList.jsp" redirect="false" />
+			<forward name="notifyRegistForm"
+				path="/jsp/hueware/about/notifyRegistForm.jsp" redirect="false" />
+			<forward name="notifyView"
+				path="/jsp/hueware/about/notifyView.jsp" redirect="false" />
+			<forward name="newsPageList"
+				path="/jsp/hueware/about/newsPageList.jsp" redirect="false" />
+			<forward name="newsRegistForm"
+				path="/jsp/hueware/about/newsRegistForm.jsp" redirect="false" />
+			<forward name="newsView"
+				path="/jsp/hueware/about/newsView.jsp" redirect="false" />
+		</action>
+		<action path="/B_Recruit"
+			type="com.huation.hueware.recruit.action.RecruitAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="recruitNotifyList"
+				path="/jsp/hueware/recruit/recruitNotifyList.jsp" redirect="false" />
+			<forward name="recruitNotifyRegistForm"
+				path="/jsp/hueware/recruit/recruitNotifyRegistForm.jsp" redirect="false" />
+			<forward name="recruitNotifyView"
+				path="/jsp/hueware/recruit/recruitNotifyView.jsp" redirect="false" />
+			<forward name="recruitQnAList"
+				path="/jsp/hueware/recruit/recruitQnAList.jsp" redirect="false" />
+			<forward name="recruitDirectList"
+				path="/jsp/hueware/recruit/recruitDirectList.jsp" redirect="false" />
+			<forward name="qnaRegistForm"
+				path="/jsp/hueware/recruit/qnaRegistForm.jsp" redirect="false" />
+			<forward name="qnaView"
+				path="/jsp/hueware/recruit/qnaView.jsp" redirect="false" />
+			<forward name="qnaDirectView"
+				path="/jsp/hueware/recruit/qnaDirectView.jsp" redirect="false" />
+			<forward name="recruitManageList"
+				path="/jsp/hueware/recruit/recruitManageList.jsp" redirect="false" />
+			<forward name="manageDefaultView"
+				path="/jsp/hueware/recruit/manageDefaultView.jsp" redirect="false" />
+			<forward name="photoForm"
+				path="/jsp/hueware/recruit/photoForm.jsp" redirect="false" />
+			<forward name="photo"
+				path="/jsp/hueware/recruit/photo.jsp" redirect="false" />
+			<forward name="manageHistoryView"
+				path="/jsp/hueware/recruit/manageHistoryView.jsp" redirect="false" />
+			<forward name="manageLicenseView"
+				path="/jsp/hueware/recruit/manageLicenseView.jsp" redirect="false" />
+			<forward name="manageAwardView"
+				path="/jsp/hueware/recruit/manageAwardView.jsp" redirect="false" />
+			<forward name="manageLangView"
+				path="/jsp/hueware/recruit/manageLangView.jsp" redirect="false" />
+			<forward name="manageFamilyView"
+				path="/jsp/hueware/recruit/manageFamilyView.jsp" redirect="false" />
+			<forward name="manageCareerView"
+				path="/jsp/hueware/recruit/manageCareerView.jsp" redirect="false" />
+			<forward name="manageEduView"
+				path="/jsp/hueware/recruit/manageEduView.jsp" redirect="false" />
+			<forward name="manageActiveView"
+				path="/jsp/hueware/recruit/manageActiveView.jsp" redirect="false" />
+			<forward name="manageTrainView"
+				path="/jsp/hueware/recruit/manageTrainView.jsp" redirect="false" />
+			<forward name="manageProjectView"
+				path="/jsp/hueware/recruit/manageProjectView.jsp" redirect="false" />
+			<forward name="manageItroView"
+				path="/jsp/hueware/recruit/manageItroView.jsp" redirect="false" />
+			<forward name="manageLastView"
+				path="/jsp/hueware/recruit/manageLastView.jsp" redirect="false" />
+			<forward name="managePrint"
+				path="/jsp/hueware/recruit/writePrintPop.jsp" redirect="false" />	
+		</action>
+		
+		<action path="/B_DispNotify"
+			type="com.huation.hueware.dispnotify.action.DispNotifyAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="dispNotifyPageList"
+				path="/jsp/hueware/dispNotify/dispNotifyPageList.jsp" redirect="false" />
+			<forward name="dispNotifyRegistForm"
+				path="/jsp/hueware/dispNotify/dispNotifyRegistForm.jsp" redirect="false" />
+			<forward name="dispNotifyView"
+				path="/jsp/hueware/dispNotify/dispNotifyEdit.jsp" redirect="false" />
+		</action>
+		<action path="/B_NewsMagazine"
+			type="com.huation.hueware.newsmagazine.action.NewsMagazineAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="newsMagazinePageList"
+				path="/jsp/hueware/newsmagazine/newsMagazinePageList.jsp" redirect="false" />
+			<forward name="newsMagazineRegistForm"
+				path="/jsp/hueware/newsmagazine/newsMagazineRegistForm.jsp" redirect="false" />
+			<forward name="newsMagazineView"
+				path="/jsp/hueware/newsmagazine/newsMagazineEdit.jsp" redirect="false" />
+		</action>
+		<action path="/B_FormFile"
+			type="com.huation.hueware.formfile.action.FormFileAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="formFilePageList"
+				path="/jsp/hueware/formfile/formFilePageList.jsp" redirect="false" />
+			<forward name="formFileRegistForm"
+				path="/jsp/hueware/formfile/formFileRegistForm.jsp" redirect="false" />
+			<forward name="formfileView"
+				path="/jsp/hueware/formfile/formFileEdit.jsp" redirect="false" />
+		</action>
+		<action path="/B_DocumentFile"
+			type="com.huation.hueware.documentfile.action.DocumentFileAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="documentFilePageList"
+				path="/jsp/hueware/documentfile/documentFilePageList.jsp" redirect="false" />
+			<forward name="documentFileRegistForm"
+				path="/jsp/hueware/documentfile/documentFileRegistForm.jsp" redirect="false" />
+			<forward name="documentfileView"
+				path="/jsp/hueware/documentfile/documentFileEdit.jsp" redirect="false" />
+		</action>
+		<action path="/B_FamilyEvent"
+			type="com.huation.hueware.familyevent.action.FamilyEventAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="familyEventPageList"
+				path="/jsp/hueware/familyevent/familyEventPageList.jsp" redirect="false" />
+			<forward name="familyEventRegistForm"
+				path="/jsp/hueware/familyevent/familyEventRegistForm.jsp" redirect="false" />
+			<forward name="familyEventView"
+				path="/jsp/hueware/familyevent/familyEventEdit.jsp" redirect="false" />
+		</action>
+		<action path="/B_FreeBoard"
+			type="com.huation.hueware.freeboard.action.FreeBoardAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="freeBoardPageList"
+				path="/jsp/hueware/freeboard/freeBoardPageList.jsp" redirect="false" />
+			<forward name="freeBoardRegistForm"
+				path="/jsp/hueware/freeboard/freeBoardRegistForm.jsp" redirect="false" />
+			<forward name="freeBoardView"
+				path="/jsp/hueware/freeboard/freeBoardEdit.jsp" redirect="false" />
+			<forward name="freeBoardReplyIframe"
+				path="/jsp/hueware/freeboard/freeBoardReplyIframe.jsp" redirect="false" />	
+		</action> 
+		
+		
+		
+		
+		
+		
+		<!-- 2021.08.02(월) 추가게시판 부분 -->
+		<action path="/B_AddBoard" 
+			type="com.huation.hueware.addBoard.action.AddBoardAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="addBoardList" 
+				path="/jsp/hueware/addBoard/addBoardPageList.jsp" redirect="false" />
+			<forward name="addBoardRegistForm" 
+				path="/jsp/hueware/addBoard/addBoardRegistForm.jsp" redirect="false"/>
+			<forward name="addBoardView" 
+				path="/jsp/hueware/addBoard/addBoardEdit.jsp" redirect="false"/>
+		</action>
+		
+		
+		
+		
+		
+		
+		<!-- 2012-11-21(수) bsh(도서관리) -->
+		<action path="/B_HueBookManageRe"
+			type="com.huation.hueware.huebookmanage.action.HueBookManageReAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="hueBookRePageList"
+				path="/jsp/hueware/huebookmanagere/hueBookRePageList.jsp" redirect="false" />
+			<forward name="hueBookReRegistForm"
+				path="/jsp/hueware/huebookmanagere/hueBookReRegistForm.jsp" redirect="false" />
+			<forward name="hueBookReView"
+				path="/jsp/hueware/huebookmanagere/hueBookReEdit.jsp" redirect="false" />
+			<forward name="HueBookReExcelList"
+				path="/jsp/hueware/huebookmanagere/hueBookReExcel.jsp" redirect="false" />
+		</action>
+		<!-- HueBook 도서결재 -->
+		<action path="/B_HueBookManageApp"
+			type="com.huation.hueware.huebookmanage.action.HueBookManageAppAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="hueBookAppPageList"
+				path="/jsp/hueware/huebookmanageapp/hueBookAppPageList.jsp" redirect="false" />
+			<forward name="hueBookAppView"
+				path="/jsp/hueware/huebookmanageapp/hueBookAppEdit.jsp" redirect="false" />
+			<forward name="hueBookAppExcel"
+				path="/jsp/hueware/huebookmanageapp/hueBookAppExcel.jsp" redirect="false" />		
+		</action>
+		<action path="/B_HueBookList"
+			type="com.huation.hueware.huebooklist.action.HueBookListAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="hueBookPageList"
+				path="/jsp/hueware/huebooklist/hueBookPageList.jsp" redirect="false" />
+			<forward name="hueBookRegistForm"
+				path="/jsp/hueware/huebooklist/hueBookRegistForm.jsp" redirect="false" />
+			<forward name="hueBookView"
+				path="/jsp/hueware/huebooklist/hueBookEdit.jsp" redirect="false" />
+			<forward name="hueBookExcelList"
+				path="/jsp/hueware/huebooklist/hueBookExcelList.jsp" redirect="false" />	
+		</action>
+		<!-- 2012-11-21(수) bsh(도서관리) 끝 -->
+		
+		<!-- 2013-02-27(수) shbyeon(영업진행현황) 시작 -->
+		<action path="/B_CurrentStatus"
+			type="com.huation.hueware.currentstatus.action.CurrentStatusAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="currentStaPageList"
+				path="/jsp/hueware/current/currentStaPageList.jsp" redirect="false" />
+			<forward name="currentStaRegistForm"
+				path="/jsp/hueware/current/currentStaRegistForm.jsp" redirect="false" />
+			<forward name="currentStaView"
+				path="/jsp/hueware/current/currentStaEdit.jsp" redirect="false" />
+			<forward name="currentStaExcel"
+				path="/jsp/hueware/current/currentStaExcelList.jsp" redirect="false" />
+			<forward name="currentCommentIframe"
+				path="/jsp/hueware/current/currentCommentIframe.jsp" redirect="false" />
+			<forward name="commentRegistResult"
+				path="/jsp/hueware/current/currentCommentResult.jsp" redirect="false" />
+			<forward name="comentModifyResult"
+				path="/jsp/hueware/current/currentCommentModify.jsp" redirect="false" />
+			<forward name="comentDeleteResult"
+				path="/jsp/hueware/current/currentCommentDelete.jsp" redirect="false" />
+			
+			<!-- 미발행 미수 -->
+			<forward name="UnissuedNoCollect"
+				path="/jsp/hueware/unissued_no_collect/Unissued_No_Collect.jsp" redirect="false" />
+			<forward name="UnissuedNoCollectExcel"
+				path="/jsp/hueware/unissued_no_collect/UnissuedNoCollectExcelList.jsp" redirect="false" />
+			<forward name="UnissuedNoCollectExcel2"
+				path="/jsp/hueware/unissued_no_collect/UnissuedNoCollectExcelList2.jsp" redirect="false" />
+			
+				
+		</action>		
+		<!-- 2013-02-27(수) shbyeon(영업진행현황) 끝 -->
+		
+		<!-- 2013-11-21(목) shbyeon(계약관리) 시작 -->
+		<action path="/B_ContractManage"
+			type="com.huation.hueware.contractmanage.action.ContractManageAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="contractMgPageList"
+				path="/jsp/hueware/contractmanage/contractMgPageList.jsp" redirect="false" />
+			<forward name="contractMgExcel"
+				path="/jsp/hueware/contractmanage/contractMgExcel.jsp" redirect="false" />
+			<forward name="contractMgRegistForm"
+				path="/jsp/hueware/contractmanage/contractMgRegist.jsp" redirect="false" />	
+			<forward name="contractMgView"
+				path="/jsp/hueware/contractmanage/contractMgEdit.jsp" redirect="false" />
+			<forward name="contractRegistMgView"
+				path="/jsp/hueware/contractmanage/contractRegistMgEdit.jsp" redirect="false" />
+			<forward name="invoiceDetailList"
+				path="/jsp/hueware/contractmanage/invoiceDetailList.jsp" redirect="false" />
+			<forward name="contractMgRegistList"
+				path="/jsp/hueware/contractmanage/contractMgRegistList.jsp" redirect="false" />
+			<forward name="invoiceUnissued"
+				path="/jsp/hueware/contractmanage/invoiceUnissued.jsp" redirect="false" />
+		</action>		
+		<!-- 2013-11-21(목) shbyeon(계약관리) 끝 -->
+		
+		<!-- 2013-12-23(월) shbyeon(프로젝트 코드관리) 시작 -->
+		<action path="/B_ProjectCodeManage"
+			type="com.huation.hueware.projectcodemanage.action.ProjectCodeManageAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="projectCodeMgPageList_Search"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Search.jsp" redirect="false" />
+			<forward name="projectCodeMgPageList_Search_Excel"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Search_Excel.jsp" redirect="false" />
+			<forward name="projectCodeMgSearchView"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgSearchForm.jsp" redirect="false" />	
+			<forward name="projectCodeMgPageList_Edit"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Edit.jsp" redirect="false" />	
+			<forward name="projectCodeMgPageList_Edit_Excel"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Edit_Excel.jsp" redirect="false" />
+			<forward name="projectCodeMgRegistForm"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgRegistForm.jsp" redirect="false" />
+			<forward name="projectCodeMgView"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgEditForm.jsp" redirect="false" />
+			<forward name="p_projectCodeSearch"
+				path="/jsp/hueware/projectcodemanage/p_projectCodeMgPageList_Search.jsp" redirect="false" />
+			<forward name="projectCodeMgPageList_Progress"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Progress.jsp" redirect="false" />
+			<forward name="projectCodeMgProgressView"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgProgressForm.jsp" redirect="false" />
+			<forward name="projectCodeMgPageList_Progress_Excel"
+				path="/jsp/hueware/projectcodemanage/projectCodeMgPageList_Progress_Excel.jsp" redirect="false" />	
+		</action>		
+		<!-- 2013-12-23(월) shbyeon(프로젝트 코드관리) 끝 -->
+		
+			<!-- 2014-07-25 nasang(문자 발송) 시작 -->
+		<action path="/S_Sms"
+			type="com.huation.hueware.sms.action.SmsAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="smsSend"
+				path="/jsp/hueware/sms/smsSend.jsp" redirect="false" />
+			<forward name="smsSendPageList"
+				path="/jsp/hueware/sms/smsSendPageList.jsp" redirect="false" />
+			<forward name="smsReservePageList"
+				path="/jsp/hueware/sms/smsReservePageList.jsp" redirect="false" />
+			<forward name="smsAddList"
+				path="/jsp/hueware/sms/smsAddList.jsp" redirect="false" />
+			<forward name="smsAddList2"
+				path="/jsp/hueware/sms/smsAddList2.jsp" redirect="false" />
+			<forward name="ajaxSmsAddList"
+				path="/jsp/hueware/sms/ajaxSmsAddList.jsp" redirect="false" />
+			<forward name="ajaxSmsGroupList"
+				path="/jsp/hueware/sms/ajaxSmsGroupList.jsp" redirect="false" />
+			<forward name="ajaxSmsAddList2"
+				path="/jsp/hueware/sms/ajaxSmsAddList2.jsp" redirect="false" />
+			<forward name="ajaxSmsGroupList2"
+				path="/jsp/hueware/sms/ajaxSmsGroupList2.jsp" redirect="false" />
+			<forward name="GroupReg"
+				path="/jsp/hueware/sms/GroupReg.jsp" redirect="false" />
+			<forward name="goModifyForm"
+				path="/jsp/hueware/sms/smsModifyForm.jsp" redirect="false" />
+			<forward name="smsSendView"
+				path="/jsp/hueware/sms/smsSendView.jsp" redirect="false" />
+			
+		</action>		
+		<!-- 2014-07-25 nasang(문자 발송) 끝 -->
+		
+			
+		<action path="/H_Holly"
+			type="com.huation.hueware.hollyday.action.HollyDayAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="adminLeaveApplyPageList"
+				path="/jsp/hueware/hollydaymanage/adminLeaveApplyPageList.jsp" redirect="false" />
+			<forward name="adminLeaveApplyPageListPopup"
+				path="/jsp/hueware/hollydaymanage/adminLeaveApplyPageListPopup.jsp" redirect="false" />
+			<forward name="leaveApplyPageList"
+				path="/jsp/hueware/hollydaymanage/leaveApplyPageList.jsp" redirect="false" />
+			<forward name="leaveRegistForm"
+				path="/jsp/hueware/hollydaymanage/leaveRegistForm.jsp" redirect="false" />
+			<forward name="leaveAppPageList"
+				path="/jsp/hueware/hollydaymanage/leaveAppPageList.jsp" redirect="false" />
+			<forward name="ReturnForm"
+				path="/jsp/hueware/hollydaymanage/leaveReturn.jsp" redirect="false" />
+			<forward name="leavePageList"
+				path="/jsp/hueware/hollydaymanage/leavePageList.jsp" redirect="false" />
+			<forward name="leaveApplicant"
+				path="/jsp/hueware/hollydaymanage/leaveApplicant.jsp" redirect="false" />
+			<forward name="leaveToday"
+				path="/jsp/hueware/hollydaymanage/leaveToday.jsp" redirect="false" />	
+			<forward name="leavePageExcelList"
+				path="/jsp/hueware/hollydaymanage/leavePageExcelList.jsp" redirect="false" />
+			<forward name="leaveModifyForm"
+				path="/jsp/hueware/hollydaymanage/leaveModifyForm.jsp" redirect="false" />
+			<forward name="HollyDayMgPageList"
+				path="/jsp/hueware/hollydaymanage/HollyDayMgPageList.jsp" redirect="false" />
+			<forward name="HollyDayRegistForm"
+				path="/jsp/hueware/hollydaymanage/HollyDayRegistForm.jsp" redirect="false" />
+			<forward name="hollydayHelp"
+				path="/jsp/hueware/hollydaymanage/hollydayHelp.jsp" redirect="false" />
+		</action>		
+			
+		
+		<!-- If you have non XDoclet actions, define them in a file called struts-actions.xml and place it in your merge directory. -->
+	</action-mappings>
+
+	<!-- Define your Struts controller in a file called struts-controller.xml and place it in your merge directory. -->
+
+	<!-- Define your Struts message-resources in a file called struts-message-resources.xml and place it in your merge directory. -->
+
+	<!-- Define your Struts plugins in a file called struts-plugins.xml and place it in your merge directory. -->
+
+</struts-config>

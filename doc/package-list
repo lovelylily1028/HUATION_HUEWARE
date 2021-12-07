@@ -1,0 +1,16 @@
+com.huation.common
+com.huation.common.code
+com.huation.common.company
+com.huation.common.estimate
+com.huation.common.invoice
+com.huation.common.transfer
+com.huation.common.user
+com.huation.common.util
+com.huation.common.waf
+com.huation.common.waf.taglib
+com.huation.hueware.common.action
+com.huation.hueware.company.action
+com.huation.hueware.estimate.action
+com.huation.hueware.invoice.action
+com.huation.hueware.login.action
+com.huation.hueware.user.action

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><web-app xmlns="http://JAVA.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0">	
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/hueware</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>
+			com.huation.framework.util.SetCharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>EUC-KR</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			com.huation.framework.struts.StrutsReloadActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config-hueware.xml
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>1</param-value>
+		</init-param>
+		<init-param>
+			<param-name>nocache</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>request_encoding</param-name>
+			<param-value>EUC-KR</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>fileDownServlet</servlet-name>
+		<servlet-class>com.huation.common.fileDownServlet</servlet-class>
+		<load-on-startup>-1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>fileDownServlet</servlet-name>
+		<url-pattern>/fileDownServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+    <servlet-name>dwr-invoker</servlet-name>
+    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+	<init-param>
+	  <param-name>crossDomainSessionSecurity</param-name>
+	  <param-value>false</param-value>
+	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>dwr-invoker</servlet-name>
+    <url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>
+
+	<welcome-file-list>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+<error-page>
+  <error-code>404</error-code>
+  <location>/jsp/hueware/common/error.jsp</location>
+ </error-page>
+ <error-page>
+  <error-code>500</error-code>
+  <location>/jsp/hueware/common/error.jsp</location>
+ </error-page>
+  
+<!-- <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>SSL Forward</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint> -->
+ 
+<!-- <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>HTTPS or HTTP</web-resource-name>
+        <url-pattern>/images/*</url-pattern>
+        <url-pattern>/css/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+</security-constraint> -->
+ 
+</web-app>
+
+
+
+

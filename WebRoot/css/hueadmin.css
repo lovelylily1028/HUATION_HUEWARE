@@ -1,0 +1,104 @@
+/* 스크롤바 색상 */
+body{
+	scrollbar-face-color:#CCCCCC;
+	scrollbar-highlight-color: #DDDDDD;
+	scrollbar-3dlight-color: #EEEEEE;
+	scrollbar-shadow-color: #CCCCCC;
+	scrollbar-darkshadow-color: #EEEEEE;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-arrow-color: #DDDDDD;
+}
+
+/* Font 스타일 - Default */
+p,br,form,textarea,td {font-size:12px;font-family:"돋움"; color:#6F6E6E; line-height: 18px}
+
+/* Form 스타일 */
+.input1 {border:solid 1;border-color:#C6C6C6;font-size:9pt;color:#5a5a5a;background-color:#ffffff;height:19px}
+
+.select1 {font-size:9pt;color:#525252;background-color:#F2F2F2}
+
+/* Font 스타일 - Color :흰색 */
+.text-wh {font-size:12px; font-family:"돋움"; color:#0099FF; line-height: 18px}
+
+/* Font 스타일 - 제목 */
+.title1 {font-size:14px; font-family:"돋움"; font-weight:bold; color:#151f68; line-height: 20px}
+
+/* Font 스타일 - 작은제목 */
+.title2 {font-size:12px; font-family:"돋움"; font-weight:bold; color:#5a5a5a; line-height: 20px}
+
+/* Font 스타일 - 작은제목 */
+.title3 {font-size:12px; font-family:"돋움"; font-weight:bold; color:#151f68; line-height: 20px}
+
+/* 테이블 내 타이틀링크 스타일 추가 */ 
+.tlink {color:#42497e; text-decoration:none;}
+a.tlink:hover {color:#0c20b5; text-decoration:none}
+
+/* Left Menu - Depth 1 */
+.lmenu1 {font-family:"돋움"; font-size: 12px; font-weight:bold; color: #a1563d; line-height: 20px}
+a.lmenu1:link {text-decoration:none; font-weight:bold; color:#a1563d}
+a.lmenu1:active {text-decoration:none; font-weight:bold; color:#a1563d}
+a.lmenu1:visited {text-decoration:none; font-weight:bold; color:#a1563d}
+a.lmenu1:hover {color:#fe4d12; font-weight:bold; text-decoration:none}
+
+
+/* Left Menu - Depth 2 */
+.lmenu2 {font-family:"돋움"; font-size: 12px; color: #5a5a5a; line-height: 20px}
+a.lmenu2:link {text-decoration:none; color:#5a5a5a}
+a.lmenu2:active {text-decoration:none; color:#5a5a5a}
+a.lmenu2:visited {text-decoration:none; color:#5a5a5a}
+a.lmenu2:hover {color:#ff5704; text-decoration:underline} 
+
+
+
+/* 테이블 스타일 - 검색 테이블 스타일 */
+.td_search {font-family:"돋움"; font-size:12px; font-weight:bold; line-height:18px; color:#5a5a5a; background-color:#f2f2f2; border-top:#e6e6e6 2px solid; padding:10px;}
+
+
+/* 테이블 스타일 - 일반 테이블 스타일
+table : 테이블 전체 스타일 table에 class로 지정
+td0 : 본문테이블 상단의 컬러테이블에 적용
+td1 : 테이블 Head 타이틀에 적용 -> td에 class로 지정
+td2 : 테이블 중간 타이틀 및 합계 td에 class로 지정
+td3 : 테이블 항목의 기준이 되는 항목(ex:날짜) td에 class로 지정 -> 바탕색 회색
+td4 : 테이블 항목의 td에 class로 지정 -> 바탕색 흰색
+td5 : 테이블 항목의 td에 class로 지정 -> 바탕색 연한 군청색
+ */
+.table{ font-family:"돋움"; font-size:12px; line-height:18px; color:#5a5a5a; background-color:#ffffff; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td0 {background-color:#5160ce;}
+.td1 {font-family:"돋움"; font-size:12px; font-weight:bold; line-height:18px; color:#42497e; background-color:#abe668; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td2 {font-family:"돋움"; font-size:12px; font-weight:bold; line-height:18px; color:#42497e; background-color:#dfe0f6; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td3 {font-family:"돋움"; font-size:12px; line-height:18px; color:#5a5a5a; background-color:#f4f4f4; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td4 {font-family:"돋움"; font-size:12px; line-height:18px; color:#5a5a5a; background-color:#ffffff; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td5 {font-family:"돋움"; font-size:12px; line-height:18px; color:#5a5a5a; background-color:#f6f7fd; border-collapse:collapse; border:#9a9ebf 1px solid;}
+.td6 {font-family:"돋움"; font-size:12px; line-height:18px; color:red; background-color:#ffffff; border-collapse:collapse; border:#9a9ebf 1px solid;}
+
+/* 탭메뉴 스타일 */
+.tab0 {background-color:#606ccd;}
+
+.tab1 {font-family:"돋움"; font-size: 12px; font-weight:bold; color: #ffffff; line-height: 20px}
+a.tab1:link {text-decoration:none; font-weight:bold; color:#ffffff}
+a.tab1:active {text-decoration:none; font-weight:bold; color:#ffffff}
+a.tab1:visited {text-decoration:none; font-weight:bold; color:#ffffff}
+a.tab1:hover {color:#8afff8; font-weight:bold; text-decoration:none}
+
+.tab2 {font-family:"돋움"; font-size: 12px; color: #475096; line-height: 20px}
+a.tab2:link {text-decoration:none; color:#475096}
+a.tab2:active {text-decoration:none; color:#475096}
+a.tab2:visited {text-decoration:none; color:#475096}
+a.tab2:hover {color:#3f51e5; text-decoration:none}
+
+.input_button_red {
+	background-color:#0099FF;
+	border:0;
+	cursor:hand;
+	border-width:1 1 1 1;
+	border-style:solid;
+	border-color:#878787;
+	font-family:돋움,arial; 
+	font-size:12px; 
+	color:#FFFFFF;
+	padding:1 0 0 0; 
+	font-weight:bold;
+	height:18px;
+}
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>SMS 전송</title>
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+</head>
+<body>
+<!-- 팝업사이즈 : width:834px / height:574px; -->
+<div id="wrapWp" class="smsSend">
+	<!-- header -->
+	<div id="headerWp">
+		<h1 class="hidden_obj">SMS전송메뉴</h1>
+		<ul class="tabTi">
+			<li><a href="smsSend.html" class="on">SMS전송</a></li><!-- 메뉴 활성화 : class="on" 추가 -->
+			<li><a href="smsSendPageList.html">SMS전송내역</a></li>
+			<li><a href="smsReservePageList.html">SMS예약내역</a></li>
+		</ul>
+	</div>
+	<!-- //header -->
+	<!-- content -->
+	<div id="contentWp">
+		<!-- SMS전송컨텐츠 -->
+		<div class="smsSend_area">
+			<form method="post" action="">
+			<!-- 받는사람리스트 -->
+			<fieldset class="receiveList">
+				<legend>받는사람리스트</legend>
+				<table class="tbl_type tbl_type_list" summary="받는사람리스트(전화번호, 이름)">
+					<colgroup>
+						<col width="35px" />
+						<col width="250px" />
+						<col width="*" />
+					</colgroup>
+					<thead>
+					<tr>
+						<th class="title" colspan="3"><strong>받는사람</strong>&nbsp;&nbsp;<a href="smsAddList.html" class="btn_type03"><span>주소록</span></a></th>
+					</tr>
+					<tr>
+						<th>No.</th>
+						<th>전화번호</th>
+						<th>이름</th>
+					</tr>
+					</thead>
+					<tfoot>
+					<tr>
+						<td class="title" colspan="3"><strong>총 인원 : <span>2</span>명</strong><span class="addPlus"><a href="#none" class="btn_type03"><span>인원추가</span></a></span></td>
+					</tr>
+					</tfoot>
+					<tbody>
+					<tr>
+						<td colspan="3" class="tbl_type_scrollY">
+							<div class="scrollY">
+								<table class="tbl_type tbl_type_list">
+									<colgroup>
+										<col width="34px" class="scrollY_FF" /><!-- tbody에 추가되는 테이블의 왼쪽 라인 삭제로 인해 width사이즈를 -1px함. -->
+										<col width="250px" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+									<!-- label의 for값과 input의 id값을 똑같이 사용해주세요. -->
+									<tr>
+										<td>1</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>11</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>12</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td><input type="text" id="" class="text" title="전화번호" style="width:227px;" /></td>
+										<td><input type="text" id="" class="text" title="이름" style="width:206px;" /></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</fieldset>
+			<!-- //받는사람리스트 -->
+			<!-- 문자보내기 -->
+			<fieldset class="messagesSend">
+				<legend>문자보내기</legend>
+				<div class="messageCont_area">
+					<div class="messageCont"><textarea id="" title="내용입력" style="width:198px;"></textarea></div>
+					<p class="num">45/90</p>
+					<p class="rewrite"><a href="#none">다시쓰기</a></p>
+				</div>
+				<dl class="sendList">
+					<dt>보내는사람</dt>
+					<dd><input type="text" id="" class="text" title="보내는사람" /></dd>
+				</dl>
+				<ul class="sendType">
+					<li><input type="radio" id="" class="radio md0" checked="checked" title="즉시전송" /><label for="">즉시전송</label><input type="radio" id="" class="radio" title="예약전송" /><label for="">예약전송</label></li>
+					<li><span class="ico_calendar"><input type="text" id="" class="text" title="예약일" style="width:95px;" /></span> <select id="" title="시">
+						<option>16시</option>
+					</select> <select id="" title="분">
+						<option>32분</option>
+					</select></li>
+				</ul>
+			</fieldset>
+			<!-- //문자보내기 -->
+			</form>
+		</div>
+		<!-- //SMS전송컨텐츠 -->
+	</div>
+	<!-- //content -->
+</div>
+</body>
+</html>

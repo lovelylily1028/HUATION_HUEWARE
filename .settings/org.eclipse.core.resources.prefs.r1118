@@ -1,0 +1,13 @@
+#Fri Aug 22 17:22:25 GMT+09:00 2014
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_SMS.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_SMSLocator.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_SMSSoap.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_SMSSoapStub.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_TI.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/BaroService_TILocator.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/Contact.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/PagedSMSMessages.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/SMSMessage.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/baroservice/ws/XMSMessage.java=UTF-8
+encoding//WebRoot/WEB-INF/src/com/huation/hueware/contractmanage/action/ContractManageAction.java=UTF-8

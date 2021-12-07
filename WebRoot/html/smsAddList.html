@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>SMS 주소록</title>
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+</head>
+<body>
+<!-- 팝업사이즈 : width:1014px / height:578px; -->
+<div id="wrapWp" class="smsAddList">
+	<!-- header -->
+	<div id="headerWp">
+		<h1>SMS 주소록</h1>
+	</div>
+	<!-- //header -->
+	<!-- content -->
+	<div id="contentWp">
+		<!-- SMS주소록컨텐츠 -->
+		<div class="smsAddList_area">
+			<form method="post" action="">
+			<!-- 그룹선택 -->
+			<fieldset class="groupTree">
+				<legend>그룹선택</legend>
+				<dl class="groupTree_area">
+					<dt>그룹선택<a href="groupReg.html" class="btn_type03"><span>그룹추가</span></a></dt>
+					<dd>트리</dd>
+				</dl>
+				<!-- Bottom 버튼영역 -->
+				<div class="Bbtn_areaR"><a href="#none" class="btn_type01"><span>선택그룹SMS전송</span></a></div>
+				<!-- //Bottom 버튼영역 -->
+			</fieldset>
+			<!-- //그룹선택 -->
+			<!-- 그룹관리 -->
+			<fieldset class="groupList">
+				<legend>그룹관리</legend>
+				<dl class="groupList_area">
+					<dt>[경영창조그룹] 그룹관리</dt>
+					<dd>
+						<table class="tbl_type tbl_type_list" summary="그룹관리(그룹, 이름, 휴대폰번호, 팩스번호, 메모, 관리)">
+							<colgroup>
+								<col width="35px" />
+								<col width="120px" />
+								<col width="100px" />
+								<col width="110px" />
+								<col width="110px" />
+								<col width="130px" />
+								<col width="*" />
+							</colgroup>
+							<thead>
+							<tr>
+								<th><input type="checkbox" id="" class="check md0" title="전체선택" /></th>
+								<th>그룹</th>
+								<th>이름</th>
+								<th>휴대폰번호</th>
+								<th>팩스번호</th>
+								<th>메모</th>
+								<th class="last">관리</th>
+							</tr>
+							</thead>
+							<tbody>
+							<!-- label의 for값과 input의 id값을 똑같이 사용해주세요. -->
+							<tr>
+								<td colspan="2"><select id="" title="그룹선택" style="width:100%;">
+									<option>미분류</option>
+								</select></td>
+								<td><input type="text" id="" class="text" title="이름" style="width:77px;" /></td>
+								<td><input type="text" id="" class="text" title="휴대폰번호" style="width:87px;" /></td>
+								<td><input type="text" id="" class="text" title="팩스번호" style="width:87px;" /></td>
+								<td><input type="text" id="" class="text" title="메모" style="width:107px;" /></td>
+								<td class="last"><a href="#none" class="btn_type03"><span>추가</span></a></td>
+							</tr>
+							<tr>
+								<td colspan="7" class="last tbl_type_scrollY">
+									<div class="scrollY">
+										<table class="tbl_type tbl_type_list">
+											<colgroup>
+												<col width="35px" />
+												<col width="120px" />
+												<col width="100px" />
+												<col width="110px" />
+												<col width="110px" />
+												<col width="130px" />
+												<col width="*" />
+											</colgroup>
+											<tbody>
+											<!-- label의 for값과 input의 id값을 똑같이 사용해주세요. -->
+											<tr>
+												<td><input type="checkbox" id="" class="check md0" title="선택" /></td>
+												<td>휴에이션</td>
+												<td>나상욱</td>
+												<td>010-1234-5678</td>
+												<td>02-123-4567</td>
+												<td>CMS팀</td>
+												<td><a href="#none" class="btn_type03"><span>수정</span></a><a href="#none" class="btn_type03 last"><span>삭제</span></a></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" id="" class="check md0" title="선택" /></td>
+												<td>휴에이션</td>
+												<td>나상욱</td>
+												<td>010-1234-5678</td>
+												<td>02-123-4567</td>
+												<td>CMS팀</td>
+												<td><a href="#none" class="btn_type03"><span>수정</span></a><a href="#none" class="btn_type03 last"><span>삭제</span></a></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" id="" class="check md0" title="선택" /></td>
+												<td>휴에이션</td>
+												<td>나상욱</td>
+												<td>010-1234-5678</td>
+												<td>02-123-4567</td>
+												<td>CMS팀</td>
+												<td><a href="#none" class="btn_type03"><span>수정</span></a><a href="#none" class="btn_type03 last"><span>삭제</span></a></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</dd>
+				</dl>
+				<!-- Bottom 버튼영역 -->
+				<div class="Bbtn_areaR"><a href="#none" class="btn_type01"><span>선택목록SMS전송</span></a><a href="#none" class="btn_type01 btn_type01_gray md0"><span>선택목록삭제</span></a></div>
+				<!-- //Bottom 버튼영역 -->
+			</fieldset>
+			<!-- //그룹관리 -->
+			</form>
+		</div>
+		<!-- //SMS주소록컨텐츠 -->
+	</div>
+	<!-- //content -->
+</div>
+</body>
+</html>
