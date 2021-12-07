@@ -478,11 +478,6 @@
 				path="/jsp/hueware/freeboard/freeBoardReplyIframe.jsp" redirect="false" />	
 		</action> 
 		
-		
-		
-		
-		
-		
 		<!-- 2021.08.02(월) 추가게시판 부분 -->
 		<action path="/B_AddBoard" 
 			type="com.huation.hueware.addBoard.action.AddBoardAction" parameter="cmd"
@@ -495,10 +490,17 @@
 				path="/jsp/hueware/addBoard/addBoardEdit.jsp" redirect="false"/>
 		</action>
 		
-		
-		
-		
-		
+		<!-- 2021.12.07(화) 휴폐업 부분 -->
+		<action path="/B_ClosureMg" 
+			type="com.huation.hueware.closure.action.ClosureMgAction" parameter="cmd"
+			unknown="false" validate="false">
+			<forward name="closureMgList" 
+				path="/jsp/hueware/closuremanage/closurePageList.jsp" redirect="false" />
+			<forward name="closureEdit" 
+				path="/jsp/hueware/closuremanage/closureEdit.jsp" redirect="false"/>
+			<!-- <forward name="addBoardView" 
+				path="/jsp/hueware/addBoard/addBoardEdit.jsp" redirect="false"/> -->
+		</action>
 		
 		<!-- 2012-11-21(수) bsh(도서관리) -->
 		<action path="/B_HueBookManageRe"

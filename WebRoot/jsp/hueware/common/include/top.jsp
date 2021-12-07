@@ -388,12 +388,18 @@
 				$(".lnb_04 div").removeClass("display_none");
 				break;
 				
-			case "36" :		//추가게시판 - 추가게시판 메뉴활성화 --------------- 현재 작업중
+			case "36" :		//추가게시판
 				$("#M67000 a").addClass("on");
 				$(".lnb_04 a").eq(0).addClass("on");
 				$(".lnb_04 div").removeClass("display_none");
 				break;
-			
+//=======================================================================================			
+			case "37" :		//휴폐업 ----------------------------- 개발 진행중
+				$("#M68000 a").addClass("on");
+				$(".lnb_04 a").eq(0).addClass("on");
+				$(".lnb_04 div").removeClass("display_none");
+				break;
+//=======================================================================================			
 			case "40" :		//HUEHome관리 - 공지사항 메뉴활성화
 				$("#M51000 a").addClass("on");
 				$(".lnb_05 a").eq(0).addClass("on");
@@ -592,8 +598,12 @@
 			theUrl= '<%= request.getContextPath()%>/B_NewsMagazine.do?cmd=newsMagazinePageList';
 		}else if (menu=='35') {//업무Menual
 			theUrl= '<%= request.getContextPath()%>/B_DocumentFile.do?cmd=documentFilePageList';
-		}else if (menu=='36'){//추가게시판(2021.08.02) ---------------------------------------------------------------
+		}else if (menu=='36'){//추가게시판(2021.08.02)
 			theUrl= '<%= request.getContextPath()%>/B_AddBoard.do?cmd=addBoardList';
+//==================================================================================================================			
+		}else if (menu=='37'){//휴폐업(2021.12.07)
+			theUrl= '<%= request.getContextPath()%>/B_ClosureMg.do?cmd=closureMgList';
+//==================================================================================================================			
 		}else if (menu=='50') {//도서신청
 			theUrl= '<%= request.getContextPath()%>/B_HueBookManageRe.do?cmd=hueBookRePageList';
 		}else if (menu=='51') {//도서결재
@@ -832,6 +842,11 @@
 							<li id="M65000" style="display:none"><a href="javascript:goMenu('34');">News &amp; Magazine</a></li>
 							<li id="M66000" style="display:none"><a href="javascript:goMenu('35');">업무Manual</a></li>
 							<li id="M67000"><a href="javascript:goMenu('36');">추가게시판</a></li>
+			<!-- ================================================================================================================== -->
+							<li id="M68000"><a href="javascript:goMenu('37');">휴폐업</a></li>
+							<!-- display=none인데 어떻게 나온거지 -->
+							<!-- <li id="M66000" style="display:none"><a href="javascript:goMenu('37');">휴폐업</a></li> -->
+			<!-- ================================================================================================================== -->
 						</ul>
 					</div>	
 				</li>
