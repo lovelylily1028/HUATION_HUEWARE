@@ -12,18 +12,17 @@ import org.apache.struts.action.ActionMapping;
 import com.huation.framework.struts.StrutsDispatchAction;
 
 /**
- * ÈŞÆó¾÷ Á¶È¸ Ç×¸ñ ÆäÀÌÁö  
+ * íœ´íì—…
  * @author lovelylily
+ *
  */
 public class ClosureMgAction extends StrutsDispatchAction{
 
 	public ActionForward closureMgList(ActionMapping actionMapping, 
 			ActionForm actionForm, HttpServletRequest request,
 			HttpServletResponse response, Map model) throws Exception{
-	
-		System.out.println("[ClosureMgAction] - [closureMgList]¿¡ µé¾î¿È");
 		
-		return actionMapping.findForward("closureEdit");
+		return actionMapping.findForward("closureMgList");
 	}
 	
 	

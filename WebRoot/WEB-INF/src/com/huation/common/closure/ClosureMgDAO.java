@@ -1,5 +1,7 @@
 package com.huation.common.closure;
 
-public class ClosureMgDAO {
+import com.huation.framework.persist.AbstractDAO;
+
+public class ClosureMgDAO extends AbstractDAO{
 
 }

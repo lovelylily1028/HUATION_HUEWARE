@@ -1,0 +1,118 @@
+@charset "euc-kr";
+/* huation Web Appliction R&D Team LJJ 2012-06-30 */
+
+/* common */
+body { margin:0; padding:0; background-color:#fff; }
+hr { display:none; }
+img, fieldset { border:0 none; }
+dl, ul, ol, li { list-style: none; }
+h1, h2, h3, h4, h5, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset, legend { margin:0; padding:0; }
+table { border-collapse:collapse; }
+input, select, textarea { font-size:100%; vertical-align:middle; }
+body, th, td { font-size:11px; font-family:AppleGothic, '돋움', Dotum, sans-serif; color:#666; } /* Font 설정은 팝업용임 */
+.chk,.rdo{widows:13px;height:13px;margin:0 !important;padding:0 !important;vertical-align:middle}
+body,input,textarea,select,button,table{font-family:'돋움',dotum,tahoma,sans-serif;font-size:11px; color:#666; }
+a{text-decoration:none; color:#96F}
+a:hover{color:#019ddb}
+a:active,a:focus{text-decoration:none;color:#019ddb}
+caption,legend{display:none}
+
+.txt_orange {color:#FF6600;}
+.txt_violet { color:#6173e8}
+
+
+/* title */
+#wrap { padding:7px }
+.title, .title_lft, .title_rgt { background:url(../images/pop_title_bg.gif) no-repeat; height:34px; overflow-y:hidden; }
+.title { background-repeat:repeat-x; background-position:0 -34px; }
+.title_lft { background-position:0 0; }
+.title_rgt { display:block; background-position:right -68px; }
+h1 { color:#fff; font-size:13px; font-family:AppleGothic, '나눔고딕', '돋움', Dotum,; line-height:33px; padding-left:25px }
+
+
+/* contents */
+#contents { clear:both; margin:20px 10px; }
+.noti{ float:right; color:#666; font-weight:bold; text-align:right; margin-bottom:3px; color:#F60}
+.noti2{ float:right; color:#666; letter-spacing:-1px; text-align:right; margin-bottom:3px; color:#F60}
+
+.msearch { float:right;width:100%; margin:0 25px;z-index:2;height:33px;padding-top:16px;text-align:right;zoom:1}
+.msearch .search{width:150px;height:13px;*margin:-1px 0 1px;padding:3px 0 2px 3px;vertical-align:middle;border:1px solid #C6C6C6; border-right:0;font:normal 12px '돋움',Dotum;color:#666}
+.msearch .search_btn{border:0;padding:0;margin-top:0;margin-bottom:2px; margin-left:-5px;vertical-align:top;*vertical-align:middle;}
+.msearch .selected span{background-position:100% -365px}
+.msearch select{ padding:0px}
+.con { clear:both}
+
+.post_srch { text-align:center; height:70px; margin:0px 15px 20px 15px; border-bottom:1px solid #CCC; border-top:1px solid #CCC; padding-top:10px;}
+.post_srch .btn { position:relative; top:7px; left:-7px}
+.post_srch a{text-decoration:none; color:#666}
+.post_srch a:hover{color:#FF6600;text-decoration:underline;}
+.post_srch a:active,a:focus{color:#FF6600;text-decoration:underline;}
+
+.comp_srch { text-align:center; height:20px; margin:20px 15px 15px 15px; padding-top:8px; background:url(../images/line_grey_1px.gif) repeat-x 20px 0px;}
+.comp_srch .btn { position:relative; top:6px; left:10px}
+
+input.in_txt {border:1px solid #cbcbcb;height:13px;*margin:-1px 0 1px;padding:3px 3px 2px 3px; margin:2px 2px 2px 0}
+.input_button_red { background:url(../images/ico_calendar.gif) no-repeat 10px 5px}
+
+.dtree_wrap { height:350px; border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:2px solid #e1e1e1;color:#6c6c6c; border-collapse:collapse; padding:10px; overflow:auto;}
+
+/* 기본 테이블 */
+.tbl_line_top { width:100%;border-bottom:2px solid #727272; height:0px; float:left; padding:0}
+.tbl_type,.tbl_type th,.tbl_type td{border:0}
+.tbl_type{width:100%;border-bottom:2px solid #dcdcdc;text-align:center;border-collapse:collapse;word-break:break-all;}
+.tbl_type caption{display:none}
+.tbl_type tfoot{background-color:#f5f7f9;font-weight:bold}
+.tbl_type th{padding:7px 0 4px;border-top:1px solid #dcdcdc;border-right:1px solid #dcdcdc;border-left:1px solid #dcdcdc;background-color:#ededed;color:#6c6c6c;font-weight:bold}
+.tbl_type td{padding:6px 3px;border:1px solid #e1e1e1;color:#6c6c6c;line-height:16px;}
+.tbl_type td.ranking{font-weight:bold}
+.tbl_type tr.frst th,tr.frst td{border-top:none}
+.tbl_type tr.row th{border-top:1px solid #e1e1e1;border-right:1px solid #e1e1e1;}
+.tbl_type th.row_rgt{border-right:none;}
+.tbl_type th.bodr_rgt,td.bodr_rgt {border-right:none;}
+.tbl_type th.bodr_lft,td.bodr_lft {border-left:none;}
+
+/* 세로선 없는 테이블 */
+.tbl_type2,.tbl_type2 th,.tbl_type2 td{border:0}
+.tbl_type2{width:100%;border-top:2px solid #727272; border-bottom:2px solid #dcdcdc;text-align:left;}
+.tbl_type2 caption{display:none}
+.tbl_type2 th{padding:6px 15px 0px 20px; border-top:1px solid #dcdcdc;background-color:#ededed;color:#666;text-align:left;font-weight:bold}
+.tbl_type2 td{padding:5px 15px;border-top:1px solid #dcdcdc;color:#666}
+.tbl_type2 td input.in_txt {border:1px solid #cbcbcb;height:13px;*margin:-1px 0 1px;padding:3px 3px 2px 3px; margin:2px 2px 2px 0}
+.tbl_type2 td input.in_file {border:1px solid #cbcbcb;height:18px;*margin:-1px 0 1px;padding:3px 3px 2px 3px; margin:2px 2px 2px 8px}
+.tbl_type2 a{text-decoration:none; color:#666}
+.tbl_type2 a:hover{color:#96F;text-decoration:underline}
+.tbl_type2 .btn3 { vertical-align:; position:relative; top:6px;}
+.tbl_type2 th.th2 {background-color:#F5F5F5}
+
+.paginate { width:100%; height:25px; margin:0 0px;}
+.paginate{padding:10px 0;text-align:center;line-height:normal}
+.paginate a,
+.paginate strong{display:inline-block;position:relative;margin:0 -2px;padding:2px 8px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#666;line-height:normal;text-decoration:none;vertical-align:middle}
+.paginate a:hover,
+.paginate a:active,
+.paginate a:focus{background-color:#f8f8f8}
+.paginate strong{color:#FF6600}
+.paginate .direction{font-weight:normal;color:#767676;white-space:nowrap; padding:0; margin:0}
+.paginate .direction span{font-weight:bold;font-size:14px}
+.paginate .direction:hover,
+.paginate .direction:active,
+.paginate .direction:focus{background-color:#fff;color:#333}
+.paginate .direction_off{display:inline-block;position:relative;margin:0 -2px;padding:2px 8px;font-weight:bold;font-size:12px;font-family:Tahoma, Sans-serif;color:#666;line-height:normal;text-decoration:none;vertical-align:middle}
+.paginate .pd0  {font-weight:normal;color:#767676;white-space:nowrap; padding:0; margin:0}
+
+
+/* button */
+#button { clear:both; background:url(../images/pop_btm_bg.gif) repeat-x; padding-top:9px; text-align:center }
+#button a{ padding:0 3px;}
+/* noti */
+.noti2 { color:#96F; text-align:left; background:url(../images/icon_memo.gif) no-repeat 0 4px; letter-spacing:-1px; padding:5px 0 0 15px; font-size:11px}
+
+
+/* (신)세금계산서 발행>수정발행 팝업 (140109) */
+.modiInvoice {border:1px solid #dcdcdc;}
+.modiInvoice dt {background:url(../images/popup/btn_icon_next.gif) no-repeat 20px 20px;margin-top:17px;padding:20px 20px 4px 30px;border-top:1px solid #dcdcdc;font-weight:bold;}
+.modiInvoice dt.first {margin-top:0;border-top:0;}
+.modiInvoice dd {padding-left:30px;}
+.modiInvoice dd.last {padding-bottom:17px;}
+.modiInvoice dd.btn {float:right;margin-top:-36px;padding-right:20px;}
+.modiInvoice dd.btnlast {float:right;margin-top:-53px;padding-right:20px;}

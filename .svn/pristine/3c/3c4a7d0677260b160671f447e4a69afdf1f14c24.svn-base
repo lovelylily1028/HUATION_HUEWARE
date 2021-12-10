@@ -1,0 +1,543 @@
+@charset "euc-kr";
+
+/*********************************************************
+Huation UX R&D Team (http://www.huation.com/)
+Author : huation (2014.05.29)
+*********************************************************/
+
+/* common */
+/* 달력 아이콘 */
+.ico_calendar {position:relative;}
+.ico_calendar img {position:absolute;right:3px;top:4px;cursor:pointer;}
+/* 필수입력사항텍스트(페이지) */
+.must_txt {padding-top:14px;font-size:11px;color:#ff6600;}
+.must_txt img {padding-top:5px;padding-right:5px;vertical-align:top;}
+/* 필수입력사항텍스트(팝업) */
+#contentWp .conTop_area .must_txt {margin:-2px 0 -2px 0;padding-top:0;}
+/* 필수입력사항텍스트(레이어팝업) */
+#contentLp .conTop_area .must_txt {margin:-2px 0 -2px 0;padding-top:0;}
+
+
+
+/* 테이블Out  가이드 텍스트(페이지) */
+.guide_txt {padding:13px 0 0 16px;background:url(../images/common/ico_guide.gif) no-repeat 0 14px;font-size:11px;color:#ff6600;}/* 테이블 Bottom */
+.Tguide_txt {padding:14px 0 0 16px;background:url(../images/common/ico_guide.gif) no-repeat 0 15px;font-size:11px;color:#ff6600;}/* 테이블 Top */
+/* 테이블Out  가이드 텍스트(팝업) */
+#contentWp .conTop_area .Tguide_txt {margin:-2px 0 -2px 0;padding:0 0 0 16px;background-position:0 1px;}/* 테이블 Top */
+
+/* search */
+.search {float:left;}
+.search li {float:left;padding-left:5px;}
+.search li select {float:left;height:27px;line-height:21px;padding:4px;font-size:11px;}/* ine-height:21px; 사파리 높이 사이즈 설정 */
+.search li input.text {width:220px;height:19px;line-height:15px;padding:3px 5px;font-size:11px;}
+.search li input.textdate {width:90px;}
+.search li .ico_calendar img {right:5px;top:5px;}
+.search li .btn_type01 {margin:0 5px 0 -6px;}
+
+/* table */
+/* tbl_type 기본 */
+.tbl_type {table-layout:fixed;word-break:break-all;/*word-wrap:break-word;*/}/* 테이블 고정 */
+.tbl_type {width:100%;border-top:2px solid #3ba90d;border-left:1px solid #ddd;}
+.tbl_type th, .tbl_type td {padding:5px 15px 7px;height:23px;border-bottom:1px solid #ddd;border-right:1px solid #ddd;text-align:left;vertical-align:middle;}
+.tbl_type th {padding:5px 15px 7px;background:#f0f0f0;color:#333;}
+.tbl_type th .must_ico {position:relative;}/* 필수입력아이콘 */
+.tbl_type th .must_ico img {position:absolute;top:-5px;left:203px;}
+.tbl_type td .listD li {padding-top:6px;}/* 테이블내 줄바꿈 형태 리스트 */
+.tbl_type td .listD li.first {padding-top:0;}
+.tbl_type td.listT {padding:0 !important;}/* 테이블내 테이블(타이틀왼쪽) */
+.tbl_type td.listT .tbl_type {border:0 none !important;}
+.tbl_type td.listT .tbl_type th {background:#f5f5f5;color:#666;}
+.tbl_type td.listT .tbl_type tr.last th, .tbl_type td.listT .tbl_type tr.last td {border-bottom:0 none;}/* 테이블내 등록테이블 추가로 마지막 라인 2줄 표시. 1줄 감추는 설정 */
+.tbl_type td.listT .tbl_type tr td.last {border-right:0 none;}
+.tbl_type td.listT01 {padding:0 !important;}/* 테이블내 테이블(타이틀위) */
+.tbl_type td.listT01 dt {padding:5px 15px 7px;line-height:23px;}
+.tbl_type td.listT01 dd .tbl_type {border:0 none;;border-top:1px solid #ddd;}
+.tbl_type td.listT01 dd .tbl_type th {background:#f5f5f5;color:#666;text-align:center;}
+.tbl_type td.listT01 dd .tbl_type tr th.last, .tbl_type td.listT01 dd .tbl_type tr td.last {border-right:0 none;}
+.tbl_type td.listT01 dd .tbl_type tr td.last a.btn_type03 {margin-left:0;}/* 테이블내 테이블(타이틀위)-리스트 테이블 안 버튼 설정 */
+.tbl_type td.listT01 dd .tbl_type {margin-bottom:-1px;}/* 테이블내 리스트테이블 추가로 마지막 라인 2줄 표시. 1줄 감추는 설정 */
+.tbl_type td input, .tbl_type td select {margin-top:1px;margin-bottom:-1px;}/* input 위치 설정 */
+.tbl_type input.check {margin-top:0;}/* 체크박스 위치 설정 */
+.tbl_type input.radio {margin-top:-2px;}/* 라디오 위치 설정 */
+input.check.md0, input.radio.md0 {margin-left:0 !important;}/* 처음나오는 체크박스, 라디오 margin 초기화 */
+.tbl_type .guide_txt {padding:0;padding-top:1px;background:none;color:#00a651;vertical-align:middle;}/* 테이블내 가이드 텍스트 */
+.tbl_type .guide_txt.br {padding-top:5px;}/* 기존 내용에서 줄바꿈 한뒤 가이드 텍스트가 오는 경우(옆으로 오는 경우 아님) */
+.tbl_type .guide_txt strong {color:#ff6600;}
+/* tbl_type_list */
+.tbl_type_list th, .tbl_type_list td {padding:5px 5px 7px;text-align:center;}
+.tbl_type_list input.check.md0, .tbl_type_list input.radio.md0 {margin-left:0 !important;margin-right:0 !important;}/* 리스트테이블 체크박스, 라디오 솔로일때 margin 초기화 */
+.tbl_type_list td a {text-decoration:underline;}
+.tbl_type_list td a span {text-decoration:underline;}
+.oddColor {background:#fff;}/* 홀수 */
+.evenColor {background:#fafafa;}/* 짝수  */
+.tbl_type_list a.btn_type03 {margin-left:0;}/* 리스트 테이블 안 버튼 설정(버튼1개) */
+/* tbl_type_scrollY(테이블안 tbody안 스크롤 생성일 경우 table 설정) */
+.tbl_type_scrollY {padding:0 !important;border-bottom:0 none !important;background:#fff;}
+.tbl_type_scrollY .scrollY {overflow-y:scroll;}
+.tbl_type_scrollY .scrollY .tbl_type {border-top:0 none;border-left:0 none;}
+/* tbl_type 정보테이블 */
+.tbl_type_info th, .tbl_type_info td {line-height:15px;text-align:center;}
+
+/* btn */
+/* table out small */
+a.btn_type01 {margin:0 5px;padding-left:14px;background:url(../images/common/btn_bg.gif) no-repeat;vertical-align:middle;color:#fff;font-weight:bold;}
+a.btn_type01 span {padding:5px 14px 7px 0;background:url(../images/common/btn_bg.gif) no-repeat right 0;}
+a.btn_type01_gray {background-position:0 -27px;color:#666;}/* table out small gray */
+a.btn_type01_gray span {background-position:right -27px;}
+/* table out big */
+a.btn_type02 {margin:0 5px;padding-left:24px;background:url(../images/common/btn_bg.gif) no-repeat 0 -54px;vertical-align:middle;color:#fff !important;font-weight:bold;}
+a.btn_type02 span {padding:7px 24px 9px 0;background:url(../images/common/btn_bg.gif) no-repeat right -54px;}
+a.btn_type02_gray {background-position:0 -85px;color:#666 !important;}/* table out big gray */
+a.btn_type02_gray span {background-position:right -85px;}
+a.btn_type02_orange {background-position:0 -214px;}/* table out big orange */
+a.btn_type02_orange span {background-position:right -214px;}
+/* table out 공통 */
+a.md0 {margin-right:0 !important;}/* 오른쪽 정렬일때 오른쪽 마지막 버튼 margin 초기화 */
+.Tbtn_areaR {float:left;}/* Top 버튼영역 오른쪽 정렬 */
+.Bbtn_areaC {position:relative;padding-top:15px;text-align:center;}/* Bottom 버튼영역 가운데 정렬 */
+.Bbtn_areaR {padding-top:15px;text-align:right;}/* Bottom 버튼영역 오른쪽 정렬 */
+.Bbtn_areaC .Bbtn_areaRFix {position:absolute;top:15px;right:-5px;}/* Bottom 버튼영역 가운데, 오른쪽 정렬 */
+/* table in */
+a.btn_type03 {margin:1px 0 -1px 5px;padding-left:9px;height:23px;line-height:23px;background:url(../images/common/btn_bg.gif) no-repeat 0 -116px;vertical-align:middle;color:#666;font-size:11px;}
+a.btn_type03 span {padding-right:9px;background:url(../images/common/btn_bg.gif) no-repeat right -116px;text-decoration:none !important;}
+
+/* paging */
+.paging {padding:12px 0;text-align:center;border:1px solid #ddd;border-top:0 none;}
+.paging a, .paging strong {padding:2px 4px 3px;}
+.paging a.direction {padding:0px;}
+.paging strong {color:#ff6600;}
+.paging .btn {display:inline-block;padding:0;width:21px;height:21px;background:url(../images/common/btn_bg.gif) no-repeat;}
+.paging .btn_first {background-position:0 -139px;}
+.paging .btn_prev {margin-right:10px;width:22px;background-position:-21px -139px;}
+.paging .btn_next {margin-left:10px;width:22px;background-position:-43px -139px;}
+.paging .btn_last {background-position:-65px -139px;}
+
+/* ellipsis */
+.ellipsis {display:block;width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height:18px;}
+.ellipsis a, .ellipsis strong {display:inline;}
+
+/* error */
+.error {position:absolute;top:50%;left:50%;margin-top:-75px; margin-left:-180px; width:360px;height:150px;color:#333;font-size:14px;line-height:150%;}
+.error strong {padding-top:10px;}
+.error strong a {color:#00a651;text-decoration:underline;}
+/* //common */
+
+
+/* main_contents */
+.main_board {overflow:auto;}
+.main_board div {position:relative;float:left;padding:30px 30px 0 0;width:585px;height:281px;}
+.main_board div.pd_no {padding-right:0;}
+.main_board div h3 {padding-left:19px;height:35px;line-height:35px;background:url(../images/main/list_title_bg.gif) no-repeat;font-size:13px;color:#333;font-weight:bold;}
+.main_board div ul {padding-bottom:1px;background:url(../images/main/list_last_bg.gif) no-repeat left bottom;}
+.main_board div ul li a {display:block;padding-left:29px;height:35px;line-height:35px;background:url(../images/main/list_bg.gif) no-repeat;}
+.main_board div ul li a .ellipsis {display:inline-block;width:400px;line-height:35px;}/* 타이틀 말줄임 */
+.main_board div ul li.first a {background:url(../images/main/list_first_bg.gif) no-repeat;}
+.main_board div ul li a:hover {background:url(../images/main/list_over_bg.gif) no-repeat;color:#333;font-weight:bold;}
+.main_board div ul li a .date {float:right;padding-right:19px;font-size:11px;color:#999;}
+.main_board div .more {position:absolute;left:553px;top:42px;}
+
+
+/* sub_contents */
+/* 2_영업지원 */
+/* 2_영업지원공통(리스트에서 상황에 따른 텍스트 색상 설정 */
+.txtColor_contractNo {color:#ff6600;}/* 영업진행현황, 견적서발생(미계약) */
+.txtColor_contractNo a:link, .txtColor_contractNo a:visited {color:#ff6600;}
+.txtColor_contractNo a:hover, .txtColor_contractNo a:active {color:#00a651;}
+.txtColor_contractNo a.btn_type03 span {color:#666;}
+.txtColor_contractEarly {color:#3389e9;}/* 계약관리(조기종료) */
+.txtColor_contractEarly a:link, .txtColor_contractEarly a:visited {color:#3389e9;}
+.txtColor_contractEarly a:hover, .txtColor_contractEarly a:active {color:#00a651;}
+.txtColor_contractEarly a.btn_type03 span {color:#666;}
+.txtColor_contractEnd {color:#e93380;}/* 계약관리(계약종결) */
+.txtColor_contractEnd a:link, .txtColor_contractEnd a:visited {color:#e93380;}
+.txtColor_contractEnd a:hover, .txtColor_contractEnd a:active {color:#00a651;}
+.txtColor_contractEnd a.btn_type03 span {color:#666;}
+.txtColor_depositWait {color:#ab5ee6;}/* 세금계산서발행(입금대기) */
+.txtColor_depositWait a:link, .txtColor_depositWait a:visited {color:#ab5ee6;}
+.txtColor_depositWait a:hover, .txtColor_depositWait a:active {color:#00a651;}
+.txtColor_depositWait a.btn_type03 span {color:#666;}
+.txtColor_invoiceCancel td {color:#aaa;text-decoration:line-through;}/* 세금계산서발행(발행취소) */
+/* 2_1영업진행현황 */
+/* 리스트 */
+/* .currentStaPageList .tbl_type_list {border-top:0 none;} 타이틀영역을 개발상의 이유로 임시로 삭제했음 */
+.currentStaPageList .tbl_type_list .borderT th {border-top:2px solid #3ba90d;}/* 타이틀영역을 개발상의 이유로 임시로 삭제해서 라인으로 대체 */
+.currentStaPageList .tbl_type_list .title {border-left:1px solid #3ba90d;border-right:1px solid #3ba90d;background:#3ba90d;color:#fff;font-weight:bold;font-size:13px;}
+.currentStaPageList .tbl_type_list tbody th {background:#fafafa;}
+.currentStaPageList .tbl_type_list td {background:#fff;}
+.currentStaPageList .tbl_type_list .qTotal th, .currentStaPageList .tbl_type_list .qTotal td {background:#fafafa;font-weight:bold;color:#333;}
+.currentStaPageList .tbl_type_list .aTotal th, .currentStaPageList .tbl_type_list .aTotal td {background:#f0f0f0;font-weight:bold;color:#333;}
+.currentStaPageList .tbl_type_list .aTotal th.aTotalYear {background:#e1e1e1;color:#00a651;}/* 타이틀영역을 개발상의 이유로 임시로 삭제해서 하단 타이틀 영역 스타일 추가 */
+/* 등록_뷰 */
+.currentStaRegistForm {}
+.prodCode {font-size:11px;}/* 상품코드(견적서등록에서도 사용) */
+.prodCode div {float:left;width:270px;}
+.prodCode div.codeList {padding-right:66px;background:url(../images/sub/prodCode_move_bg.gif) no-repeat 294px 50%;}
+.prodCode div.guide {padding-top:133px;padding-left:20px;width:300px;}/* 가이드문구 */
+.prodCode div h5 {padding:5px 10px;border:1px solid #2a8e00;background:#3ba90d;color:#fff;text-align:center;font-weight:bold;}/* 타이틀 */
+/* 제이쿼리포함 CSS사용으로 삭제
+.prodCode div div h6 a {display:block;margin-top:2px;padding:5px 10px 5px 21px;border:1px solid #ccc;background:#f0f0f0 url(../images/sub/codeList_bg.gif) no-repeat 10px -21px;}/* 상품코드(자사/내자)
+.prodCode div div h6 a:hover, .currentStaRegistForm .prodCode div div h5 a:active {border:1px solid #3ba90d;background:#f0f0f0 url(../images/sub/codeList_bg.gif) no-repeat 10px -51px;}
+.prodCode div div h6.on a {border:1px solid #aaa;background:#fff url(../images/sub/codeList_bg.gif) no-repeat 10px 10px;color:#333;}
+.prodCode div div ul {padding:5px 10px 5px 14px;height:187px;border:1px solid #aaa;border-top:0 none;}
+ */
+.prodCode div div ul li {padding-left:7px;line-height:17px;background:url(../images/common/bu_square.gif) no-repeat 0 7px;}
+.prodCode div div ul a:link, .currentStaRegistForm .prodCode div div ul a:visited {color:#333;}
+.prodCode div div ul a:hover, .currentStaRegistForm .prodCode div div ul a:active {color:#00a651;text-decoration:underline;}
+.prodCode div ol {margin-top:2px;padding:4px 10px 4px 14px;height:271px;border:1px solid #aaa;}/* 상품코드 */
+.prodCode div ol li {line-height:17px;list-style-type:decimal-leading-zero;list-style-position:inside;color:#333;}
+.prodCode div ol li a:link, .currentStaRegistForm .prodCode div ol li a:visited {color:#333;}
+.prodCode div ol li a:hover, .currentStaRegistForm .prodCode div ol li a:active {color:#00a651;text-decoration:underline;}
+.prodCode div ol li span {color:#ff6600;}
+.currentStaRegistForm .issueComm {padding-top:30px;}/* Issue Comment */
+.currentStaRegistForm .issueComm h4 {padding:8px 15px 10px;border:1px solid #2a8e00;background:#3ba90d;color:#fff;font-weight:bold;}/* 타이틀 */
+.currentStaRegistForm .issueComm .issueCon_area {padding:15px 15px 13px;border:1px solid #ddd;border-top:0 none;background:#f0f0f0;}/* 이슈코멘트 내용 영역 */
+.currentStaRegistForm .issueComm .issueCon_area .info li {float:left;padding:0 20px 10px 8px;height:23px;background:url(../images/common/bu_square.gif) no-repeat 0 11px;color:#333;}/* 정보 */
+.currentStaRegistForm .issueComm .issueCon_area .info li span {padding-top:4px;}
+.currentStaRegistForm .issueComm .issueCon_area .info li.btn {padding:0;background:0 none;}/* 첨부파일다운로드영역 */
+.currentStaRegistForm .issueComm .issueCon_area .info li.btn .btn_type03 span {padding-top:0;}
+.currentStaRegistForm .issueComm .issueCon_area .issueCon {position:relative;clear:both;}/* 등록폼 */
+.currentStaRegistForm .issueComm .issueCon_area .issueCon input {margin:3px 0 0 0;}
+.currentStaRegistForm .issueComm .issueCon_area .issueCon .btn_regist {position:absolute;right:0;top:1px;}
+.currentStaRegistForm .issueComm .issueCon_area .issueCon .btn_regist a {width:73px;height:83px;line-height:83px;background:url(../images/sub/issueComm_btn_regist.gif) no-repeat;color:#333;text-align:center;}
+.currentStaRegistForm .issueComm .issueCon_area .issueCon .btn_regist a.dis {background:url(../images/sub/issueComm_btn_regist.gif) no-repeat 0 -83px !important;color:#999;}
+.currentStaRegistForm .issueComm .issueCon_area .issueCon .guide_txt {padding:0;padding-top:8px;background:none;color:#00a651;vertical-align:middle;}/* 가이드텍스트 */
+/* 2_2견적서발행 */
+/* 리스트 */
+.estimatePageList {}
+.estimatePageList a.btn_type03 {margin:1px 0 1px 0;}
+/* 2_8(신)세금계산서발행 */
+/* 리스트 */
+.baroInvoicePageList {}
+.baroInvoicePageList a.btn_type01.backPb {padding-left:31px;background-position:0 -160px;}/* 역발행버튼 */
+.baroInvoicePageList a.btn_type01.normalPb {padding-left:31px;background-position:0 -187px;}/* 정발행버튼 */
+/* 등록(정발행) */
+.baroRegistForm .tbl_type_invoice {border-top:2px solid #f0403b;border-left:1px solid #ffa3a0;}
+.baroRegistForm .tbl_type_invoice th, .baroRegistForm .tbl_type_invoice td {padding:5px 5px 7px;border-bottom:1px solid #ffa3a0;border-right:1px solid #ffa3a0;}
+.baroRegistForm .tbl_type_invoice th {color:#f0403b;text-align:center;}
+.baroRegistForm .tbl_type_invoice tr.title_area .title {font-size:28px;line-height:33px;border-right:0 none;font-weight:bold;}/* 타이틀영역 */
+.baroRegistForm .tbl_type_invoice tr.title_area .title span {font-size:12px;line-height:17px;}
+.baroRegistForm .tbl_type_invoice tr.title_area td {background:#f0f0f0;}
+.baroRegistForm .tbl_type_invoice td .tbl_type th{color:#f0403b;text-align:center;}
+.baroRegistForm .tbl_type_invoice .claim {font-size:16px;color:#333;text-align:center;font-weight:bold;}/* bottom 청구영역 */
+.baroRegistForm .tbl_type_invoice .claim span {position:relative;top:-2px;}
+
+/* 3_프로젝트지원 */
+/* 3_2프로젝트코드(등록수정) */
+/* 프로젝트코드등록 */
+.projectCodeMgRegistForm .tbl_type td.listT01 {position:relative;}/* 추가버튼 기준 */
+.projectCodeMgRegistForm .tbl_type td.listT01 .btn_add {position:absolute;top:5px;left:127px;}/* 추가버튼 위치 */
+
+/* 4_게시판 */
+/* 4_4자유게시판 */
+/* 상세보기_댓글 */
+.reply_area {position:relative;padding-top:15px;}
+.reply_area h4 {padding:8px 15px 10px;border:1px solid #2a8e00;background:#3ba90d;color:#fff;font-weight:bold;}/* 타이틀 */
+.reply_area .total {position:absolute;right:15px;top:24px;color:#fff;}
+.reply_area .total strong {font-weight:bold;}
+.reply_area .replyList {border-left:1px solid #ddd;border-right:1px solid #ddd;background:#f0f0f0;}/* 리스트 */
+.reply_area .replyList dt {padding:12px 15px 5px 23px;background:url(../images/common/bu_square.gif) no-repeat 15px 18px;color:#333;font-weight:bold;}
+/* .reply_area .replyList dt span {padding-left:5px;color:#999;font-weight:normal;} */  /* 원본 */
+.reply_area .replyList dt span {color:#999;font-weight:normal;} /* 수정버튼 추가하면서 css:239 변경함(21.08.11) */
+.reply_area .replyList dd {position:relative;padding:0 23px 14px 23px;border-bottom:1px solid #ddd;word-break:break-all;word-wrap:break-word;}
+.reply_area .replyList dd .btn_type03 {position:absolute;top:-14px;right:15px;}
+.reply_area .paging {background:#f0f0f0;}
+.reply_area .replyCon {padding:15px 15px 13px;border:1px solid #ddd;border-top:0 none;background:#f0f0f0;}/* 등록폼 */
+.reply_area .replyCon dd {position:relative;}
+.reply_area .replyCon dd.btn_regist a {position:absolute;right:0;top:-35px;width:73px;height:35px;line-height:35px;background:url(../images/sub/reply_area_btn_regist.gif) no-repeat;color:#333;text-align:center;}
+.reply_area .replyCon .guide_txt {padding:0;padding-top:8px;background:none;color:#00a651;vertical-align:middle;}/* 가이드텍스트 */
+.reply_area .replyCon .guide_txt span {font-weight:bold;text-decoration:underline;}
+.reply_area .replyCon .guide_byte {padding:0;padding-top:8px;background:none;vertical-align:middle;}/* 댓글 바이트 */
+.reply_area .replyCon .guide_byte span {font-weight:bold;color:#e93333}
+
+/* 5_HUEHome관리 */
+/* 5_4채용관리 */
+/* 리스트 */
+.recruitManageList {}
+.recruitManageList .recruitOk {color:#3389e9;}/* 지원완료_합격 */
+.recruitManageList .recruitIng {color:#ab5ee6;}/* 지원중_대기 */
+.recruitManageList .recruitNo {color:#e93333;}/* 불합격 */
+/* 상세정보 */
+.recruitManage {}
+.recruitManage .stepTab {float:left;height:72px;}/* 탭(step1 ~ step13) */
+.recruitManage .step1on {background:url(../images/sub/recruitManage_step1.gif) no-repeat;}/* step별 On bg */
+.recruitManage .step2on {background:url(../images/sub/recruitManage_step2.gif) no-repeat;}
+.recruitManage .step3on {background:url(../images/sub/recruitManage_step3.gif) no-repeat;}
+.recruitManage .step4on {background:url(../images/sub/recruitManage_step4.gif) no-repeat;}
+.recruitManage .step5on {background:url(../images/sub/recruitManage_step5.gif) no-repeat;}
+.recruitManage .step6on {background:url(../images/sub/recruitManage_step6.gif) no-repeat;}
+.recruitManage .step7on {background:url(../images/sub/recruitManage_step7.gif) no-repeat;}
+.recruitManage .step8on {background:url(../images/sub/recruitManage_step8.gif) no-repeat;}
+.recruitManage .step9on {background:url(../images/sub/recruitManage_step9.gif) no-repeat;}
+.recruitManage .step10on {background:url(../images/sub/recruitManage_step10.gif) no-repeat;}
+.recruitManage .step11on {background:url(../images/sub/recruitManage_step11.gif) no-repeat;}
+.recruitManage .step12on {background:url(../images/sub/recruitManage_step12.gif) no-repeat;}
+.recruitManage .step13on {background:url(../images/sub/recruitManage_step13.gif) no-repeat;}
+.recruitManage .stepTab li {float:left;padding:0 15px;width:118px;height:36px;line-height:34px;}/* step별 사이즈 */
+.recruitManage .stepTab li.step1 {width:241px;}
+.recruitManage .stepTab li.step3 {width:159px;}
+.recruitManage .stepTab li.step9 {width:181px;}
+.recruitManage .stepTab li.step10 {width:181px;}
+.recruitManage .stepTab li.step11 {width:191px;}
+.recruitManage .stepTab li.step12 {width:138px;}
+.recruitManage .stepTab li.step13 {width:211px;}
+.recruitManage .stepTab li.on a {color:#fff;font-weight:bold;}/* step On 폰트색 */
+.recruitManage .info {clear:both;padding-top:14px;}/* 내용영역 */
+.recruitManage .info .tbl_type {border-top:0 none;}
+.recruitManage .info .tbl_type .title {border-left:1px solid #3ba90d;border-right:1px solid #3ba90d;background:#3ba90d;color:#fff;font-weight:bold;font-size:13px;text-align:left;}/* 메인타이틀 */
+.recruitManage .info .tbl_type .subtitle {border-left:1px solid #ccc;border-right:1px solid #ccc;background:#ccc;color:#333;}/* step1 서브타이틀 */
+.recruitManage .info .tbl_type .pic {position:relative;}/* 지원자사진 */
+.recruitManage .info .tbl_type .pic .pic_area {position:absolute;top:11px;right:10px;width:110px;height:120px;background:url(../images/sub/recruitManage_pic.png) no-repeat;}
+.recruitManage .info .tbl_type_list th, .recruitManage .info .tbl_type_list td {padding:5px 15px 7px;}
+.recruitManage .info .tbl_type_list td {background:#fff;}
+.recruitManage .info .tbl_type_list td.step13_area {padding:33px 15px 36px;}/* step13 내용 영역 */
+.recruitManage .info .tbl_type_list td.step13_area .guide_txt {margin-top:0;padding:0 0 10px;background:none;color:#ff6600;font-weight:normal;}
+/* 5_61:1질문 */
+/* 리스트 */
+.recruitQnAList_02 {}
+.recruitQnAList_02 .replyOk {color:#3389e9;}/* 답변완료 */
+.recruitQnAList_02 .replyNo {color:#e93333;}/* 미완료 */
+
+/* 6_HUEBook */
+/* 6_1도서신청_6_2도서결재 */
+/* 리스트 */
+.hueBook {}
+.hueBook .buyOk {color:#3389e9;}/* 구매완료 */
+.hueBook .requesting {color:#ab5ee6;}/* 신청중 */
+.hueBook .return {color:#ff9c00;}/* 반려 */
+.hueBook .approvalOk {color:#e93333;}/* 결재완료 */
+
+/* 7_관리 */
+/* 7_2그룹관리 */
+.groupManage {overflow:auto;border:1px solid #ddd;border-top:2px solid #3ba90d;}
+.groupManage .groupTree {float:left;width:320px;border-right:1px solid #ddd;}/* 그룹선택 */
+.groupManage .groupList {float:left;width:879px;}/* 그룹관리 */
+.groupManage .groupTree dt, .groupManage .groupList dt {padding:0 15px 0;height:35px;line-height:35px;border-bottom:1px solid #ddd;background:#f0f0f0;color:#333;font-weight:bold;}/* 타이틀 */
+.groupManage .groupList dt .btn_type03 {margin:-1px 0 0 5px;font-weight:normal;}
+.groupManage .groupTree dd, .groupManage .groupList dd {overflow:hidden;height:530px;}/* 내용영역 */
+/* 리스트(같은페이지) */
+.groupManage .groupList dd li {padding:0 15px 1px 22px;height:42px;line-height:42px;border-bottom:1px solid #eee;background:url(../images/common/bu_square.gif) no-repeat 15px 20px;}
+.groupManage .groupList dd li.modify {background-color:#fafafa;}/* 수정버튼클릭 */
+.groupManage .groupList dd li span.groupId {padding-right:8px;background:url(../images/sub/groupManage_bar.gif) no-repeat right 16px;color:#999;}
+.groupManage .groupList dd li .btn_type03 {margin-top:-3px;}
+.groupManage .groupList dd li input.text {margin-top:-1px;}
+/* 리스트(iframe) */
+#groupRow li {padding:0 15px 1px 22px;height:42px;line-height:42px;border-bottom:1px solid #eee;background:url(../images/common/bu_square.gif) no-repeat 15px 20px;}
+#groupRow li.modify {background-color:#fafafa;}/* 수정버튼클릭 */
+#groupRow li span.groupId {padding-right:8px;background:url(../images/sub/groupManage_bar.gif) no-repeat right 16px;color:#999;}
+#groupRow li .btn_type03 {margin-top:-3px;}
+#groupRow li input.text {margin-top:-1px;}
+/* 7_3메뉴권한관리 */
+.authManage {}
+.authManage .manage {overflow:auto;border:1px solid #ddd;border-top:2px solid #3ba90d;}/* 메뉴권한관리 */
+.authManage .manage .groupTree {float:left;width:320px;border-right:1px solid #ddd;}/* 그룹 */
+/* 트리리스트(같은페이지) */
+.authManage .manage .authInfo_wrap {position:relative;float:left;width:556px;}/* 메뉴권한상세정보 */
+.authManage .manage .groupTree dt, .authManage .manage .authInfo_wrap dt {padding:0 15px 0;height:35px;line-height:35px;border-bottom:1px solid #ddd;background:#f0f0f0;color:#333;font-weight:bold;}/* 타이틀 */
+.authManage .manage .authInfo_wrap dt .userName {color:#ff6600;}
+.authManage .manage .authInfo_wrap dt .setting {float:right;font-weight:normal;}
+.authManage .manage .authInfo_wrap dt .setting input {margin-top:2px;}
+.authManage .manage .groupTree dd, .authManage .manage .authInfo_wrap dd {overflow:hidden;height:530px;}/* 내용영역 */
+.authManage .manage .authInfo_wrap .tap_open {position:absolute;top:61px;left:0;z-index:100;}/* 탭열기버튼 */
+.authManage .manage .authInfo_wrap .tap_clos {position:absolute;top:61px;right:0;}/* 탭닫기버튼 */
+/* 트리리스트(iframe) */
+.authManage .manage .authInfo_wrap #userInfoLayer {position:relative;height:566px;background:#fff;z-index:1000;}/* iframe포함영역 */
+#authInfo_wrap dt {padding:0 15px 0;height:35px;line-height:35px;border-bottom:1px solid #ddd;background:#f0f0f0;color:#333;font-weight:bold;}/* 타이틀 */
+#authInfo_wrap dt .userName {color:#ff6600;}
+#authInfo_wrap dt .setting {float:right;font-weight:normal;}
+#authInfo_wrap dt .setting input {margin-top:2px;}
+#authInfo_wrap dd {overflow:hidden;height:530px;}/* 내용영역 */
+#authInfo_wrap .tap_clos {position:absolute;top:61px;right:0;}/* 탭닫기버튼 */
+/* 이용TIP */
+.authManage .tip {margin-top:30px;padding:15px 15px 11px;border:1px solid #ddd;background:#fafafa;}/* 이용TIP */
+.authManage .tip dt {padding-bottom:5px;padding-left:27px;height:19px;line-height:18px;background:url(../images/sub/authManage_icon_tip.gif) no-repeat;font-size:14px;color:#00a651;font-weight:bold;}
+.authManage .tip dd{padding-left:15px;line-height:20px;background:url(../images/common/bu_square.gif) no-repeat 8px 9px;}
+/* 7_4코드북관리 */
+/* 리스트 */
+.codePageList {}
+.codePageList a.btn_type03 {margin-left:5px;vertical-align:baseline;}
+
+/* 8_휴가관리 */
+/* 8_1휴가신청 */
+/* 정보_휴가신청리스트 */
+.leaveApplyPageList {}
+.leaveApplyPageList .content_navi {padding-bottom:0 !important;;}
+.leaveApplyPageList .leaveInfo_area {overflow:auto;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo {float:left;width:1033px;height:201px;background:aqua;background:url(../images/sub/leaveInfo_bg.jpg) no-repeat;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li {float:left;padding:110px 0 0 11px;width:119px;font-size:21px;color:#000;text-align:center;font-weight:bold;letter-spacing:-1px;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.firstDate {font-size:17px;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.leaveNum {padding:70px 0 0 53px;width:460px;text-align:left;font-weight:normal;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.leaveNum .fontGreen {color:#00a651;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.leaveNum .fontBig {padding-top:7px;line-height:44px;font-size:40px;letter-spacing:-1px;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.leaveNum .fontBig .fontBold {font-weight:bold;}
+.leaveApplyPageList .leaveInfo_area .leaveInfo li.leaveNum .fontBig .fontNum {margin-left:1px;padding-right:3px;width:80px;height:46px;background:url(../images/sub/leaveInfo_bg_01.jpg) no-repeat;color:#fff;text-align:center;letter-spacing:-3px;}
+.leaveApplyPageList .leaveInfo_area .btn_Apply {float:left;}
+.leaveOk {color:#3389e9;}/* 휴가신청, 휴가이력메뉴 진행상태 승인 */
+.requesting {color:#ab5ee6;}/* 휴가신청, 휴가이력메뉴 진행상태 신청중 */
+.return {color:#ff9c00;}/* 휴가신청, 휴가이력메뉴 진행상태 반려 */
+/* 8_2휴가결재 */
+/* 리스트 */
+.leaveAppPageList .tbl_type_scrollY .scrollY {max-height:359px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.leaveAppPageList .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:130px;}}/* 세로라인 맞추기 위한 핵 */
+
+
+/* win popup contents */
+/* 사업자등록번호조회(팝업)_우편번호조회(팝업)_코드조회(팝업) */
+#contentWp .search_area {border:1px solid #ddd;border-top:2px solid #3ba90d;text-align:center;}
+#contentWp .search_area dt, #contentWp .search_area dd {padding:15px 0;}
+#contentWp .search_area dt .btn_type03 {margin-top:0;margin-bottom:0;}
+#contentWp .search_area dt .guide_txt {margin-top:-2px;padding:0 0 10px;background:none;color:#ff6600;}
+#contentWp .search_area dd {overflow-y:auto;padding:17px 0 19px;max-height:200px;border-top:1px solid #ddd;background:#f0f0f0;}
+#contentWp .search_area dd strong {color:#ff6600;}
+#contentWp .search_area dd.listPost {padding-bottom:0;}
+#contentWp .search_area dd.listPost .listPost_area {margin-bottom:14px;padding-left:15px;padding-right:15px;text-align:left;}/* 우편번호조회 결과 */
+#contentWp .search_area dd.listPost .listPost_area li {padding-bottom:5px;padding-left:7px;background:url(../images/common/bu_square.gif) no-repeat 0 7px;}
+#contentWp .search_area dd.listPost .listPost_area li.none {padding-bottom:5px;padding-left:0;background:none;text-align:center;}
+
+/* 1_1업체관리>부적격업체지정(팝업) */
+#contentWp .companyUnfit {clear:both;width:441px;}/* 컨텐츠영역 가로 사이즈 고정 */
+#contentWp .companyUnfit .tbl_type th .must_ico img {position:absolute;top:-5px;left:96px;}/* 필수입력아이콘*/
+
+/* 2_2견적서발행>발행내역(팝업)_2_3계약관리>발행내역(팝업) */
+.invoiceDetailList .tbl_type_scrollY .scrollY {max-height:359px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.invoiceDetailList .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:40px;}}/* 세로라인 맞추기 위한 핵 */
+/* 2_2견적서발행>견적서등록>영업진행현황조회(팝업) */
+.projectCodeList .tbl_type_scrollY .scrollY {max-height:359px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.projectCodeList .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:90px;}}/* 세로라인 맞추기 위한 핵 */
+
+/* 2_8(신)세금계산서 발행>수정사유선택(팝업) */
+#contentWp .modifyInvoiceFlag {border:1px solid #ddd;border-top:0 none;}
+#contentWp .modifyInvoiceFlag > li {padding:20px;border-top:1px solid #ddd;list-style-type:decimal-leading-zero;list-style-position:inside;color:#00a651;font-size:13px;font-weight:bold;}
+#contentWp .modifyInvoiceFlag li ul {padding-top:5px;}
+#contentWp .modifyInvoiceFlag li ul li {padding-left:42px;background:url(../images/common/bu_square.gif) no-repeat 36px 6px;color:#666;font-size:12px;font-weight:normal;}
+#contentWp .modifyInvoiceFlag li ul li.btn_choice {position:relative;padding:0}
+#contentWp .modifyInvoiceFlag li ul li.btn_choice .btn_type03 {position:absolute;right:0;top:-38px;}
+
+/* 5_4채용관리>인쇄미리보기(팝업) */
+.printWrap {width:790px;}/* 팝업전체사이즈 */
+.printWrap #contentWp {padding-bottom:23px;}
+.printWrap .recruitManage .info {padding-top:0;}/* 내용 영역 */
+.printWrap .recruitManage .info .tbl_type {border-left:1px solid #999;}
+.printWrap .recruitManage .info .tbl_type th,
+.printWrap .recruitManage .info .tbl_type td {padding:5px 15px 7px;border-bottom:1px solid #999;border-right:1px solid #999;}
+.printWrap .recruitManage .info .tbl_type th {background:#e1e1e1;}
+.printWrap .recruitManage .info .tbl_type td.listT .tbl_type th {background:#f0f0f0;}
+.printWrap .recruitManage .info .tbl_type .title {border-left:1px solid #999;border-right:1px solid #999;background:#999;}/* 타이틀 */
+.printWrap .recruitManage .info .tbl_type .first {border-top:1px solid #999;}/* step1 타이틀(전용) */
+.printWrap .recruitManage .info .tbl_type .subtitle {border-left:1px solid #999;border-right:1px solid #999;background:#ccc;color:#333;}/* step1 서브타이틀 */
+.printWrap .recruitManage .info .tbl_type .pic .pic_area {top:18px;right:11px;}/* 지원자사진 */
+.printWrap .recruitManage .info .tbl_type_list th, .printWrap .recruitManage .info .tbl_type_list td {padding:5px 5px 7px;}
+
+/* 7_1계정관리>사용자등록(팝업) */
+#contentWp .userRegistForm {clear:both;width:792px;}/* 컨텐츠영역 가로 사이즈 고정 */
+#contentWp .userRegistForm .tbl_type th .must_ico img {position:absolute;top:-5px;left:102px;}/* 필수입력아이콘*/
+#contentWp .userRegistForm .tbl_type td .guide_txt {letter-spacing:-1px;}
+/* 7_1계정관리>소속그룹조회(팝업) */
+#contentWp .group_area {border:1px solid #ddd;border-top:2px solid #3ba90d;}
+
+/* 8휴가관리>오늘의휴가자(팝업_메인노출) */
+#contentWp.leaveToday {padding-bottom:0;}
+.leaveToday {width:491px;}/* 컨텐츠영역 가로 사이즈 고정 */
+.leaveToday .tbl_type_scrollY .scrollY {max-height:179px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.leaveToday .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:100px;}}/* 세로라인 맞추기 위한 핵 */
+.leaveToday .todayClose {padding-top:10px;}/* 오늘 하루 그만보기 영역 */
+.leaveToday .todayClose label {margin-top:-1px;}
+/* 8휴가관리>휴가신청자(팝업_메인노출) */
+.leaveApplicant {width:691px;}/* 컨텐츠영역 가로 사이즈 고정 */
+.leaveApplicant .tbl_type_scrollY .scrollY {max-height:179px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.leaveApplicant .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:90px;}}/* 세로라인 맞추기 위한 핵 */
+/* 8휴가관리>휴가구분안내(팝업) */
+.leaveGuide {}
+.leaveGuide dt {padding-top:20px;line-height:20px;font-size:14px;font-weight:bold;color:#444;}
+.leaveGuide dt:nth-child(1) {padding-top:0;}/* 첫번째 dt */
+.leaveGuide dt span {padding-right:7px;width:20px;height:20px;line-height:18px;background:url(../images/common/bg_num.png) no-repeat;text-align:center;color:#fff;}
+.leaveGuide dd {padding-left:28px;line-height:17px;}
+.leaveGuide dd .tbl_type_info {margin-top:8px;}/* tbl_type 정보테이블 */
+.leaveGuide dd .tbl_type_info th, .leaveGuide dd .tbl_type_info td {padding:0 5px;height:20px;font-size:11px;}/* tbl_type 정보테이블 */
+
+/* 0_SMS전송 */
+/* 0_1SMS전송(팝업) */
+.smsSend #headerWp {position:relative;width:547px;z-index:1000;}
+.smsSend #contentWp {position:absolute;top:0;padding:0;z-index:100;}
+.smsSend_area {overflow:auto;width:820px;}
+.smsSend_area .receiveList {position:relative;float:left;padding-top:61px;width:547px;}/* 받는사람리스트 */
+.smsSend_area .receiveList .title {padding-left:15px;text-align:left;}/* thead, tfoot 설정 */
+.smsSend_area .receiveList .tbl_type_scrollY .scrollY {height:389px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.smsSend_area .receiveList .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:230px;}}/* 세로라인 맞추기 위한 핵 */
+.smsSend_area .receiveList tfoot td {background:#fafafa;}
+.smsSend_area .receiveList tfoot strong {color:#333;}
+.smsSend_area .receiveList tfoot strong span {color:#ff6600;}
+.smsSend_area .receiveList tfoot .addPlus {position:absolute;bottom:8px;right:16px;}
+.smsSend_area .receiveList tfoot .addPlus .btn_type03 {margin-left:5px;}
+.smsSend_area .messagesSend {float:right;padding:83px 12px 0 15px;width:239px;height:485px;background:url(../images/sub/smsSend_bg.jpg) no-repeat;}/* 문자보내기 */
+.smsSend_area .messagesSend .messageCont_area {height:223px;border:1px solid #a5a5a5;background:#fff;}
+.smsSend_area .messagesSend .messageCont_area .messageCont textarea {margin:0;padding:8px 10px 0;border:0 none;}
+.smsSend_area .messagesSend .messageCont_area .num {padding-right:10px;height:21px;line-height:21px;border-top:1px solid #ddd;background:#f5f5f5;text-align:right;}
+.smsSend_area .messagesSend .messageCont_area .rewrite a {display:block;height:21px;line-height:21px;border-top:1px solid #a5a5a5;background:url(../images/sub/smsSend_btn_rewrite.jpg) no-repeat;text-align:center;}
+.smsSend_area .messagesSend .sendList {padding:7px 0 10px;}
+.smsSend_area .messagesSend .sendList dt {height:19px;color:#333;}
+.smsSend_area .messagesSend .sendList dd input {padding:0 5px;border-color:#a5a5a5;background:url(../images/sub/smsSend_input_bg.jpg) repeat-x;color:#00a651;font-weight:bold;font-size:14px;text-align:center;}
+.smsSend_area .messagesSend .sendType {padding:10px 0;text-align:center;}
+.smsSend_area .messagesSend .sendType li {height:24px;}
+.smsSend_area .messagesSend .sendType li .ico_calendar img {right:3px;top:3px;}/* 달력이미지 위치 */
+.smsSend_area .messagesSend .sendType li .text, .smsSend_area .messagesSend .sendType li select {border-color:#a5a5a5;}
+.smsSend_area .messagesSend .sendType li .dis {background:#e9e9e9 !important;color:#aaa;}/* Input 비활성화 스타일 */
+.smsSend_area .messagesSend .smsSendBbtn a {display:block;height:65px;line-height:65px;font-size:16px;color:#fff;font-weight:bold;text-align:center;}/* 문자보내기버튼 */
+/* 0_1SMS전송(팝업)>SMS주소록(팝업) */
+.smsAddList #contentWp {}
+.smsAddList_area {overflow:auto;width:1000px;}
+.smsAddList_area .groupTree {float:left;width:270px;}/* 그룹선택 */
+.smsAddList_area .groupTree_area {border:1px solid #ddd;border-top:2px solid #3ba90d;}/* 그룹선택 */
+.smsAddList_area .groupTree dt, .smsAddList_area .groupList dt {padding:0 15px 0;height:35px;line-height:35px;border-bottom:1px solid #ddd;background:#f0f0f0;color:#333;font-weight:bold;}/* 타이틀 */
+.smsAddList_area .groupTree dt .btn_type03 {margin:-1px 0 0 5px;font-weight:normal;}
+.smsAddList_area .groupTree dd {padding:15px;width:238px;height:386px;overflow-y:scroll;}/* 내용영역 */
+.smsAddList_area .groupList {float:left;width:730px;}/* 그룹관리 */
+.smsAddList_area .groupList_area {border-right:1px solid #ddd;border-bottom:1px solid #ddd;border-top:2px solid #3ba90d;}/* 그룹관리 */
+.smsAddList_area .groupList dd {height:416px;}/* 내용영역 */
+.smsAddList_area .groupList dd .tbl_type {border-top:0 none;border-left:0 none;}
+.smsAddList_area .groupList dd .tbl_type .last {border-right:0 none;}
+.smsAddList_area .groupList .tbl_type_scrollY .scrollY {height:344px;}/* tbody 스크롤 설정(업체주소록) */
+.smsAddList_area .groupList .tbl_type_scrollY .scrollYHu {height:380px;}/* tbody 스크롤 설정(휴에이션주소록) */
+.smsAddList_area .groupList .tbl_type_scrollY a.btn_type03 {margin-right:5px;}
+.smsAddList_area .groupList .tbl_type_scrollY a.btn_type03.last {margin-right:0;}
+/* 0_2SMS전송내역(팝업)_8_3SMS예약내역(팝업) */
+.smsSendPageList #contentWp {}
+.smsSendPageList_area .search li .btn_type01 {margin-left:0;}
+.smsSendPageList_area tfoot td {background:#fafafa;}
+.smsSendPageList_area tfoot strong {color:#333;}
+.smsSendPageList_area tfoot strong span {color:#ff6600;}
+
+
+/* layer popup contents */
+/* 7_2그룹관리>그룹추가(레이어팝업)_8_1SMS전송(팝업)>업체주소록(팝업) */
+.groupReg {width:350px;}
+.groupReg .con {padding:15px 0 13px;border:1px solid #ddd;border-top:2px solid #3ba90d;text-align:center;}
+.groupReg .con label {color:#666;}
+.groupReg .con .btn_type03 {margin-top:0;margin-bottom:0;}
+.groupReg .con .guide_txt {padding:10px 0 0;background:none;color:#ff6600;}
+
+/* 비밀번호변경(레이어팝업) */
+.passwordLp {width:320px;}
+
+/* 8_1휴가신청>휴가신청등록(레이어팝업) */
+#contentLp .leaveRegistForm {overflow-y:scroll;clear:both;padding-right:5px;width:436px;height:248px;}/* 컨텐츠영역 가로 사이즈 고정 */
+#contentLp .leaveRegistForm .tbl_type th .must_ico img {position:absolute;top:-5px;left:89px;}/* 필수입력아이콘 */
+#contentLp .leaveRegistForm .guide_txt {padding-top:5px;}/* 휴가구분 가이드텍스트 */
+/* 8_2휴가결재>반려(레이어팝업) */
+#contentLp .leaveReturn {clear:both;width:350px;}/* 컨텐츠영역 가로 사이즈 고정 */
+#contentLp .leaveReturn .tbl_type th .must_ico img {position:absolute;top:-5px;left:51px;}/* 필수입력아이콘*/
+
+/* 0_2_1SMS전송내역상세(레이어팝업) */
+.smsSendView #contentLp {padding-bottom:0;}
+.smsSendView_area {width:610px;}
+.smsSendView_area .sendInfo_area {overflow:auto;background:url(../images/sub/smsSendView_bg.jpg) no-repeat;}
+.smsSendView_area .sendInfo_area .sendInfo {float:left;padding:40px 25px 31px 40px;width:290px;}/* 전송정보 */
+.smsSendView_area .sendInfo_area .sendInfo dt {float:left;padding-bottom:10px;width:60px;height:30px;line-height:30px;color:#333;}
+.smsSendView_area .sendInfo_area .sendInfo dd {float:right;padding-bottom:10px;}
+.smsSendView_area .sendInfo_area .sendInfo dd input {padding:0 5px;width:218px;height:28px;line-height:28px;border-color:#aaa;background:url(../images/sub/smsSend_input_bg.jpg) repeat-x;color:#333;font-size:14px;text-align:center;}
+.smsSendView_area .sendInfo_area .sendInfo dd input.num {color:#00a651;font-weight:bold;}
+.smsSendView_area .sendInfo_area .sendMessages {float:right;padding:45px 30px 35px 25px;width:200px;}/* 문자내용 */
+.smsSendView_area .sendInfo_area .sendMessages .messageCont_area {height:69px;border:1px solid #aaa;background:#fff;}
+.smsSendView_area .sendInfo_area .sendMessages .messageCont_area .messageCont textarea {margin:0;padding:8px 10px 0;height:61px;border:0 none;}
+.smsSendView_area .sendList_area {}/* 리스트 */
+.smsSendView_area .sendList_area .tbl_type_scrollY .scrollY {max-height:251px;border-bottom:1px solid #ddd;}/* tbody 스크롤 설정 */
+/* firefox only hack */@-moz-document url-prefix() {.smsSendView_area .sendList_area .tbl_type_scrollY .scrollY .tbl_type .scrollY_FF {width:160px;}}/* 세로라인 맞추기 위한 핵 */

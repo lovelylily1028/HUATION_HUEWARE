@@ -277,16 +277,6 @@
 			 }
 		 }//moveComPg()
 		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		
 		</script>
 	</head>
 	<body>
