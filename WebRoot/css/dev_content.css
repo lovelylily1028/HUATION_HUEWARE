@@ -1,0 +1,123 @@
+/* webfont */
+@font-face {font-family:NanumGothic; src:url(../font/NanumGothic.eot); src:local('¡Ø'), url(../font/NanumGothic.woff) format('woff'), url(../font/NanumGothic.ttf) format('truetype');}
+
+.box-table {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top : 30px;
+	border-top: 2px solid #3ba90d;
+	font-family:"³ª´®°íµñ", NanumGothic, "µ¸¿ò", Dotum, Verdana, Tahoma sans-serif;
+}
+
+.title-sub {
+	height: 50px;
+	text-align: center;
+	font-size: 25px;
+	padding-top: 50px;
+	padding-left: auto;
+	padding-right: auto;
+	font-family:"³ª´®°íµñ", NanumGothic, "µ¸¿ò", Dotum, Verdana, Tahoma sans-serif;
+}
+
+.box-numInfo {
+	width:80%;
+	margin:0 auto;
+	height: 45px;
+	border: 1px solid #e3e4e5;
+	display: flex;	
+	justify-content: space-between;
+	align-items: center;
+	background: #f5f5f5;
+	color: #255A2A;
+}
+
+.numbox1 {
+	width:29%;
+	font-size: 15px;
+	text-align: center;
+}
+
+.numbox2 {
+	display: inline-block;
+	width: 850px; 
+
+}
+
+.box-table .numbox2>input {
+	width: 100%;
+	/* height: inherit; */
+	height : 45px;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left  : 10px;
+	background-color: #fff;
+	border: none;
+	line-height: 47px;
+}
+
+.numbox3 {
+	display: inline-block;
+}
+
+.numbox3 input.img-button {
+	background-image: url('/css/images/icon_search_2.png');
+	background-size:20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	line-height: 47px;
+	width: 47px;
+	margin-left:10px;
+	background-color: #65BB5D;
+	border-radius: 3px;
+}
+
+
+
+/* Å×ÀÌºí */
+.data-form {
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 100%;
+	height: 250px;
+	border-top: 1px solid #D7E1D8;
+}
+
+.data-table {
+	margin-left: 10%; 
+	width: 80%;
+}
+
+.data-table thead th{
+	font-size: 20px;
+	text-align: center;
+	color: #255A2A;
+	padding-bottom: 20px;
+}
+
+
+/* .data-table tr:nth-child(2n){
+	background-color: #F2F7F3;
+} */
+
+
+.data-table tbody th {
+	height: 43px;
+	font-size: 13px;
+	text-align: center;
+	color: #255A2A;
+	/* color: #fff; */
+	background-color : #f5f5f5;
+	/* font-weight: bold; */
+	/* padding-right: x; */
+	border: 1px solid #D7E1D8;
+	
+}
+
+.data-table td {
+	text-align: center;
+	font-size: 15px;
+	color: #255A2A;
+	border: 1px solid #D7E1D8;
+	
+}
