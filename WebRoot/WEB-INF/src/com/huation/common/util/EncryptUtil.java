@@ -1,9 +1,10 @@
 package com.huation.common.util;
 
-import java.io.PrintStream;
 import java.security.MessageDigest;
+
 import sun.misc.BASE64Encoder;
 
+//개발
 public class EncryptUtil
 {
   public static String encrypt(String password)
@@ -27,11 +28,14 @@ public class EncryptUtil
 
     return mdPassword;
   }
-
+  
   public static void main(String[] args)
   {
     String password = "huation@2100";
 
     System.out.println("��� =[" + encrypt(password) + "]");
   }
+  
+  
+  
 }

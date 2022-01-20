@@ -13,8 +13,8 @@
 	//String search = (String)model.get("search"); 미등록 업체 조회 추가 2013_03_18(월)shbyeon.(현재사용안함.)
 	String searchGb = (String)model.get("searchGb");
 	String searchtxt = (String)model.get("searchtxt");
-	
-	
+	String TaxOpt = (String)model.get("TaxOpt");
+	String StateOpt = (String)model.get("StateOpt");
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -80,6 +80,8 @@
 
 	//스트라이프 테이블
 	$(function(){
+	
+		
 		$("tr:nth-child(odd)").addClass("odd");
 		$("tr:nth-child(even)").addClass("even");
 	
@@ -89,7 +91,59 @@
 		}).mouseout(function(){
 			$(this).removeClass("hover");
 		});
-	});
+		
+		<% 
+			if(TaxOpt.equals("")){
+		%>
+			
+		<%}else {%>
+		
+			$("#searchtxt").hide();
+			$("#TaxOpt").show();
+			$("#StateOpt").show();
+			setOptionList('<%=searchGb%>','<%=TaxOpt%>','<%=StateOpt%>');		
+		
+		<%}%>
+		
+		
+		// 구분 선택시 option 변경
+		$("#searchGb").on('click',function(){
+			
+			let arrType = getOptionType();
+			let TaxOptTemp = $("#TaxOpt");
+			let StateOptTemp = $("#StateOpt");
+			
+			TaxOptTemp.empty();
+			StateOptTemp.empty();
+			
+			if($(this).val() == 'D'){
+				
+				$("#TaxOpt").show();
+				$("#StateOpt").show();
+				$("#searchtxt").hide();
+				
+				for(prop in arrType['구분']){
+					TaxOptTemp.append('<option value ='+prop+' >' + arrType['구분'][prop]+'</option>');
+				}
+				
+				for(prop in arrType['상태']){
+					StateOptTemp.append('<option value ='+prop+'>' + arrType['상태'][prop]+'</option>');
+				}
+				
+			}else {
+				
+				$("#TaxOpt").hide();
+				$("#StateOpt").hide();
+				$("#searchtxt").show();
+				
+			}
+			 
+		});
+		
+		
+		
+	});//$(function())
+	
 	
 	<!--
 	var  formObj;//form 객체선언
@@ -128,13 +182,47 @@
 	
 		if( formObj.searchGb[0].selected==true){
 			 formObj.searchtxt.disabled=true;
-			 formObj.searchtxt.value='';	
+			 formObj.searchtxt.value='';
+			 
 		}else {
 			 formObj.searchtxt.disabled=false;
 		}
 		
 	}
-    
+	
+	// 구분,상태 조회옵션 초기값
+	function setOptionList(searchGb,TaxOpt,StateOpt){
+		
+		let arrType = getOptionType();
+		let TaxOptTemp = $("#TaxOpt");
+		let StateOptTemp = $("#StateOpt");
+		
+		TaxOptTemp.empty();
+		StateOptTemp.empty();
+
+		if(searchGb == 'D'){
+			
+			$("#TaxOpt").show();
+			$("#StateOpt").show();
+			$("#searchtxt").hide();
+			
+			for(prop in arrType['구분']){
+				TaxOptTemp.append('<option value ='+prop+' >' + arrType['구분'][prop]+'</option>');
+			}
+			
+			for(prop in arrType['상태']){
+				StateOptTemp.append('<option value ='+prop+'>' + arrType['상태'][prop]+'</option>');
+			}
+			
+			$("#TaxOpt").val(TaxOpt).attr("selected","selected");
+			$("#StateOpt").val(StateOpt).attr("selected","selected");
+			
+		}	
+		
+	}
+	
+	
+	
 	//검색
 	function goSearch() {
 		var gubun= formObj.searchGb.value;
@@ -152,6 +240,11 @@
 		}else if(gubun=='C'){
 			if( formObj.searchtxt.value==''){
 				alert('대표자명을 입력해 주세요');
+				return;
+			}
+		}else if(gubun=='D'){
+			if ( formObj.TaxOpt.value==''){
+				alert('구분(상태)값을 선택해 주세요.')
 				return;
 			}
 		}
@@ -190,6 +283,29 @@
 		 formObj.action = "<%=request.getContextPath()%>/B_Company.do?cmd=companyPageList";	
 	}
 
+	// 구분, 상태  optionList
+	function getOptionType(){
+		var obj = {
+			"구분" : {
+				'' : '선택',
+				'일반' : '일반',
+				'간이' : '간이',
+				'법인' : '법인',
+				'면세' : '면세',
+				'과특' : '과특',
+				'비영리' : '비영리',
+				'확인요' : '확인요'
+			},
+			"상태" : {
+				'' 	: '전체',
+				'정상' : '정상',
+				'휴업' : '휴업',
+				'폐업' : '폐업'
+			}
+		}
+		return obj;
+	}
+	
 	//-->
 </script>
 </head>
@@ -206,7 +322,7 @@
 <div id="content">
 
 <!-- title -->
- 	<div class="content_navi">총무지원 &gt; 업체관리</div>
+ 	<div class="content_navi">경영지원 &gt; 업체관리</div>
 	<h3><span>업</span>체관리</h3><!-- 타이틀 앞글자는 <span></span>으로 감싸기 -->
 <!-- //title -->
 
@@ -228,7 +344,7 @@
  
   <%= ld.getPageScript("companyform", "curPage", "goPage") %>
 <!--   <form  method="post"  name="excelform"> </form> -->
-  <form  method="post" class="search" name=companyform action = "<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList">
+  <form  method="post" class="search" name="companyform" action = "<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList">
     <input type = "hidden" name = "objExcel" />
     <!-- <input type = "hidden" name = "filename" value="companyList.xls"> -->
     <input type = "hidden" name = "comp_nm" value="" />
@@ -249,13 +365,26 @@
 						<ul>
 							<!-- label의 for값과 input의 id값을 똑같이 사용해주세요. -->
 
-							<li><select name="searchGb" onchange="searchChk()" id="" class="">
-								<option checked value="">전체</option>
-								<option value="A" >상호(법인명)</option>
-								<option value="B" >사업자 등록번호</option>
-								<option value="C" >대표자명</option>
-							</select></li>
-							<li><input type="text" class="text" title="검색어" id="" name="searchtxt" value="<%=searchtxt%>" maxlength="100"/></li>
+							<li>
+								<select name="searchGb" id="searchGb" onchange="searchChk()" id="" class="">
+									<option selected ="selected" value="">전체</option>
+									<option value="A" >상호(법인명)</option>
+									<option value="B" >사업자 등록번호</option>
+									<option value="C" >대표자명</option>
+									<option value="D" >구분</option>
+								</select>
+							</li>
+							<li>
+								<select id="TaxOpt" name="TaxOpt" style="display: none;">
+									<option value="">선택</option>
+								</select>
+								<select id="StateOpt" name="StateOpt" style="display: none;">
+									<option value="">선택</option>
+								</select>
+							</li>
+								<li>
+									<input type="text" class="text" title="검색어" id="searchtxt" name="searchtxt" value="<%=searchtxt%>" maxlength="100"/>
+								</li>
 							<li><a href="javascript:goSearch();" class="btn_type01"><span>검색</span></a></li>
 						</ul>
 					</fieldset>
@@ -274,10 +403,12 @@
 					<colgroup>
 						<col width="4%" />
 						<col width="7%" />
+						<col width="4%" /><!-- 구분 : 일반,간이,법인,면세,과특,비영리,간이 -->
+						<col width="4%" /><!-- 상태 : 정상,휴업,폐업-->
 						<col width="10%" />
 						<col width="15%" />
 						<col width="10%" />
-						<col width="10%" />
+						<col width="8%" />
 						<col width="7%" />
 						<col width="10%" />
 						<col width="*" />
@@ -288,6 +419,8 @@
 					<tr>
 						<th>부적격업체</th>
 						<th>다운로드</th>
+						<th>구분</th>
+						<th>상태</th>
 						<th>사업자등록번호</th>
 						<th>상호(법인명)</th>
 						<th>법인등록번호(주민등록번호)</th>
@@ -416,6 +549,21 @@
                			%>
                 </td>
         
+          <td><%=ds.getString("COMP_TAXTYPE")%></td>
+		<%
+			String COMP_STATEDATE = ds.getString("COMP_STATEDATE");	
+			String COMP_STATE = ds.getString("COMP_STATE");
+		%>
+		<!-- 폐업일 경우 -->          
+          <% if(COMP_STATE.equals("폐업")) {%>
+       	   <td title="<%= COMP_STATEDATE %>"><%=ds.getString("COMP_STATE") %></td>
+      	<!-- 사업자 번호 조회전 일 경우 -->  
+       	  <%}else if(COMP_STATE.equals("-")){ %>
+       	   	<td title="사업자 번호 조회전 항목입니다."><%=ds.getString("COMP_STATE") %></td>
+          <%}else{ %>
+      	    <td><%=ds.getString("COMP_STATE") %></td>
+          <%} %>
+          
           <td><%=ds.getString("PERMIT_NO")%></td>
           <td><a href="javascript:goDetail('<%=ds.getString("COMP_CODE")%>')"><%=ds.getString("COMP_NM")%></a></td>
           <td><%=ds.getString("COMP_NO")%></td>
@@ -435,7 +583,7 @@
 	    %>
         
         <tr>
-          <td colspan="10">게시물이 없습니다.</td>
+          <td colspan="12">게시물이 없습니다.</td>
         </tr>
         
         <% 

@@ -1,5 +1,7 @@
 package com.huation.common.user;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 
 import com.huation.common.util.*;
@@ -8,11 +10,12 @@ import com.huation.framework.persist.*;
 import com.huation.framework.persist.ListDTO;
 import com.huation.framework.util.StringUtil;
 
+//ê°œë°œ
 public class UserDAO extends AbstractDAO {
 
 	/**
-	 * °èÁ¤ ¸®½ºÆ®.   
-	 * @param userDto   »ç¿ëÀÚ Á¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®.   
+	 * @param userDto   ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @return ListDTO
 	 * @throws DAOException
 	 */
@@ -23,15 +26,15 @@ public class UserDAO extends AbstractDAO {
 	
 		QueryStatement sql = new QueryStatement();
 		
-		sql.setKey(userDto.getLogid()); //·Î±×¾ÆÀÌµð
-		sql.setSql(procedure); //ÇÁ·Î½ÃÁ® ¸í
-		sql.setString(""); //¼¼¼Ç ¾ÆÀÌµð
-		sql.setString(userDto.getvSearchType()); //°Ë»ö±¸ºÐ
-		sql.setString(userDto.getvSearch()); //°Ë»ö¾î
-		sql.setInteger(userDto.getnRow()); //¸®½ºÆ® °¹¼ö
-		sql.setInteger(userDto.getnPage()); //ÇöÁ¦ ÆäÀÌÁö
-		sql.setString("PAGE"); //sp ±¸ºÐ
-		sql.setString(""); //»ç¿ë¿©ºÎ
+		sql.setKey(userDto.getLogid()); //ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setSql(procedure); //ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(""); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getvSearchType()); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getvSearch()); //ï¿½Ë»ï¿½ï¿½ï¿½
+		sql.setInteger(userDto.getnRow()); //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+		sql.setInteger(userDto.getnPage()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString("PAGE"); //sp ï¿½ï¿½ï¿½ï¿½
+		sql.setString(""); //ï¿½ï¿½ë¿©ï¿½ï¿½
 
 		try{
 			retVal=broker.executePageProcedure(sql,userDto.getnPage(),userDto.getnRow());
@@ -46,8 +49,8 @@ public class UserDAO extends AbstractDAO {
 		
 		}
 	/**
-	 * »ç¿ëÀÚ°èÁ¤ µî·Ï 
-	 * @param userDto »ç¿ëÀÚÁ¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 
+	 * @param userDto ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return retVal int
 	 * @throws DAOException
 	 */
@@ -56,33 +59,34 @@ public class UserDAO extends AbstractDAO {
 		int retVal = -1;
 		
 //		String procedure = " { CALL hp10_mgUserRegist ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) } ";
-		//20200608ÁÖ¹Î¹øÈ£ 2°³ Ãß°¡. ÁÖ¼ÒÃß°¡
+		//20200608ï¿½Ö¹Î¹ï¿½È£ 2ï¿½ï¿½ ï¿½ß°ï¿½. ï¿½Ö¼ï¿½ï¿½ß°ï¿½
+		//20200901ï¿½Ì·Â¼ï¿½ï¿½ß°ï¿½
 		String procedure = " { CALL hp10_mgUserRegist ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ,? ,? ,?) } ";
 		
 		QueryStatement sql = new QueryStatement();
 		
-		sql.setKey(userDto.getLogid()); //·Î±×¾ÆÀÌµð
-		sql.setSql(procedure); //ÇÁ·Î½ÃÁ® ¸í
-		sql.setString(userDto.getChUserID()); //¼¼¼Ç ¾ÆÀÌµð
-		sql.setString(userDto.getID()); //»ç¿ëÀÚ ¾ÆÀÌµð
-		sql.setString(userDto.getName()); //»ç¿ëÀÚ ¸í
-		sql.setString(userDto.getGroupID()); //±×·ì¾ÆÀÌµð
-		sql.setString(userDto.getAuthID()); //±ÇÇÑ¾ÆÀÌµð
-		sql.setString(userDto.getPassword()); //ÆÐ½º¿öµå
-		sql.setString(userDto.getOfficeTellNo()); //ÇÚµåÆù¹øÈ£
-		sql.setString(userDto.getOfficeTellNo2()); //»ç³»Á÷Åë¹øÈ£
-		sql.setString(userDto.getEmail()); //ÀÌ¸ÞÀÏ
-		sql.setString(userDto.getUseYN()); //»ç¿ë¿©ºÎ
-		sql.setString(userDto.getHireDateTime());//ÀÔ»çÀÏ
-		sql.setString(userDto.getFireDateTime());//Åð»çÀÏ
-		sql.setString(userDto.getPosition());//Á÷±Þ
-		sql.setString(userDto.getPhoto());//Á÷±Þ
+		sql.setKey(userDto.getLogid()); //ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setSql(procedure); //ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(userDto.getChUserID()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getID()); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getName()); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(userDto.getGroupID()); //ï¿½×·ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getAuthID()); //ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getPassword()); //ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getOfficeTellNo()); //ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È£
+		sql.setString(userDto.getOfficeTellNo2()); //ï¿½ç³»ï¿½ï¿½ï¿½ï¿½ï¿½È£
+		sql.setString(userDto.getEmail()); //ï¿½Ì¸ï¿½ï¿½ï¿½
+		sql.setString(userDto.getUseYN()); //ï¿½ï¿½ë¿©ï¿½ï¿½
+		sql.setString(userDto.getHireDateTime());//ï¿½Ô»ï¿½ï¿½ï¿½
+		sql.setString(userDto.getFireDateTime());//ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getPosition());//ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getPhoto());//ï¿½ï¿½ï¿½ï¿½
 		sql.setString(userDto.getBoardFileNm());
 		sql.setString(userDto.getBoardFile());
-		sql.setString(userDto.getEmployeeNum());//»ç¹ø
-		sql.setString(userDto.getJumin1());//ÁÖ¹Î¾Õ
-		sql.setString(userDto.getJumin2());//ÁÖ¹Î2
-		sql.setString(userDto.getZip());//ÁÖ¼Ò
+		sql.setString(userDto.getEmployeeNum());//ï¿½ï¿½ï¿½
+		sql.setString(userDto.getJumin1());//ï¿½Ö¹Î¾ï¿½
+		sql.setString(userDto.getJumin2());//ï¿½Ö¹ï¿½2
+		sql.setString(userDto.getZip());//ï¿½Ö¼ï¿½
 
 		try{
 
@@ -98,9 +102,9 @@ public class UserDAO extends AbstractDAO {
 		}	
 	}
 	/**
-	 * °èÁ¤ Á¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param userid
-	 * @return userDto »ç¿ëÀÚ Á¤º¸
+	 * @return userDto ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @throws DAOException
 	 */
 	public UserDTO userView(UserDTO userDto) throws DAOException{
@@ -111,11 +115,11 @@ public class UserDAO extends AbstractDAO {
 		
 		QueryStatement sql = new QueryStatement();
 		
-		sql.setKey(userDto.getLogid()); //·Î±×¾ÆÀÌµð
-		sql.setSql(procedure);  //ÇÁ·Î½ÃÁ® ¸í
-		sql.setString(""); // ¼¼¼Ç ¾ÆÀÌµð
-		sql.setString("SELECT"); // sp±¸ºÐ
-		sql.setString(userDto.getID()); //»ç¿ëÀÚ ¾ÆÀÌµð
+		sql.setKey(userDto.getLogid()); //ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setSql(procedure);  //ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(""); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString("SELECT"); // spï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getID()); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
 
 		try{
 			
@@ -166,8 +170,8 @@ public class UserDAO extends AbstractDAO {
 		return userDto;
 	}
 	/**
-	 * »ç¿ëÀÚ°èÁ¤ ¼öÁ¤
-	 * @param userDto »ç¿ëÀÚÁ¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * @param userDto ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return retVal int
 	 * @throws DAOException
 	 */
@@ -176,33 +180,33 @@ public class UserDAO extends AbstractDAO {
 		int retVal = -1;
 		
 //		String procedure = " { CALL hp10_mgUserModify ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) } ";
-		//20200608±èÁøµ¿ ÁÖ¹Î¹øÈ£ Ãß°¡. zip Ãß°¡
+		//20200608ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹Î¹ï¿½È£ ï¿½ß°ï¿½. zip ï¿½ß°ï¿½
 		String procedure = " { CALL hp10_mgUserModify ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ,? ,? ,?) } ";
 		
 		QueryStatement sql = new QueryStatement();
 		
-		sql.setKey(userDto.getLogid()); //·Î±×¾ÆÀÌµð
-		sql.setSql(procedure); //ÇÁ·Î½ÃÁ® ¸í
-		sql.setString(""); //¼¼¼Ç ¾ÆÀÌµð
-		sql.setString(userDto.getID()); //»ç¿ëÀÚ ¾ÆÀÌµð
-		sql.setString(userDto.getName()); //»ç¿ëÀÚ ¸í
-		sql.setString(userDto.getGroupID()); //±×·ì¾ÆÀÌµð
-		sql.setString(userDto.getAuthID()); //±ÇÇÑ¾ÆÀÌµð
-		sql.setString(userDto.getPassword()); //ÆÐ½º¿öµå
-		sql.setString(userDto.getOfficeTellNo()); //ÈÞ´ëÆù¹øÈ£
-		sql.setString(userDto.getOfficeTellNo2()); //»ç³»Á÷Åë¹øÈ£
-		sql.setString(userDto.getEmail()); //ÀÌ¸ÞÀÏ
-		sql.setString(userDto.getUseYN()); //»ç¿ë¿©ºÎ
-		sql.setString(userDto.getHireDateTime());//ÀÔ»çÀÏ
-		sql.setString(userDto.getFireDateTime());//Åð»çÀÏ
-		sql.setString(userDto.getPosition());//Á÷±Þ
-		sql.setString(userDto.getPhoto());//Á÷±Þ
+		sql.setKey(userDto.getLogid()); //ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setSql(procedure); //ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(""); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getID()); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getName()); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		sql.setString(userDto.getGroupID()); //ï¿½×·ï¿½ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getAuthID()); //ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getPassword()); //ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getOfficeTellNo()); //ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½È£
+		sql.setString(userDto.getOfficeTellNo2()); //ï¿½ç³»ï¿½ï¿½ï¿½ï¿½ï¿½È£
+		sql.setString(userDto.getEmail()); //ï¿½Ì¸ï¿½ï¿½ï¿½
+		sql.setString(userDto.getUseYN()); //ï¿½ï¿½ë¿©ï¿½ï¿½
+		sql.setString(userDto.getHireDateTime());//ï¿½Ô»ï¿½ï¿½ï¿½
+		sql.setString(userDto.getFireDateTime());//ï¿½ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getPosition());//ï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getPhoto());//ï¿½ï¿½ï¿½ï¿½
 		sql.setString(userDto.getBoardFileNm());
 		sql.setString(userDto.getBoardFile());
-		sql.setString(userDto.getEmployeeNum()); // »ç¹ø
-		sql.setString(userDto.getJumin1()); // ÁÖ¹Î1
-		sql.setString(userDto.getJumin2()); // ÁÖ¹Î2
-		sql.setString(userDto.getZip()); // ÁÖ¼Ò
+		sql.setString(userDto.getEmployeeNum()); // ï¿½ï¿½ï¿½
+		sql.setString(userDto.getJumin1()); // ï¿½Ö¹ï¿½1
+		sql.setString(userDto.getJumin2()); // ï¿½Ö¹ï¿½2
+		sql.setString(userDto.getZip()); // ï¿½Ö¼ï¿½
 
 		try{
 
@@ -219,9 +223,9 @@ public class UserDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * °èÁ¤ Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.(´Ù°ÇÃ³¸®)
-	 * @param logid ·Î±×¾ÆÀÌµð
-	 * @param users ID(check) ¹è¿­
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½Ù°ï¿½Ã³ï¿½ï¿½)
+	 * @param logid ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+	 * @param users ID(check) ï¿½è¿­
 	 * @return int
 	 * @throws DAOException
 	 */	
@@ -248,8 +252,8 @@ public class UserDAO extends AbstractDAO {
 				r_data = StringUtil.getTokens(users[i], "|");
 				if(r_data[1].equals("Y")){
 				
-				batch.add(USERID);//¼¼¼Ç ¾ÆÀÌµð
-				batch.add(StringUtil.nvl(r_data[0],"")); //»ç¿ëÀÚ ¾ÆÀÌµð
+				batch.add(USERID);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+				batch.add(StringUtil.nvl(r_data[0],"")); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
 				
 				batchList.add(batch);
 				}
@@ -276,7 +280,7 @@ public class UserDAO extends AbstractDAO {
 
     }
 	/**
-	 * »ç¿ëÀÚ EXCEL ¸®½ºÆ® 
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ EXCEL ï¿½ï¿½ï¿½ï¿½Æ® 
 	 * @param userDto
 	 * @return ListDTO
 	 * @throws DAOException
@@ -289,15 +293,15 @@ public class UserDAO extends AbstractDAO {
 
 			QueryStatement sql = new QueryStatement();
 			
-			sql.setKey(userDto.getLogid()); //·Î±×¾ÆÀÌµð
-			sql.setSql(procedure); //ÇÁ·Î½ÃÁ® ¸í
-			sql.setString(userDto.getChUserID()); //¼¼¼Ç ¾ÆÀÌµð
-			sql.setString(userDto.getvSearchType()); //°Ë»ö±¸ºÐ
-			sql.setString(userDto.getvSearch()); //°Ë»ö¾î
-			sql.setInteger(userDto.getnRow()); //¸®½ºÆ® °¹¼ö
-			sql.setInteger(userDto.getnPage()); //ÇöÁ¦ ÆäÀÌÁö
-			sql.setString("LIST"); //sp ±¸ºÐ
-			//sql.setString(""); //»ç¿ë¿©ºÎ
+			sql.setKey(userDto.getLogid()); //ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+			sql.setSql(procedure); //ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			sql.setString(userDto.getChUserID()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			sql.setString(userDto.getvSearchType()); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
+			sql.setString(userDto.getvSearch()); //ï¿½Ë»ï¿½ï¿½ï¿½
+			sql.setInteger(userDto.getnRow()); //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+			sql.setInteger(userDto.getnPage()); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			sql.setString("LIST"); //sp ï¿½ï¿½ï¿½ï¿½
+			//sql.setString(""); //ï¿½ï¿½ë¿©ï¿½ï¿½
 
 			sql.setSql(procedure);
 			
@@ -312,8 +316,8 @@ public class UserDAO extends AbstractDAO {
 		}
 
 	/**
-	 * »ç¿ëÀÚ Count Á¤º¸¸¦ °¡Á®¿Â´Ù
-	 * @param userDto »ç¿ëÀÚ Á¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ Count ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
+	 * @param userDto ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @return userDto
 	 * @throws DAOException
 	 */
@@ -326,10 +330,10 @@ public class UserDAO extends AbstractDAO {
 
 		QueryStatement sql = new QueryStatement();
 
-		sql.setKey(userDto.getLogid());				//·Î±×¾ÆÀÌµð
-		sql.setString(userDto.getChUserID());		//¼¼¼Ç¾ÆÀÌµð
-		sql.setString("COUNT");			//SP±¸ºÐ
-		sql.setString("");		//»ç¿ëÀÚ ¾ÆÀÌµð
+		sql.setKey(userDto.getLogid());				//ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getChUserID());		//ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ìµï¿½
+		sql.setString("COUNT");			//SPï¿½ï¿½ï¿½ï¿½
+		sql.setString("");		//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
 
 		sql.setSql(procedure);
 
@@ -358,7 +362,7 @@ public class UserDAO extends AbstractDAO {
 		return userDto;
 	}
 	/**
-	* »ç¿ëÀÚ Áßº¹ Ã¼Å©
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ Ã¼Å©
 	* @return formCodeDto
 	* @return result
 	* @throws DAOException
@@ -372,10 +376,10 @@ public class UserDAO extends AbstractDAO {
 
 		QueryStatement sql = new QueryStatement();
 
-		sql.setKey(userDto.getLogid());				//·Î±×¾ÆÀÌµð
-		sql.setString(userDto.getChUserID());		//¼¼¼Ç¾ÆÀÌµð
-		sql.setString("DUPLICATE");			//SP±¸ºÐ
-		sql.setString(userDto.getID());		//»ç¿ëÀÚ ¾ÆÀÌµð
+		sql.setKey(userDto.getLogid());				//ï¿½Î±×¾ï¿½ï¿½Ìµï¿½
+		sql.setString(userDto.getChUserID());		//ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ìµï¿½
+		sql.setString("DUPLICATE");			//SPï¿½ï¿½ï¿½ï¿½
+		sql.setString(userDto.getID());		//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
 
 		sql.setSql(procedure);
 
@@ -401,7 +405,7 @@ public class UserDAO extends AbstractDAO {
 		return result;			
 	}
 	/**
-	 * ÆÐ½º¿öµå¸¦ ÀÎÄÚµùÇÑ´Ù.
+	 * ï¿½Ð½ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½Úµï¿½ï¿½Ñ´ï¿½.
 	 * @param userid
 	 * @return
 	 * @throws DAOException
@@ -425,7 +429,7 @@ public class UserDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * ÆÐ½º¿öµå º¯°æ.
+	 * ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	 * @param userid,passwd
 	 * @return
 	 * @throws DAOException
@@ -462,11 +466,11 @@ public class UserDAO extends AbstractDAO {
 	}
 	
 	/*
-	 * »ç¿ø¹øÈ£ »ý¼º
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public String EmployeeNumCreate(String position, String HireDate ){
 		
-		String HireDateDB = null; //DB¿¡ ÀÖ´Â ÀÔ»çÀÏ yyyymm À¸·Î ÀúÀåÇÒ String
+		String HireDateDB = null; //DBï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ô»ï¿½ï¿½ï¿½ yyyymm ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ String
 		String check = null;
 		String EmployeeNumber = null;
 		String order = null;
@@ -480,7 +484,7 @@ public class UserDAO extends AbstractDAO {
 			 ds = broker.executeQuery(sql);
 			 while(ds.next()) {
 				 if(ds.getString("EmployeeNum").equals("0")){
-					 System.out.println("while ºüÁ®³ª°¡±â");
+					 System.out.println("while ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					 ds.getString("EmployeeNum");
 					 continue;
 				 }else{
@@ -507,7 +511,7 @@ public class UserDAO extends AbstractDAO {
 		/*	 ds.first();
 			 while(ds.next()) {
 					 if(ds.getString("EmployeeNum").equals("0")){
-						 System.out.println("´ÙÀ½²¨");
+						 System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 						 ds.getString("EmployeeNum");
 						 continue;
 					 }else{

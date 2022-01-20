@@ -23,7 +23,7 @@ import com.huation.common.company.CompanyDTO;
 import com.huation.common.estimate.EstimateDAO;
 import com.huation.common.estimate.EstimateDTO;
 
-//°Ô½ÃÆÇ °ü·Ã DTO/DAO
+//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DTO/DAO
 import com.huation.common.dispnotify.DispNotifyDAO;
 import com.huation.common.dispnotify.DispNotifyDTO;
 import com.huation.common.familyevent.FamilyEventDTO;
@@ -51,7 +51,7 @@ import com.huation.framework.util.StringUtil;
 public class CommonAction extends StrutsDispatchAction{
 
 	/**
-	 * °øÅë »ç¿ë¾÷¹« °ü·Ã Ã³¸®
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	 */
 	public CommonAction() {
 		super();
@@ -59,7 +59,7 @@ public class CommonAction extends StrutsDispatchAction{
 	}
 
     /**
-     * µµ·Î¸í ¿ìÆí¹øÈ£¸¦ °Ë»öÇÑ´Ù.
+     * ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -101,7 +101,7 @@ public class CommonAction extends StrutsDispatchAction{
 	}
 	
 	/**
-     * ±âÁ¸ ÁÖ¼Ò ¿ìÆí¹øÈ£¸¦ °Ë»öÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -135,9 +135,9 @@ public class CommonAction extends StrutsDispatchAction{
 	}
 	
 	/**
-     * ¾÷Ã¼Á¤º¸¸¦ °Ë»öÇÑ´Ù.
-     * 2013_03_22(±Ý) shbyeon.
-     * complist.jsp È£Ãâ¿ë (»ç¾÷ÀÚ µî·Ï¹øÈ£ Permit_no ÀÖ´Â µ¥ÀÌÅÍ¸¸ °Ë»ö)
+     * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
+     * 2013_03_22(ï¿½ï¿½) shbyeon.
+     * complist.jsp È£ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ Permit_no ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ë»ï¿½)
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -147,6 +147,8 @@ public class CommonAction extends StrutsDispatchAction{
      * @throws Exception
      */
 	public ActionForward searchComp(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse httpServletResponse, Map model) throws Exception{
+		
+		
 		
 		String sForm = StringUtil.nvl(request.getParameter("sForm"),"");
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
@@ -194,10 +196,10 @@ public class CommonAction extends StrutsDispatchAction{
 
 	
 	/**
-     * ¾÷Ã¼Á¤º¸¸¦ °Ë»öÇÑ´Ù.(¼¼±Ý°è»ê¼­ ¿ëµµ)
-     * 2013_03_22(±Ý) shbyeon.
-     * complist_Ic.jsp È£Ãâ¿ë (»ç¾÷ÀÚ µî·Ï¹øÈ£ Permit_no ÀÖ´Â µ¥ÀÌÅÍ¸¸ °Ë»ö)
-     * COMP_CODE , PERMIT_NO ³Ñ±â±âÀ§ÇØ.
+     * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ëµµ)
+     * 2013_03_22(ï¿½ï¿½) shbyeon.
+     * complist_Ic.jsp È£ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ Permit_no ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ë»ï¿½)
+     * COMP_CODE , PERMIT_NO ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -227,7 +229,7 @@ public class CommonAction extends StrutsDispatchAction{
         return actionMapping.findForward("complist_Ic"); 
 	}
 	/**
-     * »ç¿øÁ¤º¸¸¦ °Ë»öÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -260,7 +262,7 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
         return actionMapping.findForward("complist_baro"); 
 	}
 	/**
-     * »ç¿øÁ¤º¸¸¦ °Ë»öÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -303,7 +305,7 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
 	}
 	
 	/**
-     * »ç¿øÁ¤º¸¸¦ °Ë»öÇÑ´Ù. º°µµ µÎ¹øÂ° ÆË¾÷Ã¢
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½Â° ï¿½Ë¾ï¿½Ã¢
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -341,7 +343,7 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
 	}
 	
 	/**
-     * ¿µ¾÷ÁøÇàÇöÈ²À» °Ë»öÇÑ´Ù.(°ßÀû¼­ ÃÖÃÊ ¹ßÇà¿ë.)
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.)
      * 2013_04_16(È­) shbyeon.
      * ProjectPk.
      * @param actionMapping
@@ -355,26 +357,26 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
 	public ActionForward searchPreSalesCode(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse httpServletResponse, Map model) throws Exception{
 		
 		String sForm = StringUtil.nvl(request.getParameter("sForm"),"");
-		String searchGbYear = StringUtil.nvl(request.getParameter("searchGbYear"), ""); //°Ë»ö±¸ºÐ (³âµµ)
-		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), ""); //°Ë»ö±¸ºÐ (¿µ¾÷»óÅÂ)
-		String searchGb2 = StringUtil.nvl(request.getParameter("searchGb2"), ""); //°Ë»ö±¸ºÐ (¸ñ·Ï)
+		String searchGbYear = StringUtil.nvl(request.getParameter("searchGbYear"), ""); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½âµµ)
+		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), ""); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+		String searchGb2 = StringUtil.nvl(request.getParameter("searchGb2"), ""); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½)
 		String searchtxt = StringUtil
-				.nvl(request.getParameter("searchtxt"), ""); //°Ë»ö¸í
+				.nvl(request.getParameter("searchtxt"), ""); //ï¿½Ë»ï¿½ï¿½ï¿½
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 		
 			
 		CurrentStatusDAO csDao = new CurrentStatusDAO();
 		CurrentStatusDTO csDto = new CurrentStatusDTO();
 
-		//¸®½ºÆ®
-		csDto.setvSearchYear(searchGbYear); //°Ë»ö±¸ºÐ (³âµµ)
-		csDto.setvSearchType(searchGb);  //°Ë»ö±¸ºÐ (¿µ¾÷»óÅÂ)
-		csDto.setvSearchType2(searchGb2); //°Ë»ö±¸ºÐ (¸ñ·Ï)
+		//ï¿½ï¿½ï¿½ï¿½Æ®
+		csDto.setvSearchYear(searchGbYear); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½âµµ)
+		csDto.setvSearchType(searchGb);  //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+		csDto.setvSearchType2(searchGb2); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½)
 		csDto.setvSearch(searchtxt);
-		//csDto.setnRow(0); SP¿¡¼­ JobGB¸¦ LISTÇüÅÂ·Î ¹Þ¾Æ¼­ ÀüÃ¼ ¸®½ºÆ®¸¦°¡Á®¿Â´Ù.
+		//csDto.setnRow(0); SPï¿½ï¿½ï¿½ï¿½ JobGBï¿½ï¿½ LISTï¿½ï¿½ï¿½Â·ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 		csDto.setnPage(1);
 		
-		//1/2/3/4 ºÐ±âº° ¸®½ºÆ®
+		//1/2/3/4 ï¿½Ð±âº° ï¿½ï¿½ï¿½ï¿½Æ®
 		ListDTO ld = csDao.CurrentStatusList(csDto);
 
 		model.put("listInfo",ld);	
@@ -390,7 +392,7 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
 	}
 	
 	/**
-     * ¹ßÇà¹øÈ£¸¦ °Ë»öÇÑ´Ù.(°ßÀû¼­ ¹ßÇà¿ë.)
+     * ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.)
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -430,7 +432,7 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
         return actionMapping.findForward("publicnolist"); 
 	}
 	/**
-     * ¹ßÇà¹øÈ£¸¦ °Ë»öÇÑ´Ù(°è¾à µÈ °Ç¸¸/¼¼±Ý°è»ê¼­ ¹ßÇà¿ë.).
+     * ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½(ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ç¸ï¿½/ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½.).
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -491,8 +493,8 @@ public ActionForward searchComp_baro(ActionMapping actionMapping, ActionForm act
 
 
 /**
- * CreateDate:2013-11-21(¸ñ) Writer:shbyeon.
- * °è¾à°ü¸® ¸®½ºÆ®
+ * CreateDate:2013-11-21(ï¿½ï¿½) Writer:shbyeon.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
  * @param actionMapping
  * @param actionForm
  * @param request
@@ -513,19 +515,19 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 	String contractGb = StringUtil.nvl(request.getParameter("contractGb"),"Y");
 /*	
-	// ·Î±×ÀÎ Ã³¸®
+	// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	String USERID = UserBroker.getUserId(request);
 	
-	//¼¼¼Ç ²÷±æ ½Ã ÃÊ±âÈ­¸é
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½
 	if(USERID.equals("")){ String rtnUrl =
 	request.getContextPath()+"/H_Login.do?cmd=loginForm"; return
-	goSessionOut(model, rtnUrl,"huation-sessionOut"); } //·Î±×ÀÎ Ã³¸® ³¡.
+	goSessionOut(model, rtnUrl,"huation-sessionOut"); } //ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 */
 	//ProjectDAO pjDao = new ProjectDAO();
 	ContractManageDTO cmDto = new ContractManageDTO();
 	ContractManageDAO cmDao = new ContractManageDAO();
 
-	// cmDto °´Ã¼ ¼ÂÆÃ.
+	// cmDto ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½.
 	/*cmDto.setChUserID(USERID);*/
 	cmDto.setvSearchType(searchGb);
 	cmDto.setvSearch(searchtxt);
@@ -535,7 +537,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 
 	ListDTO ld = cmDao.contractMgPageList(cmDto);
 	
-	// ¸ðµ¨°´Ã¼ ¼ÂÆÃ
+	// ï¿½ðµ¨°ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 	model.put("listInfo", ld);
 	model.put("curPage", String.valueOf(curPageCnt));
 	model.put("searchGb", searchGb);
@@ -547,7 +549,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	
 	
 	/**
-     * ¹ßÇà¹øÈ£¸¦ °Ë»öÇÑ´Ù(°è¾àµÈ °ßÀû¼­ °Ç ¸¸/ÇÁ·ÎÁ§Æ® ÄÚµå °ü¸® ¿ëµµ.).
+     * ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ.).
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -580,8 +582,8 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	}
 	
 	/**
-	 * CreateDate:2013-12-27(±Ý) Writer:shbyeon.
-	 * °è¾à°ü¸® Á¶È¸ ¸®½ºÆ®(ÁøÇàÁßÀÎ °Ç¿¡ ´ëÇØ¼­¸¸/ÇÁ·ÎÁ§Æ® ÄÚµå °ü¸® ÆË¾÷ Á¶È¸ ¿ëµµ.)
+	 * CreateDate:2013-12-27(ï¿½ï¿½) Writer:shbyeon.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½ï¿½È¸ ï¿½ëµµ.)
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -601,22 +603,22 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 				.nvl(request.getParameter("searchtxt"), "");
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 		
-		String CtCd_tr_Cnt = StringUtil.nvl(request.getParameter("CtCd_tr_Cnt"),"0");	//ºÎ¸ðÃ¢¿¡¼­ ¹ÞÀº °è¾àÄÚµå Param °ª. °è¾àÄÚµå.
-		String PjNm_tr_Cnt = StringUtil.nvl(request.getParameter("PjNm_tr_Cnt"),"0");	//ºÎ¸ðÃ¢¿¡¼­ ¹ÞÀº °è¾àÄÚµå Param °ª. ÇÁ·ÎÁ§Æ®¸í.
+		String CtCd_tr_Cnt = StringUtil.nvl(request.getParameter("CtCd_tr_Cnt"),"0");	//ï¿½Î¸ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½ Param ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½Úµï¿½.
+		String PjNm_tr_Cnt = StringUtil.nvl(request.getParameter("PjNm_tr_Cnt"),"0");	//ï¿½Î¸ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½ Param ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½.
 		
-		// ·Î±×ÀÎ Ã³¸®
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		String USERID = UserBroker.getUserId(request);
 		
-		//¼¼¼Ç ²÷±æ ½Ã ÃÊ±âÈ­¸é
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½
 		if(USERID.equals("")){ String rtnUrl =
 		request.getContextPath()+"/H_Login.do?cmd=loginForm"; return
-		goSessionOut(model, rtnUrl,"huation-sessionOut"); } //·Î±×ÀÎ Ã³¸® ³¡.
+		goSessionOut(model, rtnUrl,"huation-sessionOut"); } //ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 
 		//ProjectDAO pjDao = new ProjectDAO();
 		ContractManageDTO cmDto = new ContractManageDTO();
 		ContractManageDAO cmDao = new ContractManageDAO();
 
-		// cmDto °´Ã¼ ¼ÂÆÃ.
+		// cmDto ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½.
 		cmDto.setChUserID(USERID);
 		cmDto.setvSearchType(searchGb);
 		cmDto.setSearchGb2("");
@@ -627,21 +629,21 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 
 		ListDTO ld = cmDao.contractMgPageList_Pop_Pj(cmDto);
 		
-		// ¸ðµ¨°´Ã¼ ¼ÂÆÃ
+		// ï¿½ðµ¨°ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		model.put("listInfo", ld);
 		model.put("curPage", String.valueOf(curPageCnt));
 		model.put("searchGb", searchGb);
 		model.put("searchtxt", searchtxt);
 		model.put("sForm",sForm);
-		model.put("CtCd_tr_Cnt",CtCd_tr_Cnt); //ºÎ¸ðÃ¢¿¡¼­ ¹ÞÀº tr Cnt(À§Ä¡,Param °ª)
-		model.put("PjNm_tr_Cnt",PjNm_tr_Cnt); //ºÎ¸ðÃ¢¿¡¼­ ¹ÞÀº tr Cnt(À§Ä¡,Param °ª)
+		model.put("CtCd_tr_Cnt",CtCd_tr_Cnt); //ï¿½Î¸ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ tr Cnt(ï¿½ï¿½Ä¡,Param ï¿½ï¿½)
+		model.put("PjNm_tr_Cnt",PjNm_tr_Cnt); //ï¿½Î¸ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ tr Cnt(ï¿½ï¿½Ä¡,Param ï¿½ï¿½)
 		
 		return actionMapping.findForward("searchContractNoConN_Pj");
 	}
 	
 	/**
 =======
-     * ¹ßÇà¹øÈ£¸¦ °Ë»öÇÑ´Ù(°è¾à µÈ °Ç¸¸/°è¾à°ü¸® ¿ëµµ.).
+     * ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½(ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ç¸ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ.).
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -675,7 +677,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	
 	/**
 >>>>>>> .r596
-     * »ç¾÷ÀÚ µî·Ï¹øÈ£¸¦ °Ë»öÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -705,8 +707,8 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
         return actionMapping.findForward("compnolist"); 
 	}
 	/**
-	 * »ç¾÷ÀÚ µî·Ï¹øÈ£¸¦ °Ë»öÇÏ°í °¹¼ö¿Í »ç¾÷ÀÚ ÀÌ¸§ , »èÁ¦À¯¹«¸¦À» ¸®ÅÏÇÑ´Ù..
-	 * +¿ÏÀü»èÁ¦ Ãß°¡.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½..
+	 * +ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -724,11 +726,11 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		
 		CompanyDAO companyDao = new CompanyDAO();
 		CompanyDTO compDto = new CompanyDTO(); 
-		if(deleteYn.equals("Y")) { //¿ÏÀü»èÁ¦·ÎÁ÷Ãß°¡
+		if(deleteYn.equals("Y")) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß°ï¿½
 			companyDao.deleteCompanyOne2(searchtxt);
 		}
 		String checkComp = "Y";
-		//»èÁ¦ÇÏ´ø ¾ÈÇÏ´ø. °Ë»öÀ» ´Ù½Ã ÇÑ´Ù.  °Ë»ö°Ç¼ö°¡ ÀÕ´Ù¸é È­¸é¿¡¼­ ÀÖ´Ù°í º¸¿©ÁÖ°í »èÁ¦¹öÆ°À» È°¼ºÈ­ÇÑ´Ù.
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ñ´ï¿½.  ï¿½Ë»ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½ ï¿½Õ´Ù¸ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ È°ï¿½ï¿½È­ï¿½Ñ´ï¿½.
 		if(!searchtxt.equals("--")) {
 			compDto = companyDao.getCompanyView2(searchtxt ); 	
 		}else {
@@ -740,7 +742,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	    }
 	    
 
-		model.put("checkComp",checkComp); //±âÁ¸ Á¸Àç ¿©ºÎ	
+		model.put("checkComp",checkComp); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
 	    model.put("compDto", compDto);
 		
 		model.put("sForm",sForm);
@@ -750,7 +752,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		return actionMapping.findForward("compnolist"); 
 	}
 	/**
-     * ¾÷Ã¼ »ó¼¼Á¤º¸¸¦ º¸¿©ÁØ´Ù.
+     * ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -761,7 +763,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
      */
 	public ActionForward companyView(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse httpServletResponse, Map model) throws Exception{
 		
-		String comp_code = "";  //¾÷Ã¼ÄÚµå
+		String comp_code = "";  //ï¿½ï¿½Ã¼ï¿½Úµï¿½
 		
 		comp_code = StringUtil.nvl(request.getParameter("comp_code"));
 		
@@ -775,7 +777,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		model.put("comp_code",comp_code);
 
 	    if(compDto == null){
-			String msg = "ÇØ´ç  ¾÷Ã¼  Á¤º¸°¡ ¾ø½À´Ï´Ù.";
+			String msg = "ï¿½Ø´ï¿½  ï¿½ï¿½Ã¼  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg,"","back");
 	    }else{
 	    	return actionMapping.findForward("companyView");
@@ -784,7 +786,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	
 	/**
 	 * 2013_03_26(È­)shbyeon.
-	 * ¾÷Ã¼¸í  Áßº¹Ã¼Å©(¿µ¾÷ÁøÇàÇöÈ² »ç¿ë.)
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½  ï¿½ßºï¿½Ã¼Å©(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È² ï¿½ï¿½ï¿½.)
 	 */
 	public ActionForward CompNameCheck(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest request,
@@ -805,12 +807,12 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		model.put("result", result);
 
 		return actionMapping.findForward("compNameChkXML");
-		//½ÇÁ¦·Î struts.XMLÅ¸°í Æ÷¿öµù ÅÂ¿öÁÖ´Â ³×ÀÓ(acNumberChkXML)  return actionMapping.findForward("acNumberChkXML");
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ struts.XMLÅ¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â¿ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½(acNumberChkXML)  return actionMapping.findForward("acNumberChkXML");
 	}
 	
 	/**
 	 * 2013_03_26(È­)shbyeon.
-	 * ¾÷Ã¼¸í  Áßº¹Ã¼Å©(°ßÀû¼­¹ßÇà »ç¿ë.)
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½  ï¿½ßºï¿½Ã¼Å©(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.)
 	 */
 	public ActionForward CompNameCheckEs(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest request,
@@ -831,11 +833,11 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		model.put("result", result);
 
 		return actionMapping.findForward("compNameChkXML");
-		//½ÇÁ¦·Î struts.XMLÅ¸°í Æ÷¿öµù ÅÂ¿öÁÖ´Â ³×ÀÓ(acNumberChkXML)  return actionMapping.findForward("acNumberChkXML");
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ struts.XMLÅ¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â¿ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½(acNumberChkXML)  return actionMapping.findForward("acNumberChkXML");
 	}
 	
 	/**
-	 * Group ÇÁ·¹ÀÓÀ» °¡Á®¿Â´Ù.
+	 * Group ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -846,12 +848,12 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 	 */
 	public ActionForward groupFrame(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 		
-		//Group ÇÁ·¹ÀÓÀ» °¡Á®¿Â´Ù.
+		//Group ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 		
 		return actionMapping.findForward("groupFrame");
 	}
 	/**
-	 * Group ¸®½ºÆ®¸¦ °¡Á®¿Â´Ù.
+	 * Group ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -890,7 +892,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		return actionMapping.findForward("groupTree");
 	}
 	/**
-	 * ¸ÞÀÎÆäÀÌÁö (Àü»ç°øÁö/¼­½ÄÆÄÀÏ/°æÁ¶»ç/ÀÚÀ¯°Ô½ÃÆÇ/News&Magazine/¾÷¹«¸Þ´º¾ó)6°³ÀÇ °Ô½ÃÆÇ ¸ñ·Ï¿¡ ÀÖ´Â °Ô½Ã±ÛÀ» °¡Á®¿Â´Ù._2012_10_24_(bsh)
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½/News&Magazine/ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½ï¿½)6ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½Ö´ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½._2012_10_24_(bsh)
 	 */
 	public ActionForward mainPage(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 		
@@ -900,14 +902,14 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 		String AuthID = StringUtil.nvl(request.getParameter("AuthID"), "");
 		String MenuID = StringUtil.nvl(request.getParameter("MenuID"),"");
-		// ·Î±×ÀÎ Ã³¸®
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		String USERID = UserBroker.getUserId(request);
 		
 		  if(USERID.equals("")){ String rtnUrl =
 		  request.getContextPath()+"/H_Login.do?cmd=loginForm"; return
-		  goSessionOut(model, rtnUrl,"huation-sessionOut"); } //·Î±×ÀÎ Ã³¸® ³¡.
+		  goSessionOut(model, rtnUrl,"huation-sessionOut"); } //ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 	
-		  //¸ÞÀÎ ÆäÀÌÁö ¸®½ºÆ® ±ÇÇÑ ¿©ºÎ(¸ÞÀÎÆäÀÌÁö 6°³ÀÇ ¸ñ·Ï ÇÁ·¹ÀÓ ±ÇÇÑÃ¼Å©)2012_10_24(¼ö)bsh
+		  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼Å©)2012_10_24(ï¿½ï¿½)bsh
 		  AuthDTO atDto = new AuthDTO();
 		  AuthDAO atDao = new AuthDAO();
 		  MenuDTO mtDto = new MenuDTO();
@@ -921,10 +923,10 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		  ArrayList<AuthDTO> arraylist= atDao.userAuthMenuTreeView(atDto);
 		
 
-		//Àü»ç°øÁö  
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 		DispNotifyDAO disDao = new DispNotifyDAO();
 		DispNotifyDTO disDto = new DispNotifyDTO();
-		// ¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½Æ®
 		disDto.setWriteUser(USERID);
 		disDto.setvSearchType(searchGb);
 		disDto.setvSearch(searchtxt);
@@ -932,10 +934,10 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		disDto.setnPage(curPageCnt);
 		ListDTO ld = disDao.dispNotifyPageList(disDto);
 		
-		//¼­½ÄÆÄÀÏ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		FormFileDAO ffDao = new FormFileDAO();
 		FormFileDTO ffDto = new FormFileDTO();
-		// ¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½Æ®
 		//ffDto.setWriteUser(USERID);
 		ffDto.setvSearchType(searchGb);
 		ffDto.setvSearch(searchtxt);
@@ -943,10 +945,10 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		ffDto.setnPage(curPageCnt);
 		ListDTO ld2 = ffDao.formFilePageList(ffDto);
 		
-		//°æÁ¶»ç
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		FamilyEventDAO feDao = new FamilyEventDAO();
 		FamilyEventDTO feDto = new FamilyEventDTO();
-		// ¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½Æ®
 		feDto.setWriteUser(USERID);
 		feDto.setvSearchType(searchGb);
 		feDto.setvSearch(searchtxt);
@@ -954,10 +956,10 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		feDto.setnPage(curPageCnt);
 		ListDTO ld3 = feDao.dispEventPageList(feDto);
 		
-		//ÀÚÀ¯°Ô½ÃÆÇ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 		FreeBoardDAO fbDao = new FreeBoardDAO();
 		FreeBoardDTO fbDto = new FreeBoardDTO();
-		// ¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½Æ®
 		fbDto.setWriteUser(USERID);
 		fbDto.setvSearchType(searchGb);
 		fbDto.setvSearch(searchtxt);
@@ -969,7 +971,7 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		NewsMagazineDTO nmDto = new NewsMagazineDTO();
 		NewsMagazineDAO nmDao = new NewsMagazineDAO();
 		
-		//¸®½ºÆ®
+		//ï¿½ï¿½ï¿½ï¿½Æ®
 		nmDto.setWriteUser(USERID);
 		nmDto.setvSearchType(searchGb);
 		nmDto.setvSearch(searchtxt);
@@ -977,11 +979,11 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		nmDto.setnPage(curPageCnt);
 		ListDTO ld5 = nmDao.dispNewsPageList(nmDto);
 		
-		//¾÷¹«Menual ¸®½ºÆ®
+		//ï¿½ï¿½ï¿½ï¿½Menual ï¿½ï¿½ï¿½ï¿½Æ®
 		DocumentFileDAO dfDao = new DocumentFileDAO();
 		DocumentFileDTO dfDto = new DocumentFileDTO();
 
-		// ¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½Æ®
 		
 		//dfDto.setWriteUser(USERID);
 		dfDto.setvSearchType(searchGb);
@@ -990,12 +992,12 @@ public ActionForward searchContractNoConY_baro(ActionMapping actionMapping,
 		dfDto.setnPage(curPageCnt);
 		ListDTO ld6 = dfDao.documentFilePageList(dfDto);
 
-		model.put("listInfo", ld);   //Àü»ç°øÁö
-		model.put("listInfo2", ld2); //¼­½ÄÆÄÀÏ
-		model.put("listInfo3", ld3); //°æÁ¶»ç
-		model.put("listInfo4", ld4); //ÀÚÀ¯°Ô½ÃÆÇ
+		model.put("listInfo", ld);   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		model.put("listInfo2", ld2); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		model.put("listInfo3", ld3); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		model.put("listInfo4", ld4); //ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 		model.put("listInfo5", ld5); //News&Magazine
-		model.put("listInfo6", ld6); //¾÷¹«Menual
+		model.put("listInfo6", ld6); //ï¿½ï¿½ï¿½ï¿½Menual
 		model.put("arraylist",arraylist);
 		model.put("MenuID", MenuID);
 		model.put("AuthID", AuthID);

@@ -383,7 +383,7 @@ function goSave(){
 <div id="content">
   
 <!-- title -->
-    <div class="content_navi">총무지원 &gt; 업체관리</div>
+    <div class="content_navi">경영지원 &gt; 업체관리</div>
 	<h3><span>업</span>체등록</h3><!-- 타이틀 앞글자는 <span></span>으로 감싸기 -->
 <!-- title -->
 

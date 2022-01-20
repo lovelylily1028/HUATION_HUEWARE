@@ -404,6 +404,7 @@ function popPublicNo(){
 		var a = window.open("<%= request.getContextPath()%>/B_Common.do?cmd=searchPublicNo&sForm=estimateRegist&contractGb=N&type=<%=type%>","","width=850,height=655,left=20,top=20,toolbar=no, location=no, directories=no, menubar=no, resizable=yes, scrollbars=no, status=no");
 }
 
+//업체 조회 팝업창 
 function popComp(){
 
 		var obj=document.estimateRegist;
@@ -414,6 +415,7 @@ function popComp(){
 			var a = window.open("<%= request.getContextPath()%>/B_Common.do?cmd=searchComp&sForm=estimateRegist","","width=850,height=652,left=20,top=20,toolbar=no, location=no, directories=no, menubar=no, resizable=no, scrollbars=no, status=no");
 		}
 }
+
 function popSales(){
 		var a = window.open("<%= request.getContextPath()%>/B_Common.do?cmd=searchUser&sForm=estimateRegist","","width=600,height=619,left=20,top=20,toolbar=no, location=no, directories=no, menubar=no, resizable=no, scrollbars=no, status=no");
 }

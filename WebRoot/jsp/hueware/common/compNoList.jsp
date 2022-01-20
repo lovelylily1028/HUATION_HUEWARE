@@ -72,6 +72,11 @@
 		var comp_no=eval('opener.document.<%=sForm%>.permit_no');
 					
 		comp_no.value=document.searchform.selectNo.value;
+
+		// 사업자 번호 조회 후 창 닫았을때 사업자 명 자동 포커스. 202_01-18(화)yjchoi.
+		var comp_nm=eval('opener.document.<%=sForm%>.comp_nm');
+		
+		comp_nm.focus();
 		
 		self.close();
 
@@ -114,6 +119,19 @@
 		}
 
 	}
+	
+	
+	/* 사업자 마지막 번호 입력후 조회 버튼으로 포커스 이동 */
+	$(document).ready(function(){
+		$("#searchtxt3").on("keyup", function(){
+			if(this.value.length == 5){
+				$("#CompSearchbutton").focus();
+			}
+			
+		});
+	});
+	
+	
 //-->
 </SCRIPT>
 </head>
@@ -140,7 +158,7 @@
 	<dl class="search_area">
 	
 	<dt><label for="">사업자등록번호</label>&nbsp;&nbsp;
-    <input type="text" name="searchtxt1" class="text" title="앞번호" style="width:30px;" maxlength="3" value="<%=searchtxt1%>" onKeyUp = "compCodecheck1('searchform.searchtxt1')">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" name="searchtxt2" class="text" title="중간번호" style="width:25px;" maxlength="2" value="<%=searchtxt2%>" onKeyUp = "compCodecheck2('searchform.searchtxt2')">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" name="searchtxt3" class="text" title="뒷번호" style="width:50px;" maxlength="5" value="<%=searchtxt3%>" ><input type="hidden" name="searchtxt" value="<%=searchtxt%>"><a href="javascript:goSearch();" class="btn_type03"><span>조회</span></a></dt>
+    <input type="text" name="searchtxt1" class="text" title="앞번호" style="width:30px;" maxlength="3" value="<%=searchtxt1%>" onKeyUp = "compCodecheck1('searchform.searchtxt1')" autofocus>&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" name="searchtxt2" class="text" title="중간번호" style="width:25px;" maxlength="2" value="<%=searchtxt2%>" onKeyUp = "compCodecheck2('searchform.searchtxt2')">&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="searchtxt3" name="searchtxt3" class="text" title="뒷번호" style="width:50px;" maxlength="5" value="<%=searchtxt3%>" ><input type="hidden" name="searchtxt" value="<%=searchtxt%>"><a href="javascript:goSearch();" id="CompSearchbutton" class="btn_type03"><span>조회</span></a></dt>
     
           <%			
 if(searchtxt.equals("")){	

@@ -249,7 +249,7 @@
 	function goList(){
 		
 		var frm = document.companyView;
-		frm.action='<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList2';
+		frm.action='<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList';
 		frm.submit();
 	
 	}
@@ -427,7 +427,7 @@
 <div id="content">
 
 	<!-- title -->
-	<div class="content_navi">총무지원 &gt; 업체관리</div>
+	<div class="content_navi">경영지원 &gt; 업체관리</div>
 		<h3><span>업</span>체상세정보</h3><!-- 타이틀 앞글자는 <span></span>으로 감싸기 -->
 	<!-- title -->
 
@@ -495,7 +495,7 @@
 			<th><label for=""><span class="must_ico"><img src="<%= request.getContextPath()%>/images/common/must_icon_01.gif" alt="필수입력" /></span>사업자등록번호</label></th>
 			<td><input type="text" id="" name="permit_no" class="text" title="사업자등록번호" style="width:200px;" readonly="readonly" value="<%=compDto.getPermit_no() %>" /></td>
 		</tr>
-        
+		
         <%
         }else{        	
         %>
@@ -503,13 +503,35 @@
         <tr>
 			<!-- label의 for값과 input의 id값을 똑같이 사용해주세요. -->
 			<th><label for=""><span class="must_ico"><img src="<%= request.getContextPath()%>/images/common/must_icon_01.gif" alt="필수입력" /></span>사업자등록번호</label></th>
-			<td><input type="text" id="" name="permit_no" class="text" title="사업자등록번호" style="width:200px;" readOnly onClick="javascript:popCompNo();" /><a href="javascript:popCompNo();" class="btn_type03"><span>조회</span></a></td>
+			<td><input type="text" id="" name="permit_no" class="text" title="사업자등록번호" style="width:200px;" readonly="readonly" onClick="javascript:popCompNo();" /><a href="javascript:popCompNo();" class="btn_type03"><span>조회</span></a></td>
 		</tr>
         
         <%
         }
         %>
         
+        <!-- 사업자 번호 조회 전 -->
+        <%if(compDto.getComp_taxType().equals("-")){ %>
+        
+        <tr>
+			<th><label for=""><span class="must_ico"><img src="<%= request.getContextPath()%>/images/common/must_icon_01.gif" alt="필수입력" /></span>구분(상태)</label></th>
+			<td><input type="text" id="" name="compState" class="text" title="구분(상태)" style="width:300px;" readonly="readonly" value="사업자 번호 조회 전 입니다." maxlength="100"/></td>
+		</tr>
+        
+        <%}else { %>
+        
+        <tr>
+			<th><label for=""><span class="must_ico"><img src="<%= request.getContextPath()%>/images/common/must_icon_01.gif" alt="필수입력" /></span>구분(상태)</label></th>
+			<td><input type="text" id="" name="compState" class="text" title="구분(상태)" style="width:300px;" readonly="readonly" value="<%=compDto.getComp_taxType()%>(<%=compDto.getComp_state() %>)" maxlength="100"/></td>
+		</tr>
+        
+        <%} %>
+		
+		
+		
+		
+		
+		
         <tr>
 			<th><label for=""><span class="must_ico"><img src="<%= request.getContextPath()%>/images/common/must_icon_01.gif" alt="필수입력" /></span>상호(법인명)</label></th>
 			<td><input type="text" id="" name="comp_nm" class="text" title="상호(법인명)" style="width:300px;" value="<%=compDto.getComp_nm()%>" maxlength="100"/></td>

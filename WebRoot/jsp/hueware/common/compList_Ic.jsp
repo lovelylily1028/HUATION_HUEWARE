@@ -168,16 +168,16 @@
       <table class="tbl_type tbl_type_list" summary="업체리스트(사업자등록번호, 업체명, 법인등록번호(주민등록번호), 대표자명(고객명))">
           <caption>업체 리스트</caption>
          <colgroup>
-         	<col width="6%" />
-			<col width="20%" />
+         	<col width="20%" />
+			<col width="15%" />
 			<col width="*" />
 			<col width="20%" />
 			<col width="20%" />
 		</colgroup>
 		<thead>
 		<tr>
-			<th>부적격업체</th>
 			<th>사업자등록번호</th>
+			<th>구분(상태)</th>
 			<th>업체명</th>
 			<th>법인등록번호(주민등록번호)</th>
 			<th>대표자명(고객명)</th>
@@ -188,22 +188,27 @@
 if(ld.getItemCount() > 0){	
     int i = 0;
     String UNFIT_ID = "";
+    String COMP_TAXTYPE = "";
 	while(ds.next()){
+
+		COMP_TAXTYPE = ds.getString("COMP_TAXTYPE");
 %>
-          <tr>
-        <%
-        UNFIT_ID = ds.getString("UNFIT_ID");
-        	if(!UNFIT_ID.isEmpty()){
-        %>
-           <td><img src="<%= request.getContextPath()%>/images/common/ico_unfit.gif" title="부적격업체지정"></td>
-        <%
-        	}else{
-        %>
-        <td></td>
-        <%
-        	} 
-        %>   
+	      <tr>
             <td><%=ds.getString("PERMIT_NO")%></td>
+       <%
+       	if(COMP_TAXTYPE.equals("-")){
+       %>
+    
+   			<td title="사업자 번호 조회전 항목입니다."><%=ds.getString("COMP_TAXTYPE")%>(<%=ds.getString("COMP_STATE") %>)</td>
+    
+        <%
+       	}else{
+       	%>
+   			<td><%=ds.getString("COMP_TAXTYPE")%>(<%=ds.getString("COMP_STATE") %>)</td>
+   
+       <%
+       }
+       %>
             <!-- COMP_CODE = 업체코드값 2013_03_22 shbyeon. -->
             <td title="<%=ds.getString("COMP_NM")%>"><span class="ellipsis"><a href="javascript:goSelect('<%=ds.getString("COMP_CODE")%>','<%=ds.getString("PERMIT_NO")%>','<%=ds.getString("COMP_NM")%>','<%=ds.getString("OWNER_NM")%>','<%=ds.getString("BUSINESS")%>','<%=ds.getString("B_ITEM")%>','<%=ds.getString("POST")%>','<%=ds.getString("ADDRESS")%>','<%=ds.getString("ADDR_DETAIL")%>')"><%=ds.getString("COMP_NM")%></a></span></td>
             <td><%=ds.getString("COMP_NO")%></td>
@@ -228,6 +233,10 @@ if(ld.getItemCount() > 0){
       <%=ld.getPagging("goPage")%>
     </div>
     <!-- //paginate -->
+     	<!-- 가이드텍스트 -->
+	<p class="guide_txt">업체관리 화면에서 거래 부적격으로 등록된 회사는 선택할 수 없습니다</p>
+	<p class="guide_txt">업체관리 화면에서 휴업·폐업·확인요 상태인 회사는 선택할 수 없습니다</p>
+	<!-- //가이드텍스트 -->
     <!-- Bottom 버튼영역 -->
 		<div class="Bbtn_areaC">
       <!-- a href="javascript:goRegist();"><img src="<%= request.getContextPath()%>/images/btn_reg3.gif" width="40" height="23" title="등록"/></a -->

@@ -16,7 +16,7 @@ import com.oreilly.servlet.*;
 public class UserAction extends StrutsDispatchAction{
 	
 	/**
-	 * °èÁ¤°ü¸® °ü¸® ¸®½ºÆ®
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -37,20 +37,20 @@ public class UserAction extends StrutsDispatchAction{
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 		String SearchGroup = StringUtil.nvl(request.getParameter("SearchGroup"),"G00001");
 	
-		//·Î±×ÀÎ Ã³¸® 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		String USERID = UserBroker.getUserId(request);
 	/*	
 		if(USERID.equals("")){
 			String rtnUrl =  request.getContextPath()+"/H_Login.do?cmd=loginForm";
 			return goSessionOut(model, rtnUrl,"huation-sessionOut");
 		}
-		//·Î±×ÀÎ Ã³¸® ³¡. 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½. 
 		*/
 		UserDAO userDao = new UserDAO();
 		UserDTO userDto = new UserDTO();
 	  
   
-	//¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½Æ®
 		userDto.setLogid(logid);
 		userDto.setChUserID(USERID);
 		userDto.setvSearchType(searchGb);
@@ -60,7 +60,7 @@ public class UserAction extends StrutsDispatchAction{
 	    
 		ListDTO ld = userDao.userPageList(userDto);
 
-	  //Ä«¿îÆ® Á¤º¸
+	  //Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 		UserDTO userDtoCount = userDao.userTotCount(userDto);
 		
 		model.put("totalInfo", userDtoCount );
@@ -76,7 +76,7 @@ public class UserAction extends StrutsDispatchAction{
 	  return actionMapping.findForward("userPageList");
    	}
 	/**
-	 * °èÁ¤ µî·Ï Æû (µ¿ÀÛ¾øÀ½-Æû¸¸ È£Ãâ)
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ (ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½)
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -100,7 +100,7 @@ public class UserAction extends StrutsDispatchAction{
 	  return actionMapping.findForward("userRegistForm");
 	 }
 	/**
-	 * °èÁ¤ µî·Ï
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -116,7 +116,7 @@ public class UserAction extends StrutsDispatchAction{
 		long t1 = System.currentTimeMillis();
 		log.trace(logid, "userRegist action start");
 		
-//		·Î±×ÀÎ Ã³¸® 
+//		ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		String USERID = UserBroker.getUserId(request);
 		String msg="";
 		MultipartRequest multipartRequest = null;
@@ -133,7 +133,7 @@ public class UserAction extends StrutsDispatchAction{
 		log.debug("FilePath= " + FilePath);
 		UploadFiles uploadEntity = FileUtil.upload(request, FilePath, USERID,
 				500);	//500M
-		//UploadFiles (,,,500)500ÀÇ¹Ì MB¿ë·® ´ÜÀ§¼³Á¤
+		//UploadFiles (,,,500)500ï¿½Ç¹ï¿½ MBï¿½ë·® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		multipartRequest = uploadEntity.getMultipart();
 		String status = uploadEntity.getStatus();
 
@@ -145,26 +145,26 @@ public class UserAction extends StrutsDispatchAction{
 		String BoardFile = "";
 
 		if (status.equals("E")) {
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("O")) {
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 500M ±îÁö °¡´ÉÇÕ´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 500M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("I")) {
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("S")) {
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for (int i = 0; i < files.size(); i++) {
@@ -183,9 +183,9 @@ public class UserAction extends StrutsDispatchAction{
 					filePath = uploadEntity.getUploadPath();
 					uploadFilePath = filePath + sFileName;
 
-					log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í[" + objName + "]¿øÆÄÀÏ¸í[" + rFileName
-							+ "]ÀúÀåÆÄÀÏ¸í[" + sFileName + "]ÆÄÀÏ»çÀÌÁî[" + fileSize
-							+ "]ÀúÀåÆÄÀÏÆÐ½º[" + filePath + "]¾÷·Îµå °æ·Î["
+					log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½[" + objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + rFileName
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + sFileName + "]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½[" + fileSize
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½[" + filePath + "]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["
 							+ uploadFilePath + "]");
 
 					if (objName.equals("BoardFile")) {
@@ -195,15 +195,15 @@ public class UserAction extends StrutsDispatchAction{
 			}
 		}
 		String BoardFileNm = StringUtil.nvl(multipartRequest.getParameter("BoardFileNm"), "");
-		log.debug("ÆÄÀÏÀÌ¸§"+BoardFileNm);
+		log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½"+BoardFileNm);
 		
 		String ID = StringUtil.nvl(multipartRequest.getParameter("ID"),"");
 		String Name = StringUtil.nvl(multipartRequest.getParameter("Name"),"");
 		String FaxNo = StringUtil.nvl(multipartRequest.getParameter("FaxNo"),"");
 		String GroupID = StringUtil.nvl(multipartRequest.getParameter("GroupID"),"");
 		String AuthID = StringUtil.nvl(multipartRequest.getParameter("AuthID"),"");
-		String OfficeTellNo = StringUtil.nvl(multipartRequest.getParameter("OfficeTellNo"),"");//ÇÚµåÆù¹øÈ£
-		String OfficeTellNo2 = StringUtil.nvl(multipartRequest.getParameter("OfficeTellNo2"),"");//»ç³»Á÷Åë¹øÈ£
+		String OfficeTellNo = StringUtil.nvl(multipartRequest.getParameter("OfficeTellNo"),"");//ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È£
+		String OfficeTellNo2 = StringUtil.nvl(multipartRequest.getParameter("OfficeTellNo2"),"");//ï¿½ç³»ï¿½ï¿½ï¿½ï¿½ï¿½È£
 		String Password = StringUtil.nvl(multipartRequest.getParameter("Password"),"");
 		String UseYN = StringUtil.nvl(multipartRequest.getParameter("UseYN"),"");
 		String Description = StringUtil.nvl(multipartRequest.getParameter("Description"),"");
@@ -252,11 +252,11 @@ public class UserAction extends StrutsDispatchAction{
 		retVal=userDao.userRegist(userDto);
 
 		if(retVal==-1){
-			msg="µî·Ï¿À·ù!";
+			msg="ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½!";
 		}else if(retVal==0){
-			msg="µî·Ï½ÇÆÐ!";
+			msg="ï¿½ï¿½Ï½ï¿½ï¿½ï¿½!";
 		}else{
-			msg="µî·Ï¿Ï·á!";
+			msg="ï¿½ï¿½Ï¿Ï·ï¿½!";
 		}			
 		
 		//log action execute time end
@@ -266,7 +266,7 @@ public class UserAction extends StrutsDispatchAction{
 		return closePopupReload(model, msg,"","", request.getContextPath()+"/B_User.do?cmd=userPageList");
 	}
 	/**
-	 * »ç¹øÃ¼Å©
+	 * ï¿½ï¿½ï¿½Ã¼Å©
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -301,7 +301,7 @@ public class UserAction extends StrutsDispatchAction{
 		return EmployeeNumber;
 	}*/
 	/**
-	 * °èÁ¤ »ó¼¼Á¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -322,14 +322,14 @@ public class UserAction extends StrutsDispatchAction{
 		String Password = StringUtil.nvl(request.getParameter("Password"),"");
 		String msg ="";
 		
-		//·Î±×ÀÎ Ã³¸® 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		String USERID = UserBroker.getUserId(request);
 		/*
 		if(USERID.equals("")){
 				String rtnUrl =  request.getContextPath()+"/H_Login.do?cmd=loginForm";
 				return goSessionOut(model, rtnUrl,"huation-sessionOut");
 		}
-		//·Î±×ÀÎ Ã³¸® ³¡. 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½. 
 			*/
 		UserDAO userDao = new UserDAO();
 		UserDTO userDto = new UserDTO();
@@ -342,7 +342,7 @@ public class UserAction extends StrutsDispatchAction{
 		userDto = userDao.userView(userDto);
 		
 		if(userDto == null){
-			msg = "»ç¿ëÀÚ Á¤º¸°¡ ¾ø½À´Ï´Ù.";	
+			msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";	
 	    }
 		
 		model.put("userDto", userDto);
@@ -356,7 +356,7 @@ public class UserAction extends StrutsDispatchAction{
 	
 	}
 	/**
-	 * °èÁ¤ Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -375,13 +375,13 @@ public class UserAction extends StrutsDispatchAction{
 		String USERID = UserBroker.getUserId(request);
 		String msg="";
 		/*
-//		·Î±×ÀÎ Ã³¸® 
+//		ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 
 		if(USERID.equals("")){
 				String rtnUrl =  request.getContextPath()+"/H_Login.do?cmd=loginForm";
 				return goSessionOut(model, rtnUrl,"huation-sessionOut");
 		}
-//			·Î±×ÀÎ Ã³¸® ³¡.
+//			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 */
 		MultipartRequest multipartRequest = null;
 
@@ -397,7 +397,7 @@ public class UserAction extends StrutsDispatchAction{
 		log.debug("FilePath= " + FilePath);
 		UploadFiles uploadEntity = FileUtil.upload(request, FilePath, USERID,
 				500);	//500M
-		//UploadFiles (,,,500)500ÀÇ¹Ì MB¿ë·® ´ÜÀ§¼³Á¤
+		//UploadFiles (,,,500)500ï¿½Ç¹ï¿½ MBï¿½ë·® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		multipartRequest = uploadEntity.getMultipart();
 		String status = uploadEntity.getStatus();
 
@@ -409,29 +409,29 @@ public class UserAction extends StrutsDispatchAction{
 		String BoardFile = "";
 
 		if (status.equals("E")) {
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("O")) {
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 500M ±îÁö °¡´ÉÇÕ´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 500M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("I")) {
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("S")) {
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
 			BoardFile = StringUtil.nvl(
-					multipartRequest.getParameter("p_BoardFile"), "");//p_BoardFile Web(±âÁ¸µ¥ÀÌÅÍ)¿¡¼­¹Þ°í  BoardFile DB·Î´ã¾ÆÁØ´Ù.
-			//BoardFile Request.getparameter ³Ñ°ÜÁÖ´ÂÀÌÀ¯ ¼öÁ¤½Ã ÆÄÀÏÀº ¼öÁ¤ÇÏÁö¾Ê¾ÒÀ»°æ¿ì °¡Áö°íÀÖ´ÂÆÄÀÏ À¯Áö¸¦À§ÇØ¼­ 
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+					multipartRequest.getParameter("p_BoardFile"), "");//p_BoardFile Web(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½Þ°ï¿½  BoardFile DBï¿½Î´ï¿½ï¿½ï¿½Ø´ï¿½.
+			//BoardFile Request.getparameter ï¿½Ñ°ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ 
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for (int i = 0; i < files.size(); i++) {
@@ -450,9 +450,9 @@ public class UserAction extends StrutsDispatchAction{
 					filePath = uploadEntity.getUploadPath();
 					uploadFilePath = filePath + sFileName;
 
-					log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í[" + objName + "]¿øÆÄÀÏ¸í[" + rFileName
-							+ "]ÀúÀåÆÄÀÏ¸í[" + sFileName + "]ÆÄÀÏ»çÀÌÁî[" + fileSize
-							+ "]ÀúÀåÆÄÀÏÆÐ½º[" + filePath + "]¾÷·Îµå °æ·Î["
+					log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½[" + objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + rFileName
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + sFileName + "]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½[" + fileSize
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½[" + filePath + "]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["
 							+ uploadFilePath + "]");
 
 					if (objName.equals("BoardFile")) {
@@ -462,7 +462,7 @@ public class UserAction extends StrutsDispatchAction{
 			}
 		}
 		String BoardFileNm = StringUtil.nvl(multipartRequest.getParameter("BoardFileNm"), "");
-		log.debug("ÆÄÀÏÀÌ¸§"+BoardFileNm);
+		log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½"+BoardFileNm);
 		
 		String ID = StringUtil.nvl(multipartRequest.getParameter("ID"),"");
 		String Name = StringUtil.nvl(multipartRequest.getParameter("Name"),"");
@@ -486,7 +486,7 @@ public class UserAction extends StrutsDispatchAction{
 		String jumin2 = StringUtil.nvl(multipartRequest.getParameter("jumin2"), "");
 		String jumin3 = StringUtil.nvl(multipartRequest.getParameter("jumin3"), "");
 		String zip = StringUtil.nvl(multipartRequest.getParameter("zip"), "");
-		if(jumin2.equals("huemast"))jumin2=jumin3; //±¸±Û À¥Å¶ css·Î ÀÎÇØ password¿¡ ¼öÁ¤À» ¾ÈÇÒ°æ¿ì ¹Ù²ñ.
+		if(jumin2.equals("huemast"))jumin2=jumin3; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶ cssï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ passwordï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ ï¿½Ù²ï¿½.
 		System.out.println("Photo :"+Photo);
 		String EmployeeNum="";
 		int retVal=0;
@@ -542,11 +542,11 @@ public class UserAction extends StrutsDispatchAction{
 		retVal=userDao.userModify(userDto);
 		
 		if(retVal==-1){
-			msg="¼öÁ¤¿À·ù!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 		}else if(retVal==0){
-			msg="¼öÁ¤½ÇÆÐ!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 		}else{
-			msg="¼öÁ¤¿Ï·á!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½!";
 		}
 		
 		//log action execute time end
@@ -557,7 +557,7 @@ public class UserAction extends StrutsDispatchAction{
 
 	}
 	/**
-	 * °èÁ¤ Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.(´Ù°Ç)
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½Ù°ï¿½)
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -573,13 +573,13 @@ public class UserAction extends StrutsDispatchAction{
 		long t1 = System.currentTimeMillis();
 		log.trace(logid, "userDeletes action start");
 
-		//·Î±×ÀÎ Ã³¸® 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		String USERID = UserBroker.getUserId(request);
 		if(USERID.equals("")){
 				String rtnUrl =  request.getContextPath()+"/H_Login.do?cmd=loginForm";
 				return goSessionOut(model, rtnUrl,"huation-sessionOut");
 		}
-		//·Î±×ÀÎ Ã³¸® ³¡.
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 
 		int retVal=0;
 		String msg="";
@@ -591,11 +591,11 @@ public class UserAction extends StrutsDispatchAction{
 		retVal = userDao.userDeletes(logid,users, USERID);
 		
 		if(retVal==-1){
-			msg="»èÁ¦¿À·ù!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 		}else if(retVal==0){
-			msg="»èÁ¦½ÇÆÐ!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 		}else{
-			msg="»èÁ¦¿Ï·á!";
+			msg="ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½!";
 		}
 		
 		//log action execute time end
@@ -606,7 +606,7 @@ public class UserAction extends StrutsDispatchAction{
 		
 	}
 	/**
-	 * °èÁ¤ Á¤º¸ EXCEL EXPORT
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ EXCEL EXPORT
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -624,12 +624,12 @@ public class UserAction extends StrutsDispatchAction{
 		
 		String USERID = UserBroker.getUserId(request);
 		/*
-		//·Î±×ÀÎ Ã³¸® 
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		if(USERID.equals("")){
 				String rtnUrl =  request.getContextPath()+"/H_Login.do?cmd=loginForm";
 				return goSessionOut(model, rtnUrl,"huation-sessionOut");
 		}
-		//·Î±×ÀÎ Ã³¸® ³¡.
+		//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 		*/
 		
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
@@ -657,7 +657,7 @@ public class UserAction extends StrutsDispatchAction{
 		return actionMapping.findForward("userExcelList");
 	}
 	/**
-	 * »ç¿ëÀÚ Áßº¹Ã¼Å©
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -693,7 +693,7 @@ public class UserAction extends StrutsDispatchAction{
 	}
 	
 	/**
-	 * ÆÐ½º¿öµå ¾ÏÈ£È­
+	 * ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -706,10 +706,10 @@ public class UserAction extends StrutsDispatchAction{
 
 
 		String cpawd = StringUtil.nvl(request.getParameter("cpawd"),"");
-		/*2012.12.12(¼ö) bsh.
-			Æ¯Á¤ ºñ¹Ð¹øÈ£ º¯°æ½Ã ¾ÏÈ£È­°ªÀÌ Æ²·Á¼­
-			ÇöÀç ºñ¹Ð¹øÈ£ °ª°ú ±âÁ¸ ºñ¹Ð¹øÈ£°ª °ªÀÌ Æ²¸° Æ¯Á¤ÇÑ °ªÀ» ÀÏÄ¡ ½ÃÄÑÁÖ±âÀ§ÇØ
-			dpawd(±âÁ¸ºñ¹Ð¹øÈ£°ªÀ» get¹æ½ÄÀ¸·Î³Ñ±è.) Ãß°¡.  
+		/*2012.12.12(ï¿½ï¿½) bsh.
+			Æ¯ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½ï¿½
+			ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½
+			dpawd(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ï¿½ï¿½ getï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î³Ñ±ï¿½.) ï¿½ß°ï¿½.  
 		*/
 		String dpawd = StringUtil.nvl(request.getParameter("dpawd"),"");
 		String encPasswd ="";
@@ -719,8 +719,8 @@ public class UserAction extends StrutsDispatchAction{
 		UserDAO userDao = new UserDAO();
 		encPasswd =userDao.setPasswdEncode(cpawd);
 		
-		System.out.println("encPasswd  ÇöÀç ºñ¹Ð¹øÈ£ ¾ÏÈ£È­ °ª:"+encPasswd);
-		System.out.println("encPasswd2  ±âÁ¸ ºñ¹Ð¹øÈ£ ¾ÏÈ£È­ °ª:"+encPasswd2);
+		System.out.println("encPasswd  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½È£È­ ï¿½ï¿½:"+encPasswd);
+		System.out.println("encPasswd2  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½È£È­ ï¿½ï¿½:"+encPasswd2);
 		
 		model.put("encPasswd",encPasswd);
 
@@ -728,7 +728,7 @@ public class UserAction extends StrutsDispatchAction{
 	}
 	
 	/**
-	 * ÆÐ½º¿öµå º¯°æ
+	 * ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -759,19 +759,19 @@ public class UserAction extends StrutsDispatchAction{
 		model.put("user_id", userId);
 		
 		if(reVal>0){
-			msg="ºñ¹Ð¹øÈ£ º¯°æ¿Ï·á!!";
+			msg="ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½Ï·ï¿½!!";
 	
 		return alertAndExit(model,msg,request.getContextPath()+"/B_Login.do?cmd=loginOff","");
 		
 		}else{
-			msg="ºñ¹Ð¹øÈ£ º¯°æ½ÇÆÐ!!(°ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇÏ¼¼¿ä.)";
+			msg="ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!(ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.)";
 			
 		return alertAndExit(model,msg,request.getContextPath()+"/B_Common.do?cmd=mainPage","");		
 		
 		}
 	}
 	/**
-	 * »ç¿ëÀÚ °ü·Ã ÆäÀÌÁö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -783,9 +783,9 @@ public class UserAction extends StrutsDispatchAction{
 	public ActionForward passwdEdit(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
 		String user_id = StringUtil.nvl(request.getParameter("user_id"),"");
-		//System.out.println("USERID:"+user_id); ajax ¹æ½ÄÀ¸·Î ¹ÞÀº »ç¿ëÀÚ¾ÆÀÌµð
+		//System.out.println("USERID:"+user_id); ajax ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½Ìµï¿½
 		String passwd = StringUtil.nvl(request.getParameter("passwd"),"");
-		//System.out.println("passwd:"+passwd); ajax ¹æ½ÄÀ¸·Î ¹ÞÀº »ç¿ëÀÚºñ¹Ð¹øÈ£
+		//System.out.println("passwd:"+passwd); ajax ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úºï¿½Ð¹ï¿½È£
 		
 		model.put("page","E");
 		model.put("user_id", user_id);
@@ -802,7 +802,7 @@ public class UserAction extends StrutsDispatchAction{
 	
 	
 	/**
-	 * »çÁø ¾÷·Îµå ÆäÀÌÁö
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -842,7 +842,7 @@ public class UserAction extends StrutsDispatchAction{
 	
 	
 	/**
-	 * »çÁø ¾÷·Îµå
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -872,23 +872,23 @@ public class UserAction extends StrutsDispatchAction{
 		String status = uploadEntity.getStatus();
 		
 		if (status.equals("E")){ 
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 	        
 		}else if (status.equals("O")){ 
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 10M ±îÁö °¡´ÉÇÕ´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 10M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 			    
 		}else if (status.equals("I")){
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 			
 		}else if(status.equals("S")){
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Â´Ù
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for(int i = 0 ; i < files.size(); i++){
@@ -905,7 +905,7 @@ public class UserAction extends StrutsDispatchAction{
 					filePath = uploadEntity.getUploadPath();
 					uploadFilePath=filePath + sFileName;
 
-					log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í["+ objName + "]¿øÆÄÀÏ¸í["+rFileName+"]ÀúÀåÆÄÀÏ¸í["+sFileName+"]ÆÄÀÏ»çÀÌÁî["+fileSize+"]ÀúÀåÆÄÀÏÆÐ½º["+filePath+"]¾÷·Îµå °æ·Î["+uploadFilePath+"]");
+					log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½["+ objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½["+rFileName+"]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½["+sFileName+"]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½["+fileSize+"]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½["+filePath+"]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["+uploadFilePath+"]");
 
 					if(objName.equals("photo_file")){
 						fileNm=uploadFilePath;
@@ -920,7 +920,7 @@ public class UserAction extends StrutsDispatchAction{
 	}
 	
 	/**
-	 * »çÁø ¾÷·Îµå
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -950,23 +950,23 @@ public class UserAction extends StrutsDispatchAction{
 		String status = uploadEntity.getStatus();
 		
 		if (status.equals("E")){ 
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 	        
 		}else if (status.equals("O")){ 
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 10M ±îÁö °¡´ÉÇÕ´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 10M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 			    
 		}else if (status.equals("I")){
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";	
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";	
 	        return alertAndExit(model,msg,request.getContextPath()+"/jsp/back/common/error.jsp","back");	
 			
 		}else if(status.equals("S")){
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Â´Ù
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for(int i = 0 ; i < files.size(); i++){
@@ -983,7 +983,7 @@ public class UserAction extends StrutsDispatchAction{
 					filePath = uploadEntity.getUploadPath();
 					uploadFilePath=filePath + sFileName;
 
-					log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í["+ objName + "]¿øÆÄÀÏ¸í["+rFileName+"]ÀúÀåÆÄÀÏ¸í["+sFileName+"]ÆÄÀÏ»çÀÌÁî["+fileSize+"]ÀúÀåÆÄÀÏÆÐ½º["+filePath+"]¾÷·Îµå °æ·Î["+uploadFilePath+"]");
+					log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½["+ objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½["+rFileName+"]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½["+sFileName+"]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½["+fileSize+"]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½["+filePath+"]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["+uploadFilePath+"]");
 
 					if(objName.equals("photo_file")){
 						fileNm=uploadFilePath;

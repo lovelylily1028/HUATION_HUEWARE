@@ -57,18 +57,16 @@ import com.baroservice.ws.*;
 
 public class BaroInvoiceAction extends StrutsDispatchAction{
 	
-	//±¹¼¼Ã» ¹ßÇà Å×½ºÆ®Å°
+	//ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®Å°
 	//public static String INVOICE_KEY = config.getString("framework.hueware.invocekey_dev");
-	//½Ç¼­¹öÅ°
+	//ï¿½Ç¼ï¿½ï¿½ï¿½Å°
 	public static String INVOICE_KEY = config.getString("framework.hueware.invocekey");
 	
-	
-	
-	//¼¼±Ý°è»ê¼­ »ó¼¼ Á¤º¸ 
+	//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public ActionForward baroInvoiceView(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 		
 		int curPageCnt = 0;
-		String invoice_code = "";  //°è»ê¼­ ÄÚµå
+		String invoice_code = "";  //ï¿½ï¿½ê¼­ ï¿½Úµï¿½
 		
 		curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
@@ -103,7 +101,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		model.put("dateSetter3", dateSetter3 );
 	    model.put("invoiceDto", invoiceDto);
 	    model.put("esDto", esDto);
-	   /* model.put("itemList", itemList);//»óÇ°ÄÚµå Array
+	   /* model.put("itemList", itemList);//ï¿½ï¿½Ç°ï¿½Úµï¿½ Array
 */		model.put("curPage",String.valueOf(curPageCnt));
 		model.put("gun",gun);
 		model.put("ho",ho);
@@ -112,7 +110,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		model.put("searchtxt", searchtxt);
 		
 	    if(invoiceDto == null){
-			String msg = "ÇØ´ç  ¾÷Ã¼  Á¤º¸°¡ ¾ø½À´Ï´Ù.";
+			String msg = "ï¿½Ø´ï¿½  ï¿½ï¿½Ã¼  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");
 	    }else{
 	    	return actionMapping.findForward("baroInvoiceView");
@@ -121,14 +119,14 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 	
 	
 	
-	//¼¼±Ý°è»ê¼­ ÆäÀÌÁö¸®½ºÆ®
+	//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	public ActionForward baroInvoicePageList(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-		//2013_05_28(È­)shbyeon. ´Þ·Â °Ë»ö ±â´É Ãß°¡.
+		//2013_05_28(È­)shbyeon. ï¿½Þ·ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
 //		String IvStartDate = StringUtil.nvl(request.getParameter("IvStartDate"),DateUtil.getDayInterval3(-365));
-		//2019_02_19 Á¶È¸½ÃÀÛÀÏÀ» ´çÇØ³âµµ 1¿ù1ÀÏ·Î ¼³Á¤
+		//2019_02_19 ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø³âµµ 1ï¿½ï¿½1ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String today = DateTimeUtil.getDateFormat(DateTimeUtil.getDate(),"-");
 		String currentYear = "2019";
 		if (today.length() >= 4) {
@@ -159,7 +157,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		return actionMapping.findForward("baroInvoicePageList");
 	}
 	
-	//¹Ù·Îºô¿¬µ¿ ¾×¼Ç, ¼¼±Ý°è»ê¼­¸®½ºÆ®¿¡¼­ º¸±â ¹öÆ° Å¬¸¯½Ã ÀÌº¥Æ®¹ß»ý
+	//ï¿½Ù·Îºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¼ï¿½, ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®ï¿½ß»ï¿½
 	public ActionForward invoiceDetailView(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 		
 		
@@ -171,12 +169,12 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 
 		  
-		String CERTKEY = INVOICE_KEY;				//¹ßÇà ÀÎÁõÅ°
+		String CERTKEY = INVOICE_KEY;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°
 
-		String CorpNum = "1088193762";				//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)
-		String MgtKey = MgtNum1;					//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-		String ID = "huation";						//¿¬°è»ç¾÷ÀÚ ¾ÆÀÌµð
-		String PWD = "huation@2100";					//¿¬°è»ç¾÷ÀÚ ºñ¹Ð¹øÈ£
+		String CorpNum = "1088193762";				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
+		String MgtKey = MgtNum1;					//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+		String ID = "huation";						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+		String PWD = "huation@2100";					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
 		
 		BaroService_TISoapProxy BST = new BaroService_TISoapProxy();
 		
@@ -191,7 +189,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		}
 		
 		if (intResult < 0){
-			System.out.println("¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY, intResult));
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY, intResult));
 			response.setContentType("text/html; charset=euc-kr");
 			response.getWriter().print("fail");
 		}else{		
@@ -204,12 +202,12 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		return null;
      
 	}/**
-		 * ¼¼±Ý°è»ê¼­ µî·ÏÃ³¸®
+		 * ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 		 * @param String 
 		 * @return ActionForward
 		 * @throws DAOException
 		 */
-		//¹Ù·Îºô ¿¬µ¿ ¹× ÈÞ¿þ¾î µðºñ¿¡ °ª ³Ö±â
+		//ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
 		public ActionForward baroRegist(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 			
 			
@@ -217,18 +215,18 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 			String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 			String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-			//·Î±×ÀÎ Ã³¸® 
+			//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 			String USERID = UserBroker.getUserId(request);
 			if(USERID.equals("")){
 					String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 					return goSessionOut(model, rtnUrl,"huation-sessionOut");
 			}
-// 			·Î±×ÀÎ Ã³¸® ³¡.
+// 			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 			
 			
 			
-			//¼¼±Ý°è»ê¼­ ¿¡ ³ÖÀ» °ª//
-			//°øÅëºÎºÐ//
+			//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½//
+			//ï¿½ï¿½ï¿½ï¿½Îºï¿½//
 			int TaxType = StringUtil.nvl(request.getParameter("TaxType"),1);
 			int InvoiceeType = StringUtil.nvl(request.getParameter("InvoiceeType"),1);
 			String Kwon= StringUtil.nvl(request.getParameter("Kwon"),"");
@@ -250,7 +248,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String AmountTotal = AmountTotal2.replaceAll(",","");
 			String TaxTotal = TaxTotal2.replaceAll(",", "");
 			
-			//Ç°¸ñ//
+			//Ç°ï¿½ï¿½//
 			String[] ItemName = request.getParameterValues("ItemName");
 			String[] PurchaseDT1= request.getParameterValues("PurchaseDT");
 			String[] PurchaseDT2= request.getParameterValues("PurchaseDT1");
@@ -287,7 +285,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String TotalAmount2= StringUtil.nvl(request.getParameter("TotalAmount"),"");
 			String TotalAmount = TotalAmount2.replaceAll(",","");
 			
-			//°ø±ÞÀÚ//
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½//
 			String InvoicerCorpNum= StringUtil.nvl(request.getParameter("InvoicerCorpNum"),"");
 			String InvoicerTaxRegID= StringUtil.nvl(request.getParameter("InvoicerTaxRegID"),"");
 			String InvoicerCorpName= StringUtil.nvl(request.getParameter("InvoicerCorpName"),"");
@@ -300,7 +298,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String InvoicerEmail1= StringUtil.nvl(request.getParameter("InvoicerEmail1"),"");
 			/////////
 			
-			//°ø±Þ¹Þ´ÂÀÚ//
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½//
 			String InvoiceeCorpNum= StringUtil.nvl(request.getParameter("InvoiceeCorpNum"),"");
 			String InvoiceeTaxRegID= StringUtil.nvl(request.getParameter("InvoiceeTaxRegID"),"");
 			String InvoiceeCorpName= StringUtil.nvl(request.getParameter("InvoiceeCorpName"),"");
@@ -323,32 +321,32 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String MgtNum = Integer.toString(cal.get(Calendar.YEAR)) + df.format(cal.get(Calendar.MONTH)+1) + df.format(cal.get(Calendar.DATE))+df.format(cal.getTimeInMillis());
 
 			
-								//ÀÎÁõÅ°
-			String CERTKEY = INVOICE_KEY;				//¹ßÇà ÀÎÁõÅ°
-			String CorpNum = "1088193762";				//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)
+								//ï¿½ï¿½ï¿½ï¿½Å°
+			String CERTKEY = INVOICE_KEY;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°
+			String CorpNum = "1088193762";				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			System.out.println("1:"+TaxTotal);
-			//ÀüÀÚ¼¼±Ý°è»ê¼­ ³»¿ë Ã¤¿ì±â
+			//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½
 			TaxInvoice clsTI = new TaxInvoice();
 			
-			clsTI.setIssueDirection(1);					//1-Á¤¹ßÇà, 2-¿ª¹ßÇà(À§¼öÅ¹ ¼¼±Ý°è»ê¼­´Â Á¤¹ßÇà¸¸ Çã¿ë)
-			clsTI.setTaxInvoiceType(1);					//1-¼¼±Ý°è»ê¼­, 2-°è»ê¼­, 4-À§¼öÅ¹¼¼±Ý°è»ê¼­, 5-À§¼öÅ¹°è»ê¼­
+			clsTI.setIssueDirection(1);					//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¸¸ ï¿½ï¿½ï¿½)
+			clsTI.setTaxInvoiceType(1);					//1-ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 2-ï¿½ï¿½ê¼­, 4-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 5-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ê¼­
 
 			//-------------------------------------------
-			//°ú¼¼ÇüÅÂ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			//-------------------------------------------
-			//TaxInvoiceType ÀÌ 1,4 ÀÏ ¶§ : 1-°ú¼¼, 2-¿µ¼¼
-			//TaxInvoiceType ÀÌ 2,5 ÀÏ ¶§ : 3-¸é¼¼
+			//TaxInvoiceType ï¿½ï¿½ 1,4 ï¿½ï¿½ ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½
+			//TaxInvoiceType ï¿½ï¿½ 2,5 ï¿½ï¿½ ï¿½ï¿½ : 3-ï¿½é¼¼
 			//-------------------------------------------
 			clsTI.setTaxType(1);
 
-			clsTI.setTaxCalcType(1);					//¼¼À²°è»ê¹æ¹ý : 1-Àý»ó, 2-Àý»ç, 3-¹Ý¿Ã¸²
-			clsTI.setPurposeType(2);					//1-¿µ¼ö, 2-Ã»±¸
+			clsTI.setTaxCalcType(1);					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½, 3-ï¿½Ý¿Ã¸ï¿½
+			clsTI.setPurposeType(2);					//1-ï¿½ï¿½ï¿½ï¿½, 2-Ã»ï¿½ï¿½
 
 			//-------------------------------------------
-			//¼öÁ¤»çÀ¯ÄÚµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 			//-------------------------------------------
-			//¼öÁ¤¼¼±Ý°è»ê¼­¸¦ ÀÛ¼ºÇÏ´Â °æ¿ì¿¡ »ç¿ë
-			//1-±âÀç»çÇ×ÀÇ Âø¿À Á¤Á¤, 2-°ø±Þ°¡¾×ÀÇ º¯µ¿, 3-ÀçÈ­ÀÇ È¯ÀÔ, 4-°è¾àÀÇ ÇØÁ¦, 5-³»±¹½Å¿ëÀå »çÈÄ°³¼³, 6-Âø¿À¿¡ ÀÇÇÑ ÀÌÁß¹ßÇà
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½
+			//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 3-ï¿½ï¿½È­ï¿½ï¿½ È¯ï¿½ï¿½, 4-ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 5-ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½, 6-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½
 			//-------------------------------------------
 				
 			
@@ -357,98 +355,98 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			}
 			
 			
-			clsTI.setKwon(request.getParameter(Kwon));							//º°Áö¼­½Ä 11È£ »óÀÇ [±Ç] Ç×¸ñ
-			clsTI.setHo(Ho);							//º°Áö¼­½Ä 11È£ »óÀÇ [È£] Ç×¸ñ
-			clsTI.setSerialNum(SerialNum);				//º°Áö¼­½Ä 11È£ »óÀÇ [ÀÏ·Ã¹øÈ£] Ç×¸ñ
+			clsTI.setKwon(request.getParameter(Kwon));							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½] ï¿½×¸ï¿½
+			clsTI.setHo(Ho);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [È£] ï¿½×¸ï¿½
+			clsTI.setSerialNum(SerialNum);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½Ï·Ã¹ï¿½È£] ï¿½×¸ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾×
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½
 			//-------------------------------------------
 			clsTI.setAmountTotal(AmountTotal);
 			
 			//-------------------------------------------
-			//¼¼¾×ÇÕ°è
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½
 			//-------------------------------------------
-			//clsTI.setTaxType ÀÌ 2 ¶Ç´Â 3 À¸·Î ¼ÂÆÃµÈ °æ¿ì 0À¸·Î ÀÔ·Â
+			//clsTI.setTaxType ï¿½ï¿½ 2 ï¿½Ç´ï¿½ 3 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 			//-------------------------------------------
 			clsTI.setTaxTotal(TaxTotal);
 
 			//-------------------------------------------
-			//ÇÕ°è±Ý¾×
+			//ï¿½Õ°ï¿½Ý¾ï¿½
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾× + ¼¼¾×ÇÕ°è ¿Í ÀÏÄ¡ÇØ¾ß ÇÕ´Ï´Ù.
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ø¾ï¿½ ï¿½Õ´Ï´ï¿½.
 			//-------------------------------------------
 			clsTI.setTotalAmount(TotalAmount);
 
-			clsTI.setCash("");							//Çö±Ý
-			clsTI.setChkBill("");						//¼öÇ¥
-			clsTI.setNote("");							//¾îÀ½
-			clsTI.setCredit("");						//¿Ü»ó¹Ì¼ö±Ý
+			clsTI.setCash("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setChkBill("");						//ï¿½ï¿½Ç¥
+			clsTI.setNote("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setCredit("");						//ï¿½Ü»ï¿½Ì¼ï¿½ï¿½ï¿½
 
 			clsTI.setRemark1(Remark1);
 			clsTI.setRemark2(Remark2);
 			clsTI.setRemark3(Remark3);
 
-			clsTI.setWriteDate(WriteDT);					//ÀÛ¼ºÀÏÀÚ (YYYYMMDD), °ø¹éÀÔ·Â ½Ã Today·Î ÀÛ¼ºµÊ.
+			clsTI.setWriteDate(WriteDT);					//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ (YYYYMMDD), ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ ï¿½ï¿½ Todayï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½.
 			System.out.println("2:"+TaxTotal);
 			//-------------------------------------------
-			//°ø±ÞÀÚ Á¤º¸ - Á¤¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoicerParty(new InvoiceParty());
-			clsTI.getInvoicerParty().setMgtNum(MgtNum);							//Á¤¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getInvoicerParty().setMgtNum(MgtNum);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getInvoicerParty().setTaxRegID(InvoicerTaxRegID);
-			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName);			//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setAddr(InvoicerAddr);
 			clsTI.getInvoicerParty().setBizType(InvoicerBizType);
 			clsTI.getInvoicerParty().setBizClass(InvoicerBizClass);
-			clsTI.getInvoicerParty().setContactID("huation");						//ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoicerParty().setContactName(InvoicerContactName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setContactID("huation");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoicerParty().setContactName(InvoicerContactName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setTEL(InvoicerTEL1);
 			clsTI.getInvoicerParty().setHP(InvoicerTEL1);
-			clsTI.getInvoicerParty().setEmail(InvoicerEmail1);			//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setEmail(InvoicerEmail1);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ¹Þ´ÂÀÚ Á¤º¸ - ¿ª¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoiceeParty(new InvoiceParty());
-			clsTI.getInvoiceeParty().setMgtNum("");							//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTaxRegID(InvoiceeTaxRegID);
-			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName);		//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName);		//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setAddr(InvoiceeAddr);
 			clsTI.getInvoiceeParty().setBizType(InvoiceeBizType);
 			clsTI.getInvoiceeParty().setBizClass(InvoiceeBizClass);
-			clsTI.getInvoiceeParty().setContactID("");						//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTEL(InvoiceeTEL1);
 			/*clsTI.getInvoiceeParty().setHP(InvoiceeTEL1);*/
-			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail1);			//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail1);			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			System.out.println("3:"+TaxTotal);
-			//ÇöÀç »ç¿ë ¾ÈÇÔ
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		/*	//-------------------------------------------
-			//¼öÅ¹ÀÚ Á¤º¸ - À§¼öÅ¹ ¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setBrokerParty(new InvoiceParty());
-			clsTI.getBrokerParty().setMgtNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getBrokerParty().setCorpNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getBrokerParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getBrokerParty().setCorpNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getBrokerParty().setTaxRegID("");
-			clsTI.getBrokerParty().setCorpName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
-			clsTI.getBrokerParty().setCEOName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setCorpName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getBrokerParty().setCEOName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setAddr("");
 			clsTI.getBrokerParty().setBizType("");
 			clsTI.getBrokerParty().setBizClass("");
-			clsTI.getBrokerParty().setContactID("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getBrokerParty().setContactName("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getBrokerParty().setContactName("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setTEL("");
 			clsTI.getBrokerParty().setHP("");
-			clsTI.getBrokerParty().setEmail("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setEmail("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 */			
 			//-------------------------------------------
-			//Ç°¸ñ
+			//Ç°ï¿½ï¿½
 			//-------------------------------------------	
 			TaxInvoiceTradeLineItem[] TaxInvoiceTradeLineItems = new TaxInvoiceTradeLineItem[ItemName.length];
 
@@ -475,13 +473,13 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 				
 				TaxInvoiceTradeLineItems[i] = new TaxInvoiceTradeLineItem();
 				TaxInvoiceTradeLineItems[i].setPurchaseExpiry(Today);		//YYYYMMDD
-				TaxInvoiceTradeLineItems[i].setName("Ç°¸ñ¸í1-" + (i + 1));
+				TaxInvoiceTradeLineItems[i].setName("Ç°ï¿½ï¿½ï¿½1-" + (i + 1));
 				TaxInvoiceTradeLineItems[i].setInformation("EA1");
 				TaxInvoiceTradeLineItems[i].setChargeableUnit("25");
 				TaxInvoiceTradeLineItems[i].setUnitPrice("40");
 				TaxInvoiceTradeLineItems[i].setAmount("1000");
 				TaxInvoiceTradeLineItems[i].setTax("100");
-				TaxInvoiceTradeLineItems[i].setDescription("Ç°¸ñºñ°í1-" + (i + 1));
+				TaxInvoiceTradeLineItems[i].setDescription("Ç°ï¿½ï¿½ï¿½ï¿½1-" + (i + 1));
 			}
 
 			clsTI.setTaxInvoiceTradeLineItems(TaxInvoiceTradeLineItems);	
@@ -492,59 +490,59 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			//-------------------------------------------
 			
-			int IssueTiming = 1;	//¹ßÇà½ÃÁ¡ : 1-°ø±ÞÀÚ Á÷Á¢¹ßÇà, 2-°ø±Þ¹Þ´ÂÀÚ ½ÂÀÎ½Ã ÀÚµ¿¹ßÇà
-									//¹ßÇà¿¹Á¤ ±â´ÉÀ» »ç¿ëÇÑ °æ¿ì¿¡¸¸ Àû¿ëµÊ.
+			int IssueTiming = 1;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+									//ï¿½ï¿½ï¿½à¿¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 			
 			//-------------------------------------------
 
 			BaroService_TISoapProxy BST = new BaroService_TISoapProxy();
 			
-			int Result = BST.registTaxInvoiceEX(CERTKEY, clsTI.getInvoicerParty().getCorpNum(), clsTI, IssueTiming);		//Á¤¹ßÇà
-			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//¿ª¹ßÇà
-			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//À§¼öÅ¹
+			int Result = BST.registTaxInvoiceEX(CERTKEY, clsTI.getInvoicerParty().getCorpNum(), clsTI, IssueTiming);		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//ï¿½ï¿½ï¿½ï¿½Å¹
 			
 			
 			
 						
 			if (Result < 0){		
 			
-				msg="¼¼±Ý°è»ê¼­ µî·ÏÀ» ½ÇÆÐÇÏ¿´½À´Ï´Ù.  " + BST.getErrString(CERTKEY, Result);
+				msg="ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  " + BST.getErrString(CERTKEY, Result);
 				
-				 // System.out.println("¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
+				 // System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
 				  return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroRegistForm","back");	
 			
 			}else{		
 				System.out.println(Result);	
 				/*
-				1 : ¼º°ø
+				1 : ï¿½ï¿½ï¿½ï¿½
 				*/
 			}
-			///////¿©±â±îÁö°¡ ÀÓ½ÃÀúÀåÇÔ¿¡ ÀüÀÚ°è»ê¼­ µî·Ï////////////
+			///////ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½////////////
 			
 			
 			
 			
-		/*	////////ÀüÀÚ°è»ê¼­ ±¹¼¼Ã» Áï½Ã ¹ßÇà////////////
-						//ÀÎÁõÅ°
-						//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)	
-			String MgtKey = MgtNum;					//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			boolean SendSMS = false;			//¹ßÇà ¾Ë¸²¹®ÀÚ Àü¼Û¿©ºÎ (¹ßÇàºñ¿ë°ú º°µµ·Î °ú±ÝµÊ)
-			int NTSSendOption = 1;				//ÇöÀç »ç¿ëµÇÁö ¾Ê´Â Ç×¸ñÀ¸·Î 1À» ÀÔ·ÂÇÏ¸é µÈ´Ù.
-			boolean ForceIssue = false;			//°¡»ê¼¼ ºÎ°ú ¿©ºÎ¿¡ »ó°ü¾øÀÌ ¹ßÇàÇÒÁö ¿©ºÎ	
-			String MailTitle = "";				//¹ßÇà ¾Ë¸²¸ÞÀÏÀÇ Á¦¸ñ (°ø¹éÀÌ³ª NullÀÇ °æ¿ì ¹Ù·Îºô ±âº»°ªÀ¸·Î Àü¼ÛµÊ.)
+		/*	////////ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½////////////
+						//ï¿½ï¿½ï¿½ï¿½Å°
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)	
+			String MgtKey = MgtNum;					//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			boolean SendSMS = false;			//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½)
+			int NTSSendOption = 1;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
+			boolean ForceIssue = false;			//ï¿½ï¿½ï¿½ê¼¼ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
+			String MailTitle = "";				//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ Nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½.)
 
 			BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();
 			
 			int Result1 = BST.issueTaxInvoice(CERTKEY, CorpNum, MgtKey, SendSMS, NTSSendOption, ForceIssue, MailTitle);
 			
 			if (Result < 0){		
-				System.out.println("¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));	
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));	
 			}else{		
-				System.out.println("±¹¼¼Ã»¹ßÇà:"+Result);	
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½:"+Result);	
 			}
-				1 : ¼º°ø
-				2 : ¼º°ø(Æ÷ÀÎÆ® ºÎÁ·À¸·Î SMS Àü¼Û½ÇÆÐ)
-				3 : ¼º°ø(ÀÌ¸ÞÀÏ Àü¼Û½ÇÆÐ, SendEmail ÇÔ¼ö·Î ÀÌ¸ÞÀÏÀ» ÀçÀü¼Û ÇÏ½Ê½Ã¿À.)
+				1 : ï¿½ï¿½ï¿½ï¿½
+				2 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SMS ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½)
+				3 : ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½, SendEmail ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ê½Ã¿ï¿½.)
 				
 			
 			
@@ -554,7 +552,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		
 			
 			
-			//ÈÞ¿þ¾î µðºñ¿¡ ³ÖÀ» °ª
+			//ï¿½Þ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			String manage_no= "";  
 			String maPre="";
 			String maNo="";
@@ -586,44 +584,44 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			log.debug("[getManage_no]" + invoiceDto.getManage_no());
 				
 			if(invoiceDto.getManage_no().equals("MAX") || invoiceDto.getManage_no().equals(null) ){
-				msg = "°ü¸®¹øÈ£ »ý¼º¿À·ù [100°Ç ÀÌ»óÀÎ°æ¿ì]";			
+				msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [100ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Î°ï¿½ï¿½]";			
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 			}
 			
 			 
 			 
 				String mgtnum5 = MgtNum;
-				////////ÀüÀÚ°è»ê¼­ ±¹¼¼Ã» Áï½Ã ¹ßÇà////////////
-							//ÀÎÁõÅ°
-							//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)	
-				String CERTKEY3 = INVOICE_KEY;				//¹ßÇà ÀÎÁõÅ°
+				////////ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½////////////
+							//ï¿½ï¿½ï¿½ï¿½Å°
+							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)	
+				String CERTKEY3 = INVOICE_KEY;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°
 				
-			 	String CorpNum3 = "1088193762";				//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)	
-				String MgtKey3 = mgtnum5;					//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-				boolean SendSMS = false;			//¹ßÇà ¾Ë¸²¹®ÀÚ Àü¼Û¿©ºÎ (¹ßÇàºñ¿ë°ú º°µµ·Î °ú±ÝµÊ)
-				int NTSSendOption = 1;				//ÇöÀç »ç¿ëµÇÁö ¾Ê´Â Ç×¸ñÀ¸·Î 1À» ÀÔ·ÂÇÏ¸é µÈ´Ù.
-				boolean ForceIssue = false;			//°¡»ê¼¼ ºÎ°ú ¿©ºÎ¿¡ »ó°ü¾øÀÌ ¹ßÇàÇÒÁö ¿©ºÎ	
-				String MailTitle = "";				//¹ßÇà ¾Ë¸²¸ÞÀÏÀÇ Á¦¸ñ (°ø¹éÀÌ³ª NullÀÇ °æ¿ì ¹Ù·Îºô ±âº»°ªÀ¸·Î Àü¼ÛµÊ.)
+			 	String CorpNum3 = "1088193762";				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)	
+				String MgtKey3 = mgtnum5;					//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+				boolean SendSMS = false;			//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½)
+				int NTSSendOption = 1;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
+				boolean ForceIssue = false;			//ï¿½ï¿½ï¿½ê¼¼ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
+				String MailTitle = "";				//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ Nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½.)
 
 				BaroService_TISoapProxy BST3 = new BaroService_TISoapProxy();
 				
 				int Result4 = BST.issueTaxInvoice(CERTKEY3, CorpNum3, MgtKey3, SendSMS, NTSSendOption, ForceIssue, MailTitle);
 				
 				if (Result4 < 0){		
-					System.out.println("¿À·ùÄÚµå : " + Result4 + "<br><br>" + BST.getErrString(CERTKEY3, Result4));	
+					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result4 + "<br><br>" + BST.getErrString(CERTKEY3, Result4));	
 				}else{		
-					System.out.println("±¹¼¼Ã»¹ßÇà:"+Result4);	
+					System.out.println("ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½:"+Result4);	
 					/*
-					1 : ¼º°ø
-					2 : ¼º°ø(Æ÷ÀÎÆ® ºÎÁ·À¸·Î SMS Àü¼Û½ÇÆÐ)
-					3 : ¼º°ø(ÀÌ¸ÞÀÏ Àü¼Û½ÇÆÐ, SendEmail ÇÔ¼ö·Î ÀÌ¸ÞÀÏÀ» ÀçÀü¼Û ÇÏ½Ê½Ã¿À.)
+					1 : ï¿½ï¿½ï¿½ï¿½
+					2 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SMS ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½)
+					3 : ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½, SendEmail ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ê½Ã¿ï¿½.)
 					*/
 				}
 				
-				////////¼¼±Ý°è»ê¼­ »óÅÂÈ®ÀÎ ////
-				//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			String ID = "huation";						//¿¬°è»ç¾÷ÀÚ ¾ÆÀÌµð
-			String PWD = "huation@2100";					//¿¬°è»ç¾÷ÀÚ ºñ¹Ð¹øÈ£
+				////////ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ ////
+				//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			String ID = "huation";						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			String PWD = "huation@2100";					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
 			BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();//
 			BaroService_TISoapProxy BST2 = new BaroService_TISoapProxy();//
 			String MgtKey = MgtNum;//
@@ -640,7 +638,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			}
 			
 			if (intResult < 0){
-				System.out.println("¿À·ùÄÚµå : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY, intResult));	
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY, intResult));	
 			}else{		
 				System.out.println("<a href=\"" + Result2 + "\" target=\"_blank\">" + Result2 + "</a>");	//URL		
 			}	
@@ -675,8 +673,8 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			 retVal=invoiceDao.addInvoice(invoiceDto);
 
 
-			 msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù.";			
-		        if(retVal < 1) msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			 msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";			
+		        if(retVal < 1) msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 			
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");
 			/*return actionMapping.findForward("baroRegistForm");*/
@@ -686,31 +684,31 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		
 		
 		/**
-		 * ¼öÁ¤¼¼±Ý°è»ê¼­ Ãë¼ÒºÐ µî·Ï Ã³¸®
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Òºï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		 * @param String 
 		 * @return ActionForward
 		 * @throws DAOException
 		 */
-		//¹Ù·Îºô ¿¬µ¿ ¹× ÈÞ¿þ¾î µðºñ¿¡ °ª ³Ö±â
+		//ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
 		public ActionForward baroModifyRegist(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 			
 			
-			log.debug("¹ßÇàÃë¼ÒºÐ ¾×¼Ç½ÃÀÛ");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ ï¿½×¼Ç½ï¿½ï¿½ï¿½");
 			int curPageCnt1 = StringUtil.nvl(request.getParameter("curPage1"),1);
 			String searchGb1 = StringUtil.nvl(request.getParameter("searchGb1"),"");
 			String searchtxt1 = StringUtil.nvl(request.getParameter("searchtxt1"),"");
-			//·Î±×ÀÎ Ã³¸® 
+			//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 			String USERID = UserBroker.getUserId(request);
 			if(USERID.equals("")){
 					String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 					return goSessionOut(model, rtnUrl,"huation-sessionOut");
 			}
-// 			·Î±×ÀÎ Ã³¸® ³¡.
+// 			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 			
 			
 			
-			//¼¼±Ý°è»ê¼­ ¿¡ ³ÖÀ» °ª//
-			//°øÅëºÎºÐ//
+			//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½//
+			//ï¿½ï¿½ï¿½ï¿½Îºï¿½//
 			int TaxType1 = StringUtil.nvl(request.getParameter("TaxType1"),1);
 			int InvoiceeType1 = StringUtil.nvl(request.getParameter("InvoiceeType1"),1);
 			String Kwon1= StringUtil.nvl(request.getParameter("Kwon1"),"");
@@ -729,7 +727,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String contractno1= StringUtil.nvl(request.getParameter("contract1"),"");
 			String aprove1= StringUtil.nvl(request.getParameter("aprove1"),"");
 			String publicorg = StringUtil.nvl(request.getParameter("publicorg1"),"");
-			//Ç°¸ñ//
+			//Ç°ï¿½ï¿½//
 			
 			String[] ItemName1 = request.getParameterValues("ItemName1");
 			String PurchaseDT11= StringUtil.nvl(request.getParameter("PurchaseDT11"),"");
@@ -753,7 +751,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			String TotalAmount1= StringUtil.nvl(request.getParameter("TotalAmount1"),"");
 			
-			//°ø±ÞÀÚ//
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½//
 			String InvoicerCorpNum1= StringUtil.nvl(request.getParameter("InvoicerCorpNum1"),"");
 			String InvoicerTaxRegID1= StringUtil.nvl(request.getParameter("InvoicerTaxRegID1"),"");
 			String InvoicerCorpName1= StringUtil.nvl(request.getParameter("InvoicerCorpName1"),"");
@@ -766,7 +764,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String InvoicerEmail11= StringUtil.nvl(request.getParameter("InvoicerEmail11"),"");
 			/////////
 			
-			//°ø±Þ¹Þ´ÂÀÚ//
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½//
 			String InvoiceeCorpNum1= StringUtil.nvl(request.getParameter("InvoiceeCorpNum1"),"");
 			String InvoiceeTaxRegID1= StringUtil.nvl(request.getParameter("InvoiceeTaxRegID1"),"");
 			String InvoiceeCorpName1= StringUtil.nvl(request.getParameter("InvoiceeCorpName1"),"");
@@ -789,33 +787,33 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String Today = Integer.toString(cal.get(Calendar.YEAR)) + df.format(cal.get(Calendar.MONTH)+1) + df.format(cal.get(Calendar.DATE));
 			String MgtNum1 = Integer.toString(cal.get(Calendar.YEAR)) + df.format(cal.get(Calendar.MONTH)+1) + df.format(cal.get(Calendar.DATE))+df.format(cal.getTimeInMillis());
 
-								//ÀÎÁõÅ°
-			String CERTKEY1 = INVOICE_KEY;				//¹ßÇà ÀÎÁõÅ°
-			String CorpNum1 = "1088193762";				//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)
+								//ï¿½ï¿½ï¿½ï¿½Å°
+			String CERTKEY1 = INVOICE_KEY;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°
+			String CorpNum1 = "1088193762";				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			
 						
-			//ÀüÀÚ¼¼±Ý°è»ê¼­ ³»¿ë Ã¤¿ì±â
+			//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½
 			TaxInvoice clsTI = new TaxInvoice();
 			
-			clsTI.setIssueDirection(1);					//1-Á¤¹ßÇà, 2-¿ª¹ßÇà(À§¼öÅ¹ ¼¼±Ý°è»ê¼­´Â Á¤¹ßÇà¸¸ Çã¿ë)
-			clsTI.setTaxInvoiceType(1);					//1-¼¼±Ý°è»ê¼­, 2-°è»ê¼­, 4-À§¼öÅ¹¼¼±Ý°è»ê¼­, 5-À§¼öÅ¹°è»ê¼­
+			clsTI.setIssueDirection(1);					//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¸¸ ï¿½ï¿½ï¿½)
+			clsTI.setTaxInvoiceType(1);					//1-ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 2-ï¿½ï¿½ê¼­, 4-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 5-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ê¼­
 
 			//-------------------------------------------
-			//°ú¼¼ÇüÅÂ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			//-------------------------------------------
-			//TaxInvoiceType ÀÌ 1,4 ÀÏ ¶§ : 1-°ú¼¼, 2-¿µ¼¼
-			//TaxInvoiceType ÀÌ 2,5 ÀÏ ¶§ : 3-¸é¼¼
+			//TaxInvoiceType ï¿½ï¿½ 1,4 ï¿½ï¿½ ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½
+			//TaxInvoiceType ï¿½ï¿½ 2,5 ï¿½ï¿½ ï¿½ï¿½ : 3-ï¿½é¼¼
 			//-------------------------------------------
 			clsTI.setTaxType(1);
 
-			clsTI.setTaxCalcType(1);					//¼¼À²°è»ê¹æ¹ý : 1-Àý»ó, 2-Àý»ç, 3-¹Ý¿Ã¸²
-			clsTI.setPurposeType(2);					//1-¿µ¼ö, 2-Ã»±¸
+			clsTI.setTaxCalcType(1);					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½, 3-ï¿½Ý¿Ã¸ï¿½
+			clsTI.setPurposeType(2);					//1-ï¿½ï¿½ï¿½ï¿½, 2-Ã»ï¿½ï¿½
 
 			//-------------------------------------------
-			//¼öÁ¤»çÀ¯ÄÚµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 			//-------------------------------------------
-			//¼öÁ¤¼¼±Ý°è»ê¼­¸¦ ÀÛ¼ºÇÏ´Â °æ¿ì¿¡ »ç¿ë
-			//1-±âÀç»çÇ×ÀÇ Âø¿À Á¤Á¤, 2-°ø±Þ°¡¾×ÀÇ º¯µ¿, 3-ÀçÈ­ÀÇ È¯ÀÔ, 4-°è¾àÀÇ ÇØÁ¦, 5-³»±¹½Å¿ëÀå »çÈÄ°³¼³, 6-Âø¿À¿¡ ÀÇÇÑ ÀÌÁß¹ßÇà
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½
+			//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 3-ï¿½ï¿½È­ï¿½ï¿½ È¯ï¿½ï¿½, 4-ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 5-ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½, 6-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			if(modifyFlag.equals("01")){
 				clsTI.setModifyCode("1");	
@@ -830,99 +828,99 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			}
 			
 			
-			clsTI.setKwon(request.getParameter(Kwon1));							//º°Áö¼­½Ä 11È£ »óÀÇ [±Ç] Ç×¸ñ
-			clsTI.setHo(Ho1);							//º°Áö¼­½Ä 11È£ »óÀÇ [È£] Ç×¸ñ
-			clsTI.setSerialNum(SerialNum1);				//º°Áö¼­½Ä 11È£ »óÀÇ [ÀÏ·Ã¹øÈ£] Ç×¸ñ
+			clsTI.setKwon(request.getParameter(Kwon1));							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½] ï¿½×¸ï¿½
+			clsTI.setHo(Ho1);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [È£] ï¿½×¸ï¿½
+			clsTI.setSerialNum(SerialNum1);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½Ï·Ã¹ï¿½È£] ï¿½×¸ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾×
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½
 			//-------------------------------------------
 			clsTI.setAmountTotal(AmountTotal1);
 			
 			//-------------------------------------------
-			//¼¼¾×ÇÕ°è
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½
 			//-------------------------------------------
-			//clsTI.setTaxType ÀÌ 2 ¶Ç´Â 3 À¸·Î ¼ÂÆÃµÈ °æ¿ì 0À¸·Î ÀÔ·Â
+			//clsTI.setTaxType ï¿½ï¿½ 2 ï¿½Ç´ï¿½ 3 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 			//-------------------------------------------
 			clsTI.setTaxTotal(TaxTotal1);
 
 			//-------------------------------------------
-			//ÇÕ°è±Ý¾×
+			//ï¿½Õ°ï¿½Ý¾ï¿½
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾× + ¼¼¾×ÇÕ°è ¿Í ÀÏÄ¡ÇØ¾ß ÇÕ´Ï´Ù.
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ø¾ï¿½ ï¿½Õ´Ï´ï¿½.
 			//-------------------------------------------
 			clsTI.setTotalAmount(TotalAmount1);
 
-			clsTI.setCash("");							//Çö±Ý
-			clsTI.setChkBill("");						//¼öÇ¥
-			clsTI.setNote("");							//¾îÀ½
-			clsTI.setCredit("");						//¿Ü»ó¹Ì¼ö±Ý
+			clsTI.setCash("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setChkBill("");						//ï¿½ï¿½Ç¥
+			clsTI.setNote("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setCredit("");						//ï¿½Ü»ï¿½Ì¼ï¿½ï¿½ï¿½
 
 			clsTI.setRemark1(Remark11);
 			clsTI.setRemark2(Remark21);
 			clsTI.setRemark3(Remark31);
 
-			clsTI.setWriteDate(WriteDT1);					//ÀÛ¼ºÀÏÀÚ (YYYYMMDD), °ø¹éÀÔ·Â ½Ã Today·Î ÀÛ¼ºµÊ.
+			clsTI.setWriteDate(WriteDT1);					//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ (YYYYMMDD), ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ ï¿½ï¿½ Todayï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½.
 
 			//-------------------------------------------
-			//°ø±ÞÀÚ Á¤º¸ - Á¤¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoicerParty(new InvoiceParty());
-			clsTI.getInvoicerParty().setMgtNum(MgtNum1);							//Á¤¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getInvoicerParty().setMgtNum(MgtNum1);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getInvoicerParty().setTaxRegID(InvoicerTaxRegID1);
-			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName1);			//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName1);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setAddr(InvoicerAddr1);
 			clsTI.getInvoicerParty().setBizType(InvoicerBizType1);
 			clsTI.getInvoicerParty().setBizClass(InvoicerBizClass1);
-			clsTI.getInvoicerParty().setContactID("huation");						//ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoicerParty().setContactName(InvoicerContactName11);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setContactID("huation");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoicerParty().setContactName(InvoicerContactName11);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setTEL(InvoicerTEL11);
 			clsTI.getInvoicerParty().setHP(InvoicerTEL11);
-			clsTI.getInvoicerParty().setEmail(InvoicerEmail11);			//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setEmail(InvoicerEmail11);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ¹Þ´ÂÀÚ Á¤º¸ - ¿ª¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoiceeParty(new InvoiceParty());
-			clsTI.getInvoiceeParty().setMgtNum("");							//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTaxRegID(InvoiceeTaxRegID1);
-			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName1);		//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName1);		//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setAddr(InvoiceeAddr1);
 			clsTI.getInvoiceeParty().setBizType(InvoiceeBizType1);
 			clsTI.getInvoiceeParty().setBizClass(InvoiceeBizClass1);
-			clsTI.getInvoiceeParty().setContactID("");						//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName11);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName11);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTEL(InvoiceeTEL11);
 			/*clsTI.getInvoiceeParty().setHP(InvoiceeTEL1);*/
-			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail11);			//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail11);			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			
-			//ÇöÀç»ç¿ë¾ÈÇÔ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			/*//-------------------------------------------
-			//¼öÅ¹ÀÚ Á¤º¸ - À§¼öÅ¹ ¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setBrokerParty(new InvoiceParty());
-			clsTI.getBrokerParty().setMgtNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getBrokerParty().setCorpNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getBrokerParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getBrokerParty().setCorpNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getBrokerParty().setTaxRegID("");
-			clsTI.getBrokerParty().setCorpName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
-			clsTI.getBrokerParty().setCEOName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setCorpName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getBrokerParty().setCEOName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setAddr("");
 			clsTI.getBrokerParty().setBizType("");
 			clsTI.getBrokerParty().setBizClass("");
-			clsTI.getBrokerParty().setContactID("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getBrokerParty().setContactName("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getBrokerParty().setContactName("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setTEL("");
 			clsTI.getBrokerParty().setHP("");
-			clsTI.getBrokerParty().setEmail("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setEmail("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			*/
 			
 			//-------------------------------------------
-			//Ç°¸ñ
+			//Ç°ï¿½ï¿½
 			//-------------------------------------------	
 			TaxInvoiceTradeLineItem[] TaxInvoiceTradeLineItems = new TaxInvoiceTradeLineItem[ItemName1.length];
 
@@ -941,8 +939,8 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			clsTI.setTaxInvoiceTradeLineItems(TaxInvoiceTradeLineItems);
 						
 			
-			String OriginalNTSSenKey = aprove1;	//´çÃÊ ¼¼±Ý°è»ê¼­ÀÇ ±¹¼¼Ã» ½ÂÀÎ¹øÈ£
-			//¹Ù·ÎºôÀ» ÅëÇØ ¹ßÇàµÈ ¼¼±Ý°è»ê¼­¸¸ °¡´ÉÇÕ´Ï´Ù.
+			String OriginalNTSSenKey = aprove1;	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Î¹ï¿½È£
+			//ï¿½Ù·Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			
 			
 			
@@ -952,22 +950,22 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 
 			BaroService_TISoapProxy BST = new BaroService_TISoapProxy();
 			
-			int Result = BST.registModifyTaxInvoice(CERTKEY1, clsTI.getInvoicerParty().getCorpNum(), clsTI, OriginalNTSSenKey);		//Á¤¹ßÇà
-			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//¿ª¹ßÇà
-			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//À§¼öÅ¹
+			int Result = BST.registModifyTaxInvoice(CERTKEY1, clsTI.getInvoicerParty().getCorpNum(), clsTI, OriginalNTSSenKey);		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//ï¿½ï¿½ï¿½ï¿½Å¹
 			
 			if (Result < 0){		
-				msg="¼¼±Ý°è»ê¼­ µî·ÏÀ» ½ÇÆÐÇÏ¿´½À´Ï´Ù.  " + BST.getErrString(CERTKEY1, Result);
+				msg="ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  " + BST.getErrString(CERTKEY1, Result);
 				
-				 // System.out.println("¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
+				 // System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
 				 return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt1+"&searchGb="+searchGb1+"&searchtxt="+searchtxt1,"back");
 			}else{		
-				System.out.println("(Ãë¼ÒºÐ)ÀÓ½ÃÀúÀå °á°ú : "+Result);	
+				System.out.println("(ï¿½ï¿½Òºï¿½)ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : "+Result);	
 				/*
-				1 : ¼º°ø
+				1 : ï¿½ï¿½ï¿½ï¿½
 				*/
 			}
-			///////¿©±â±îÁö°¡ ÀÓ½ÃÀúÀåÇÔ¿¡ ÀüÀÚ°è»ê¼­ µî·Ï////////////
+			///////ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½////////////
 	
 			
 			
@@ -1007,7 +1005,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			log.debug("[getManage_no1]" + invoiceDto.getManage_no());
 				
 			if(invoiceDto.getManage_no().equals("MAX") || invoiceDto.getManage_no().equals(null) ){
-				msg = "°ü¸®¹øÈ£ »ý¼º¿À·ù [100°Ç ÀÌ»óÀÎ°æ¿ì]";			
+				msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [100ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Î°ï¿½ï¿½]";			
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt1+"&searchGb="+searchGb1+"&searchtxt="+searchtxt1,"back");	
 			}
 			
@@ -1015,36 +1013,36 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			
 			
-				////////ÀüÀÚ°è»ê¼­ ±¹¼¼Ã» Áï½Ã ¹ßÇà////////////
-						//ÀÎÁõÅ°
-						//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)	
-			String MgtKey1 = MgtNum1;					//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			boolean SendSMS = false;			//¹ßÇà ¾Ë¸²¹®ÀÚ Àü¼Û¿©ºÎ (¹ßÇàºñ¿ë°ú º°µµ·Î °ú±ÝµÊ)
-			int NTSSendOption = 1;				//ÇöÀç »ç¿ëµÇÁö ¾Ê´Â Ç×¸ñÀ¸·Î 1À» ÀÔ·ÂÇÏ¸é µÈ´Ù.
-			boolean ForceIssue = false;			//°¡»ê¼¼ ºÎ°ú ¿©ºÎ¿¡ »ó°ü¾øÀÌ ¹ßÇàÇÒÁö ¿©ºÎ	
-			String MailTitle = "";				//¹ßÇà ¾Ë¸²¸ÞÀÏÀÇ Á¦¸ñ (°ø¹éÀÌ³ª NullÀÇ °æ¿ì ¹Ù·Îºô ±âº»°ªÀ¸·Î Àü¼ÛµÊ.)
+				////////ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½////////////
+						//ï¿½ï¿½ï¿½ï¿½Å°
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)	
+			String MgtKey1 = MgtNum1;					//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			boolean SendSMS = false;			//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½)
+			int NTSSendOption = 1;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
+			boolean ForceIssue = false;			//ï¿½ï¿½ï¿½ê¼¼ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
+			String MailTitle = "";				//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ Nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½.)
 			
 			BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();
 			
 			int Result1 = BST.issueTaxInvoice(CERTKEY1, CorpNum1, MgtKey1, SendSMS, NTSSendOption, ForceIssue, MailTitle);
 			
 			if (Result < 0){		
-				System.out.println("(Ãë¼ÒºÐ)±¹¼¼Ã»¹ßÇà ¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY1, Result));	
+				System.out.println("(ï¿½ï¿½Òºï¿½)ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY1, Result));	
 			}else{		
-				System.out.println("(Ãë¼ÒºÐ)±¹¼¼Ã»¹ßÇà °á°ú:	"+Result);	
+				System.out.println("(ï¿½ï¿½Òºï¿½)ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½:	"+Result);	
 			}
-			/*	1 : ¼º°ø
-				2 : ¼º°ø(Æ÷ÀÎÆ® ºÎÁ·À¸·Î SMS Àü¼Û½ÇÆÐ)
-				3 : ¼º°ø(ÀÌ¸ÞÀÏ Àü¼Û½ÇÆÐ, SendEmail ÇÔ¼ö·Î ÀÌ¸ÞÀÏÀ» ÀçÀü¼Û ÇÏ½Ê½Ã¿À.)
+			/*	1 : ï¿½ï¿½ï¿½ï¿½
+				2 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SMS ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½)
+				3 : ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½, SendEmail ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ê½Ã¿ï¿½.)
 				
 			*/
 			
 			/////////////////////////
 			
-	////////¼¼±Ý°è»ê¼­ »óÅÂÈ®ÀÎ ////
-						//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			String ID = "huation";						//¿¬°è»ç¾÷ÀÚ ¾ÆÀÌµð
-			String PWD = "huation@2100";					//¿¬°è»ç¾÷ÀÚ ºñ¹Ð¹øÈ£
+	////////ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ ////
+						//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			String ID = "huation";						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			String PWD = "huation@2100";					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
 			//BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();
 			BaroService_TISoapProxy BST2 = new BaroService_TISoapProxy();
 			//String MgtKey1 = MgtNum1;
@@ -1062,9 +1060,9 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			if (intResult < 0){
 			
-			System.out.println("(Ãë¼ÒºÐ) »óÅÂÈ®ÀÎ ¿À·ùÄÚµå : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY1, intResult));	
+			System.out.println("(ï¿½ï¿½Òºï¿½) ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY1, intResult));	
 			}else{		
-			System.out.println("(Ãë¼ÒºÐ) »óÅÂÈ®ÀÎ °á°ú<a href=\"" + Result2 + "\" target=\"_blank\">" + Result2 + "</a>");	//URL		
+			System.out.println("(ï¿½ï¿½Òºï¿½) ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½<a href=\"" + Result2 + "\" target=\"_blank\">" + Result2 + "</a>");	//URL		
 			}	
 			
 			 invoiceDto.setPublic_no(public_no);
@@ -1096,13 +1094,13 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			 retVal=invoiceDao.addInvoiceItem(MgtNum1,WriteDT1,ItemName1,Spec1,Qty1,UnitCost1,Amount1,Tax1,Remark1);
 			 retVal=invoiceDao.addInvoice(invoiceDto);
 
-			 msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù.";			
-		        if(retVal < 1) msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			 msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";			
+		        if(retVal < 1) msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 		        
 		        
 			
 			
-			log.debug("¹ßÇàÃë¼ÒºÐ ¾×¼Ç Á¾·á");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ ï¿½×¼ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			
 			
 		       
@@ -1117,12 +1115,12 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		
 		
 		/**
-		 * ¼öÁ¤¼¼±Ý°è»ê¼­ µî·ÏÃ³¸®
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 		 * @param String 
 		 * @return ActionForward
 		 * @throws DAOException
 		 */
-		//¹Ù·Îºô ¿¬µ¿ ¹× ÈÞ¿þ¾î µðºñ¿¡ °ª ³Ö±â
+		//ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
 		public ActionForward baroInvoiceModifyRegist(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 			
 			
@@ -1130,17 +1128,17 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 			String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 			String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-			//·Î±×ÀÎ Ã³¸® 
+			//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 			String USERID = UserBroker.getUserId(request);
 			if(USERID.equals("")){
 					String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 					return goSessionOut(model, rtnUrl,"huation-sessionOut");
 			}
-// 			·Î±×ÀÎ Ã³¸® ³¡.
+// 			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 			
 			
-			//¼¼±Ý°è»ê¼­ ¿¡ ³ÖÀ» °ª//
-			//°øÅëºÎºÐ//
+			//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½//
+			//ï¿½ï¿½ï¿½ï¿½Îºï¿½//
 			int TaxType = StringUtil.nvl(request.getParameter("TaxType"),1);
 			System.out.println("--------------TaxType:"+TaxType);
 			int InvoiceeType = StringUtil.nvl(request.getParameter("InvoiceeType"),1);
@@ -1174,7 +1172,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			System.out.println("--------------AmountTotal:"+AmountTotal);
 			String TaxTotal = TaxTotal2.replaceAll(",", "");
 			System.out.println("--------------TaxTotal:"+TaxTotal);
-			//Ç°¸ñ//
+			//Ç°ï¿½ï¿½//
 			String[] ItemName = request.getParameterValues("ItemName");
 			System.out.println("--------------ItemName:"+ItemName);
 			String[] PurchaseDT1= request.getParameterValues("PurchaseDT");
@@ -1209,7 +1207,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			System.out.println("--------------PurposeType:"+PurposeType);
 			
 			System.out.println("--------------TotalAmount:"+TotalAmount);
-			//°ø±ÞÀÚ//
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½//
 			String InvoicerCorpNum= StringUtil.nvl(request.getParameter("InvoicerCorpNum"),"");
 			System.out.println("--------------InvoicerCorpNum:"+InvoicerCorpNum);
 			String InvoicerTaxRegID= StringUtil.nvl(request.getParameter("InvoicerTaxRegID"),"");
@@ -1232,7 +1230,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			System.out.println("--------------InvoicerEmail1:"+InvoicerEmail1);
 			/////////
 			
-			//°ø±Þ¹Þ´ÂÀÚ//
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½//
 			String InvoiceeCorpNum= StringUtil.nvl(request.getParameter("InvoiceeCorpNum"),"");
 			System.out.println("--------------InvoiceeCorpNum:"+InvoiceeCorpNum);
 			String InvoiceeTaxRegID= StringUtil.nvl(request.getParameter("InvoiceeTaxRegID"),"");
@@ -1275,33 +1273,33 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			System.out.println("--------------MgtNum:"+MgtNum);
 			
 			System.out.println("--------------Today:"+Today);
-								//ÀÎÁõÅ°
-			String CERTKEY = INVOICE_KEY;				//¹ßÇà ÀÎÁõÅ°
-			String CorpNum = "1088193762";				//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)
+								//ï¿½ï¿½ï¿½ï¿½Å°
+			String CERTKEY = INVOICE_KEY;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°
+			String CorpNum = "1088193762";				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			
 						
-			//ÀüÀÚ¼¼±Ý°è»ê¼­ ³»¿ë Ã¤¿ì±â
+			//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½
 			TaxInvoice clsTI = new TaxInvoice();
 			
-			clsTI.setIssueDirection(1);					//1-Á¤¹ßÇà, 2-¿ª¹ßÇà(À§¼öÅ¹ ¼¼±Ý°è»ê¼­´Â Á¤¹ßÇà¸¸ Çã¿ë)
-			clsTI.setTaxInvoiceType(1);					//1-¼¼±Ý°è»ê¼­, 2-°è»ê¼­, 4-À§¼öÅ¹¼¼±Ý°è»ê¼­, 5-À§¼öÅ¹°è»ê¼­
+			clsTI.setIssueDirection(1);					//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¸¸ ï¿½ï¿½ï¿½)
+			clsTI.setTaxInvoiceType(1);					//1-ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 2-ï¿½ï¿½ê¼­, 4-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½Ý°ï¿½ê¼­, 5-ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ê¼­
 
 			//-------------------------------------------
-			//°ú¼¼ÇüÅÂ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			//-------------------------------------------
-			//TaxInvoiceType ÀÌ 1,4 ÀÏ ¶§ : 1-°ú¼¼, 2-¿µ¼¼
-			//TaxInvoiceType ÀÌ 2,5 ÀÏ ¶§ : 3-¸é¼¼
+			//TaxInvoiceType ï¿½ï¿½ 1,4 ï¿½ï¿½ ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½
+			//TaxInvoiceType ï¿½ï¿½ 2,5 ï¿½ï¿½ ï¿½ï¿½ : 3-ï¿½é¼¼
 			//-------------------------------------------
 			clsTI.setTaxType(1);
 
-			clsTI.setTaxCalcType(1);					//¼¼À²°è»ê¹æ¹ý : 1-Àý»ó, 2-Àý»ç, 3-¹Ý¿Ã¸²
-			clsTI.setPurposeType(2);					//1-¿µ¼ö, 2-Ã»±¸
+			clsTI.setTaxCalcType(1);					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : 1-ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½ï¿½, 3-ï¿½Ý¿Ã¸ï¿½
+			clsTI.setPurposeType(2);					//1-ï¿½ï¿½ï¿½ï¿½, 2-Ã»ï¿½ï¿½
 
 			//-------------------------------------------
-			//¼öÁ¤»çÀ¯ÄÚµå
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 			//-------------------------------------------
-			//¼öÁ¤¼¼±Ý°è»ê¼­¸¦ ÀÛ¼ºÇÏ´Â °æ¿ì¿¡ »ç¿ë
-			//1-±âÀç»çÇ×ÀÇ Âø¿À Á¤Á¤, 2-°ø±Þ°¡¾×ÀÇ º¯µ¿, 3-ÀçÈ­ÀÇ È¯ÀÔ, 4-°è¾àÀÇ ÇØÁ¦, 5-³»±¹½Å¿ëÀå »çÈÄ°³¼³, 6-Âø¿À¿¡ ÀÇÇÑ ÀÌÁß¹ßÇà
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½
+			//1-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2-ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 3-ï¿½ï¿½È­ï¿½ï¿½ È¯ï¿½ï¿½, 4-ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 5-ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½, 6-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½
 			//-------------------------------------------
 				
 			
@@ -1309,96 +1307,96 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			
 			
-			clsTI.setKwon(request.getParameter(Kwon));							//º°Áö¼­½Ä 11È£ »óÀÇ [±Ç] Ç×¸ñ
-			clsTI.setHo(Ho);							//º°Áö¼­½Ä 11È£ »óÀÇ [È£] Ç×¸ñ
-			clsTI.setSerialNum(SerialNum);				//º°Áö¼­½Ä 11È£ »óÀÇ [ÀÏ·Ã¹øÈ£] Ç×¸ñ
+			clsTI.setKwon(request.getParameter(Kwon));							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½] ï¿½×¸ï¿½
+			clsTI.setHo(Ho);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [È£] ï¿½×¸ï¿½
+			clsTI.setSerialNum(SerialNum);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 11È£ ï¿½ï¿½ï¿½ï¿½ [ï¿½Ï·Ã¹ï¿½È£] ï¿½×¸ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾×
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½
 			//-------------------------------------------
 			clsTI.setAmountTotal(AmountTotal);
 			
 			//-------------------------------------------
-			//¼¼¾×ÇÕ°è
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½
 			//-------------------------------------------
-			//clsTI.setTaxType ÀÌ 2 ¶Ç´Â 3 À¸·Î ¼ÂÆÃµÈ °æ¿ì 0À¸·Î ÀÔ·Â
+			//clsTI.setTaxType ï¿½ï¿½ 2 ï¿½Ç´ï¿½ 3 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 			//-------------------------------------------
 			clsTI.setTaxTotal(TaxTotal);
 
 			//-------------------------------------------
-			//ÇÕ°è±Ý¾×
+			//ï¿½Õ°ï¿½Ý¾ï¿½
 			//-------------------------------------------
-			//°ø±Þ°¡¾× ÃÑ¾× + ¼¼¾×ÇÕ°è ¿Í ÀÏÄ¡ÇØ¾ß ÇÕ´Ï´Ù.
+			//ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ø¾ï¿½ ï¿½Õ´Ï´ï¿½.
 			//-------------------------------------------
 			clsTI.setTotalAmount(TotalAmount);
 
-			clsTI.setCash("");							//Çö±Ý
-			clsTI.setChkBill("");						//¼öÇ¥
-			clsTI.setNote("");							//¾îÀ½
-			clsTI.setCredit("");						//¿Ü»ó¹Ì¼ö±Ý
+			clsTI.setCash("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setChkBill("");						//ï¿½ï¿½Ç¥
+			clsTI.setNote("");							//ï¿½ï¿½ï¿½ï¿½
+			clsTI.setCredit("");						//ï¿½Ü»ï¿½Ì¼ï¿½ï¿½ï¿½
 
 			clsTI.setRemark1(Remark1);
 			clsTI.setRemark2(Remark2);
 			clsTI.setRemark3(Remark3);
 
-			clsTI.setWriteDate(WriteDT);					//ÀÛ¼ºÀÏÀÚ (YYYYMMDD), °ø¹éÀÔ·Â ½Ã Today·Î ÀÛ¼ºµÊ.
+			clsTI.setWriteDate(WriteDT);					//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ (YYYYMMDD), ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ ï¿½ï¿½ Todayï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½.
 
 			//-------------------------------------------
-			//°ø±ÞÀÚ Á¤º¸ - Á¤¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoicerParty(new InvoiceParty());
-			clsTI.getInvoicerParty().setMgtNum(MgtNum);							//Á¤¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getInvoicerParty().setMgtNum(MgtNum);							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoicerParty().setCorpNum("1088193762");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getInvoicerParty().setTaxRegID(InvoicerTaxRegID);
-			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName);			//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setCorpName(InvoicerCorpName);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoicerParty().setCEOName(InvoicerCEOName);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setAddr(InvoicerAddr);
 			clsTI.getInvoicerParty().setBizType(InvoicerBizType);
 			clsTI.getInvoicerParty().setBizClass(InvoicerBizClass);
-			clsTI.getInvoicerParty().setContactID("huation");						//ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoicerParty().setContactName(InvoicerContactName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setContactID("huation");						//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoicerParty().setContactName(InvoicerContactName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoicerParty().setTEL(InvoicerTEL1);
 			clsTI.getInvoicerParty().setHP(InvoicerTEL1);
-			clsTI.getInvoicerParty().setEmail(InvoicerEmail1);			//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoicerParty().setEmail(InvoicerEmail1);			//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			//-------------------------------------------
-			//°ø±Þ¹Þ´ÂÀÚ Á¤º¸ - ¿ª¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½ï¿½Þ¹Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setInvoiceeParty(new InvoiceParty());
-			clsTI.getInvoiceeParty().setMgtNum("");							//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getInvoiceeParty().setCorpNum(InvoiceeCorpNum);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTaxRegID(InvoiceeTaxRegID);
-			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName);		//ÇÊ¼öÀÔ·Â
-			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setCorpName(InvoiceeCorpName);		//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getInvoiceeParty().setCEOName(InvoiceeCEOName);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setAddr(InvoiceeAddr);
 			clsTI.getInvoiceeParty().setBizType(InvoiceeBizType);
 			clsTI.getInvoiceeParty().setBizClass(InvoiceeBizClass);
-			clsTI.getInvoiceeParty().setContactID("");						//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName1);				//ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getInvoiceeParty().setContactName(InvoiceeContactName1);				//ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getInvoiceeParty().setTEL(InvoiceeTEL1);
 			/*clsTI.getInvoiceeParty().setHP(InvoiceeTEL1);*/
-			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail1);			//¿ª¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getInvoiceeParty().setEmail(InvoiceeEmail1);			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 
 			//-------------------------------------------
-			//¼öÅ¹ÀÚ Á¤º¸ - À§¼öÅ¹ ¹ßÇà½Ã ¼¼±Ý°è»ê¼­ ÀÛ¼ºÀÚ
+			//ï¿½ï¿½Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Å¹ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½Û¼ï¿½ï¿½ï¿½
 			//-------------------------------------------
 			clsTI.setBrokerParty(new InvoiceParty());
-			clsTI.getBrokerParty().setMgtNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			clsTI.getBrokerParty().setCorpNum("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ (//-// Á¦¿Ü, 10ÀÚ¸®)
+			clsTI.getBrokerParty().setMgtNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			clsTI.getBrokerParty().setCorpNum("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ (//-// ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)
 			clsTI.getBrokerParty().setTaxRegID("");
-			clsTI.getBrokerParty().setCorpName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
-			clsTI.getBrokerParty().setCEOName("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setCorpName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
+			clsTI.getBrokerParty().setCEOName("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setAddr("");
 			clsTI.getBrokerParty().setBizType("");
 			clsTI.getBrokerParty().setBizClass("");
-			clsTI.getBrokerParty().setContactID("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â - ´ã´çÀÚ ¹Ù·Îºô ¾ÆÀÌµð
-			clsTI.getBrokerParty().setContactName("");						//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setContactID("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			clsTI.getBrokerParty().setContactName("");						//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			clsTI.getBrokerParty().setTEL("");
 			clsTI.getBrokerParty().setHP("");
-			clsTI.getBrokerParty().setEmail("");							//À§¼öÅ¹¹ßÇà½Ã ÇÊ¼öÀÔ·Â
+			clsTI.getBrokerParty().setEmail("");							//ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô·ï¿½
 			
 			//-------------------------------------------
-			//Ç°¸ñ
+			//Ç°ï¿½ï¿½
 			//-------------------------------------------	
 			TaxInvoiceTradeLineItem[] TaxInvoiceTradeLineItems = new TaxInvoiceTradeLineItem[ItemName.length];
 
@@ -1423,41 +1421,41 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 				
 				TaxInvoiceTradeLineItems[i] = new TaxInvoiceTradeLineItem();
 				TaxInvoiceTradeLineItems[i].setPurchaseExpiry(Today);		//YYYYMMDD
-				TaxInvoiceTradeLineItems[i].setName("Ç°¸ñ¸í1-" + (i + 1));
+				TaxInvoiceTradeLineItems[i].setName("Ç°ï¿½ï¿½ï¿½1-" + (i + 1));
 				TaxInvoiceTradeLineItems[i].setInformation("EA1");
 				TaxInvoiceTradeLineItems[i].setChargeableUnit("25");
 				TaxInvoiceTradeLineItems[i].setUnitPrice("40");
 				TaxInvoiceTradeLineItems[i].setAmount("1000");
 				TaxInvoiceTradeLineItems[i].setTax("100");
-				TaxInvoiceTradeLineItems[i].setDescription("Ç°¸ñºñ°í1-" + (i + 1));
+				TaxInvoiceTradeLineItems[i].setDescription("Ç°ï¿½ï¿½ï¿½ï¿½1-" + (i + 1));
 			}
 
 			clsTI.setTaxInvoiceTradeLineItems(TaxInvoiceTradeLineItems);	
 */			
-			String OriginalNTSSenKey = aprove;	//´çÃÊ ¼¼±Ý°è»ê¼­ÀÇ ±¹¼¼Ã» ½ÂÀÎ¹øÈ£
-			//¹Ù·ÎºôÀ» ÅëÇØ ¹ßÇàµÈ ¼¼±Ý°è»ê¼­¸¸ °¡´ÉÇÕ´Ï´Ù.
+			String OriginalNTSSenKey = aprove;	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Î¹ï¿½È£
+			//ï¿½Ù·Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			
 			String msg ="";
 			
 
 			BaroService_TISoapProxy BST = new BaroService_TISoapProxy();
 			
-			int Result = BST.registModifyTaxInvoice(CERTKEY, clsTI.getInvoicerParty().getCorpNum(), clsTI, OriginalNTSSenKey);		//Á¤¹ßÇà
-			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//¿ª¹ßÇà
-			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//À§¼öÅ¹
+			int Result = BST.registModifyTaxInvoice(CERTKEY, clsTI.getInvoicerParty().getCorpNum(), clsTI, OriginalNTSSenKey);		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registTaxInvoiceReverse(CERTKEY, clsTI.getInvoiceeParty().getCorpNum(), clsTI);				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//int Result = BST.registBrokerTaxInvoiceEX(CERTKEY, clsTI.getBrokerParty().getCorpNum(), clsTI, issueTiming);	//ï¿½ï¿½ï¿½ï¿½Å¹
 			
 			if (Result < 0){		
-				msg="¼¼±Ý°è»ê¼­ µî·ÏÀ» ½ÇÆÐÇÏ¿´½À´Ï´Ù.  " + BST.getErrString(CERTKEY, Result);
+				msg="ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  " + BST.getErrString(CERTKEY, Result);
 				
-				 // System.out.println("¿À·ùÄÚµå : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
+				 // System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));
 				 return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");
 			}else{		
-				System.out.println("(¼öÁ¤ºÐ)ÀÓ½ÃÀúÀå °á°ú : "+Result);	
+				System.out.println("(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : "+Result);	
 				/*
-				1 : ¼º°ø
+				1 : ï¿½ï¿½ï¿½ï¿½
 				*/
 			}
-			///////¿©±â±îÁö°¡ ÀÓ½ÃÀúÀåÇÔ¿¡ ÀüÀÚ°è»ê¼­ µî·Ï////////////
+			///////ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½////////////
 			
 			
 			
@@ -1465,28 +1463,28 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			
 			
-			////////ÀüÀÚ°è»ê¼­ ±¹¼¼Ã» Áï½Ã ¹ßÇà////////////
-						//ÀÎÁõÅ°
-						//¿¬°è»ç¾÷ÀÚ »ç¾÷ÀÚ¹øÈ£ ('-' Á¦¿Ü, 10ÀÚ¸®)	
-			String MgtKey = MgtNum;					//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			boolean SendSMS = false;			//¹ßÇà ¾Ë¸²¹®ÀÚ Àü¼Û¿©ºÎ (¹ßÇàºñ¿ë°ú º°µµ·Î °ú±ÝµÊ)
-			int NTSSendOption = 1;				//ÇöÀç »ç¿ëµÇÁö ¾Ê´Â Ç×¸ñÀ¸·Î 1À» ÀÔ·ÂÇÏ¸é µÈ´Ù.
-			boolean ForceIssue = false;			//°¡»ê¼¼ ºÎ°ú ¿©ºÎ¿¡ »ó°ü¾øÀÌ ¹ßÇàÇÒÁö ¿©ºÎ	
-			String MailTitle = "";				//¹ßÇà ¾Ë¸²¸ÞÀÏÀÇ Á¦¸ñ (°ø¹éÀÌ³ª NullÀÇ °æ¿ì ¹Ù·Îºô ±âº»°ªÀ¸·Î Àü¼ÛµÊ.)
+			////////ï¿½ï¿½ï¿½Ú°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½////////////
+						//ï¿½ï¿½ï¿½ï¿½Å°
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½È£ ('-' ï¿½ï¿½ï¿½ï¿½, 10ï¿½Ú¸ï¿½)	
+			String MgtKey = MgtNum;					//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			boolean SendSMS = false;			//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ýµï¿½)
+			int NTSSendOption = 1;				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
+			boolean ForceIssue = false;			//ï¿½ï¿½ï¿½ê¼¼ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
+			String MailTitle = "";				//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ Nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·Îºï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½.)
 
 			BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();
 			
 			int Result1 = BST.issueTaxInvoice(CERTKEY, CorpNum, MgtKey, SendSMS, NTSSendOption, ForceIssue, MailTitle);
 			
-			System.out.println("¿©±â±îÁö¿Í¾ßµÈ´Ù°í");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ßµÈ´Ù°ï¿½");
 			if (Result < 0){		
-				System.out.println("¿À·ùÄÚµå11 : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));	
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½11 : " + Result + "<br><br>" + BST.getErrString(CERTKEY, Result));	
 			}else{		
 				System.out.println(Result);	
 			}
-			/*	1 : ¼º°ø
-				2 : ¼º°ø(Æ÷ÀÎÆ® ºÎÁ·À¸·Î SMS Àü¼Û½ÇÆÐ)
-				3 : ¼º°ø(ÀÌ¸ÞÀÏ Àü¼Û½ÇÆÐ, SendEmail ÇÔ¼ö·Î ÀÌ¸ÞÀÏÀ» ÀçÀü¼Û ÇÏ½Ê½Ã¿À.)
+			/*	1 : ï¿½ï¿½ï¿½ï¿½
+				2 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SMS ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½)
+				3 : ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½, SendEmail ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½Ê½Ã¿ï¿½.)
 				
 			*/
 			
@@ -1496,10 +1494,10 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			
 			
-			////////¼¼±Ý°è»ê¼­ »óÅÂÈ®ÀÎ ////
-							//ÀÚÃ¼¹®¼­°ü¸®¹øÈ£
-			String ID = "huation";						//¿¬°è»ç¾÷ÀÚ ¾ÆÀÌµð
-			String PWD = "huation@2100";					//¿¬°è»ç¾÷ÀÚ ºñ¹Ð¹øÈ£
+			////////ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½ ////
+							//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+			String ID = "huation";						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+			String PWD = "huation@2100";					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
 			//BaroService_TISoapProxy BST1 = new BaroService_TISoapProxy();
 			BaroService_TISoapProxy BST2 = new BaroService_TISoapProxy();
 			//String MgtKey = MgtNum;
@@ -1516,7 +1514,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			}
 			
 			if (intResult < 0){
-				System.out.println("¿À·ùÄÚµå11 : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY, intResult));	
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½11 : " + Result2 + "<br><br>" + BST2.getErrString(CERTKEY, intResult));	
 			}else{		
 				System.out.println("<a href=\"" + Result2 + "\" target=\"_blank\">" + Result2 + "</a>");	//URL		
 			}	
@@ -1568,7 +1566,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			log.debug("[getManage_no]" + invoiceDto.getManage_no());
 				
 			if(invoiceDto.getManage_no().equals("MAX") || invoiceDto.getManage_no().equals(null) ){
-				msg = "°ü¸®¹øÈ£ »ý¼º¿À·ù [100°Ç ÀÌ»óÀÎ°æ¿ì]";			
+				msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [100ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Î°ï¿½ï¿½]";			
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 			}
 			
@@ -1609,8 +1607,8 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 				///////
 				
 				
-				String[] ProductCode = multipartRequest.getParameterValues("ProductCode"); //Arr ÀÏ¶§ getParameterValues //multipart »ç¿ë ½Ã
-				retVal = csDao.addproductCode_EST( ProductCode, PROJECT_PK_CODE ,ProductPk_Mapping); //(»óÇ°ÄÚµå,¿µ¾÷ÁøÇàÇöÈ²ÄÚµå,°ßÀû¼­ ¹ßÇà¹øÈ£)
+				String[] ProductCode = multipartRequest.getParameterValues("ProductCode"); //Arr ï¿½Ï¶ï¿½ getParameterValues //multipart ï¿½ï¿½ï¿½ ï¿½ï¿½
+				retVal = csDao.addproductCode_EST( ProductCode, PROJECT_PK_CODE ,ProductPk_Mapping); //(ï¿½ï¿½Ç°ï¿½Úµï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½Úµï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È£)
 			*/
 				///////////////////////////////////////////
 			 
@@ -1619,8 +1617,8 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			 retVal =invoiceDao.addInvoiceItem(MgtNum,WriteDT,ItemName,Spec,Qty,UnitCost,Amount,Tax,Remark);
 			 retVal=invoiceDao.addInvoice(invoiceDto);
 
-			 msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù.";			
-		        if(retVal < 1) msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			 msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";			
+		        if(retVal < 1) msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 			
 			
 			
@@ -1655,25 +1653,25 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		
 		
 		/**
-		 * ¿ª¹ßÇà µî·ÏÆû
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * @param String 
 		 * @return ActionForward
 		 * @throws DAOException
 		 */
 		public ActionForward inverseRegistForm(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 			
-			log.debug("¾÷Ã¼µî·Ï");
+			log.debug("ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½");
 			
 			int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 			String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 			String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-			//·Î±×ÀÎ Ã³¸® 
+			//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 			String USERID = UserBroker.getUserId(request);
 			if(USERID.equals("")){
 					String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 					return goSessionOut(model, rtnUrl,"huation-sessionOut");
 			}
-// 			·Î±×ÀÎ Ã³¸® ³¡.
+// 			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 			
 			CommonDAO comDao = new CommonDAO();
 			String curDate = comDao.getCurrentDate();
@@ -1685,7 +1683,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		  /*  cal.add(Calendar.DATE, -1);*/
 		  /*  cal.add(Calendar.MONTH, 2);*/
 		     
-		    // Æ¯Á¤ ÇüÅÂÀÇ ³¯Â¥·Î °ªÀ» »Ì±â 
+		    // Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ 
 		    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		    String strDate = df.format(cal.getTime());
 		    System.err.println(strDate);
@@ -1709,20 +1707,20 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 		}
 		
 		/**
-		 * ¿ª¹ßÇà µî·ÏÃ³¸®
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 		 * @param String 
 		 * @return ActionForward
 		 * @throws DAOException
 		 */
 		public ActionForward inverseRegist(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
-			log.debug("¿ª¹ßÇà µî·ÏÃ³¸®");
-//			·Î±×ÀÎ Ã³¸® 
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½");
+//			ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 			String USERID = UserBroker.getUserId(request);
 			if(USERID.equals("")){
 					String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 					return goSessionOut(model, rtnUrl,"huation-sessionOut");
 			}
-			// ·Î±×ÀÎ Ã³¸® ³¡.
+			// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 			DecimalFormat df = new DecimalFormat("00");	
 			Calendar cal = Calendar.getInstance();	
 			String MgtNum = Integer.toString(cal.get(Calendar.YEAR)) + df.format(cal.get(Calendar.MONTH)+1) + df.format(cal.get(Calendar.DATE))+df.format(cal.getTimeInMillis());
@@ -1739,7 +1737,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String searchtxt = StringUtil.nvl(multipartRequest.getParameter("searchtxt"),"");
 			*/
 			
-			log.debug("¿ª¹ßÇà µî·ÏÃ³¸®4");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½4");
 			String objName = "";
 			String rFileName = "";
 			String sFileName = "";
@@ -1752,7 +1750,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			log.debug("FilePath= " + FilePath);
 			UploadFiles uploadEntity = FileUtil.upload(request, FilePath, USERID,
 					20);
-			//UploadFiles (,,,20)20ÀÇ¹Ì MB¿ë·® ´ÜÀ§¼³Á¤
+			//UploadFiles (,,,20)20ï¿½Ç¹ï¿½ MBï¿½ë·® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			multipartRequest = uploadEntity.getMultipart();
 			String status = uploadEntity.getStatus();
 			
@@ -1762,33 +1760,33 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			String searchtxt = "";
 			String sForm = "N";
 
-			String inverseregist = ""; // °è¾à¼­ ÆÄÀÏ ¹ÞÀ» ÆÄ¶ó¹ÌÅÍ
+			String inverseregist = ""; // ï¿½ï¿½à¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½
 			
 
 			if (status.equals("E")) {
-				log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-				msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+				log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+				msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 				return alertAndExit(model, msg, request.getContextPath()
 						+ "/jsp/hueware/common/error.jsp", "back");
 
 			} else if (status.equals("O")) {
-				log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-				msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 20M ±îÁö °¡´ÉÇÕ´Ï´Ù.";
+				log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+				msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 20M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 				return alertAndExit(model, msg, request.getContextPath()
 						+ "/jsp/hueware/common/error.jsp", "back");
 
 			} else if (status.equals("I")) {
-				log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-				msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+				log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+				msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 				return alertAndExit(model, msg, request.getContextPath()
 						+ "/jsp/hueware/common/error.jsp", "back");
 
 			} else if (status.equals("S")) {
-				// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
+				// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
 				inverseregist = StringUtil.nvl(
 						multipartRequest.getParameter("inverseregist"), "");
 				System.out.println("tst:"+inverseregist);
-				log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+				log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 				ArrayList files = uploadEntity.getFiles();
 				UploadFile file = null;
 				for (int i = 0; i < files.size(); i++) {
@@ -1807,9 +1805,9 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 						filePath = uploadEntity.getUploadPath();
 						uploadFilePath = filePath + sFileName;
 
-						log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í[" + objName + "]¿øÆÄÀÏ¸í[" + rFileName
-								+ "]ÀúÀåÆÄÀÏ¸í[" + sFileName + "]ÆÄÀÏ»çÀÌÁî[" + fileSize
-								+ "]ÀúÀåÆÄÀÏÆÐ½º[" + filePath + "]¾÷·Îµå °æ·Î["
+						log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½[" + objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + rFileName
+								+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + sFileName + "]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½[" + fileSize
+								+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½[" + filePath + "]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["
 								+ uploadFilePath + "]");
 
 						if (objName.equals("inverseregist")) {
@@ -1822,7 +1820,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			
 			curPageCnt = StringUtil
 			.nvl(multipartRequest.getParameter("curPage"), 1);
-			log.debug("¿ª¹ßÇà µî·ÏÃ³¸®5");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½5");
 			String gun="";    	
 			String ho= "";    	
 			String manage_no= "";  
@@ -1873,7 +1871,7 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			log.debug("[getManage_no]" + invoiceDto.getManage_no());
 				
 			if(invoiceDto.getManage_no().equals("MAX") || invoiceDto.getManage_no().equals(null) ){
-				msg = "°ü¸®¹øÈ£ »ý¼º¿À·ù [100°Ç ÀÌ»óÀÎ°æ¿ì]";			
+				msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [100ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Î°ï¿½ï¿½]";			
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_Invoice.do?cmd=invoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 			}
 			 
@@ -1902,8 +1900,8 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 			 invoiceDto.setDELETED_YN("N");
 			 retVal=invoiceDao.addInvoice(invoiceDto);
 
-			 msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù.";			
-		        if(retVal < 1) msg = "¼¼±Ý°è»ê¼­ µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			 msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";			
+		        if(retVal < 1) msg = "ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 
 		        return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 		}
@@ -1920,16 +1918,16 @@ public class BaroInvoiceAction extends StrutsDispatchAction{
 				
 		
 		
-//¼¼±Ý°è»ê¼­ µî·Ï Æû
+//ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ ï¿½ï¿½
 public ActionForward baroRegistForm(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 	
-	log.debug("¾÷Ã¼µî·Ï");
+	log.debug("ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½");
 	
 	
 	
-	//2013_05_28(È­)shbyeon. ´Þ·Â °Ë»ö ±â´É Ãß°¡.
+	//2013_05_28(È­)shbyeon. ï¿½Þ·ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
 //	String IvStartDate = StringUtil.nvl(request.getParameter("IvStartDate"),DateUtil.getDayInterval3(-365));
-	//2019_02_19 Á¶È¸½ÃÀÛÀÏÀ» ´çÇØ³âµµ 1¿ù1ÀÏ·Î ¼³Á¤
+	//2019_02_19 ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø³âµµ 1ï¿½ï¿½1ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½
 	String today = DateTimeUtil.getDateFormat(DateTimeUtil.getDate(),"-");
 	String currentYear = "2019";
 	if (today.length() >= 4) {
@@ -1944,13 +1942,13 @@ public ActionForward baroRegistForm(ActionMapping actionMapping, ActionForm acti
 	int curPageCnt = StringUtil.nvl(request.getParameter("curPage"),1);
 	String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 	String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-	//·Î±×ÀÎ Ã³¸® 
+	//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 	String USERID = UserBroker.getUserId(request);
 	if(USERID.equals("")){
 			String rtnUrl = request.getContextPath()+"/B_Login.do?cmd=loginForm";
 			return goSessionOut(model, rtnUrl,"huation-sessionOut");
 	}
-//		·Î±×ÀÎ Ã³¸® ³¡.
+//		ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 	
 	
 	
@@ -1988,7 +1986,7 @@ public ActionForward baroRegistForm(ActionMapping actionMapping, ActionForm acti
 
 
 /**
- * ¼¼±Ý°è»ê¼­¸¦ »èÁ¦ÇÑ´Ù.
+ * ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * @param request
  * @return ActionForward
  * @throws DAOException
@@ -2020,15 +2018,15 @@ public ActionForward BaroInvoiceDelete(ActionMapping actionMapping, ActionForm a
 	
 	retVal = invoiceDao.deleteInvoiceOne(invoiceDto);
 	
-    msg = "»èÁ¦¿¡  ¼º°øÇÏ¿´½À´Ï´Ù";
-    if(retVal < 1) msg = "»èÁ¦¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+    msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
+    if(retVal < 1) msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
     
     return alertAndExit(model, msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");		
 }
 
 
 /**
- * ¼¼±Ý°è»ê¼­¸¦ ¼öÁ¤ÇÑ´Ù.(¿ª¹ßÇà)
+ * ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
  * @param request
  * @return ActionForward
  * @throws DAOException
@@ -2056,7 +2054,7 @@ public ActionForward BaroInvoiceEdit(ActionMapping actionMapping, ActionForm act
 	log.debug("FilePath= " + FilePath);
 	UploadFiles uploadEntity = FileUtil.upload(request, FilePath, USERID,
 			20);
-	//UploadFiles (,,,20)20ÀÇ¹Ì MB¿ë·® ´ÜÀ§¼³Á¤
+	//UploadFiles (,,,20)20ï¿½Ç¹ï¿½ MBï¿½ë·® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	multipartRequest = uploadEntity.getMultipart();
 	String status = uploadEntity.getStatus();
 	
@@ -2066,33 +2064,33 @@ public ActionForward BaroInvoiceEdit(ActionMapping actionMapping, ActionForm act
 	String searchtxt = "";
 	String sForm = "N";
 
-	String inverseregist = ""; // °è¾à¼­ ÆÄÀÏ ¹ÞÀ» ÆÄ¶ó¹ÌÅÍ
+	String inverseregist = ""; // ï¿½ï¿½à¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½
 	
 
 	if (status.equals("E")) {
-		log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-		msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+		log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+		msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		return alertAndExit(model, msg, request.getContextPath()
 				+ "/jsp/hueware/common/error.jsp", "back");
 
 	} else if (status.equals("O")) {
-		log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-		msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 20M ±îÁö °¡´ÉÇÕ´Ï´Ù.";
+		log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+		msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 20M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 		return alertAndExit(model, msg, request.getContextPath()
 				+ "/jsp/hueware/common/error.jsp", "back");
 
 	} else if (status.equals("I")) {
-		log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-		msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+		log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+		msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		return alertAndExit(model, msg, request.getContextPath()
 				+ "/jsp/hueware/common/error.jsp", "back");
 
 	} else if (status.equals("S")) {
-		// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
+		// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
 		inverseregist = StringUtil.nvl(
 				multipartRequest.getParameter("inverseregist"), "");
 		System.out.println("tst:"+inverseregist);
-		log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+		log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		ArrayList files = uploadEntity.getFiles();
 		UploadFile file = null;
 		for (int i = 0; i < files.size(); i++) {
@@ -2111,9 +2109,9 @@ public ActionForward BaroInvoiceEdit(ActionMapping actionMapping, ActionForm act
 				filePath = uploadEntity.getUploadPath();
 				uploadFilePath = filePath + sFileName;
 
-				log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í[" + objName + "]¿øÆÄÀÏ¸í[" + rFileName
-						+ "]ÀúÀåÆÄÀÏ¸í[" + sFileName + "]ÆÄÀÏ»çÀÌÁî[" + fileSize
-						+ "]ÀúÀåÆÄÀÏÆÐ½º[" + filePath + "]¾÷·Îµå °æ·Î["
+				log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½[" + objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + rFileName
+						+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + sFileName + "]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½[" + fileSize
+						+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½[" + filePath + "]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["
 						+ uploadFilePath + "]");
 
 				if (objName.equals("inverseregist")) {
@@ -2189,14 +2187,14 @@ public ActionForward BaroInvoiceEdit(ActionMapping actionMapping, ActionForm act
 	
 	model.put("curPage",String.valueOf(curPageCnt));
 	
-    msg = "¼öÁ¤¿¡  ¼º°øÇÏ¿´½À´Ï´Ù";
-    if(retVal < 1) msg = "¼öÁ¤¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+    msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
+    if(retVal < 1) msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
     
     return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 }
 
 /**
- * ¼¼±Ý°è»ê¼­¸¦ ¼öÁ¤ÇÑ´Ù.(Á¤¹ßÇà)
+ * ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
  * @param request
  * @return ActionForward
  * @throws DAOException
@@ -2281,20 +2279,20 @@ public ActionForward BaroInvoiceEdit_2(ActionMapping actionMapping, ActionForm a
 	
 	model.put("curPage",String.valueOf(curPageCnt));
 	
-    msg = "¼öÁ¤¿¡  ¼º°øÇÏ¿´½À´Ï´Ù";
-    if(retVal < 1) msg = "¼öÁ¤¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+    msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
+    if(retVal < 1) msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
     
     return alertAndExit(model,msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");	
 }
 /**
- * ¼¼±Ý°è»ê¼­ ¹ßÇàÀ» Ãë¼ÒÇÑ´Ù.
+ * ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * @param request
  * @return ActionForward
  * @throws DAOException
  */
 public ActionForward BaroInvoiceCancel(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 	
-	log.debug("¼¼±Ý°è»ê¼­ ¹ßÇàÃë¼Ò Start ....");
+	log.debug("ï¿½ï¿½ï¿½Ý°ï¿½ê¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Start ....");
 	String USERID = UserBroker.getUserId(request);
 	if(USERID.equals("")){
 		String rtnUrl =request.getContextPath()+"/B_Login.do?cmd=loginForm";
@@ -2376,7 +2374,7 @@ public ActionForward BaroInvoiceCancel(ActionMapping actionMapping, ActionForm a
 	invoiceDto.setCONTRACT_CODE(contract);
 	invoiceDto.setPublic_dt(public_dt);
 	invoiceDto.setModifyFlag(modifyFlag);
-	/*ArrayList itemList = null; //»óÇ°ÄÚµå °¡Á®¿Ã ¾î·¹ÀÌ º¯¼ö ¼±¾ð
+	/*ArrayList itemList = null; //ï¿½ï¿½Ç°ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½î·¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 */	ListDTO ld   = invoiceDao.getItemList(invoiceDto);
 	
 	
@@ -2404,8 +2402,8 @@ public ActionForward BaroInvoiceCancel(ActionMapping actionMapping, ActionForm a
 	
 	//retVal = invoiceDao.cancelInvoiceOne(invoiceDto);
 	
-  /*  msg = "¹ßÇà Ãë¼Ò¸¦  ¼º°øÇÏ¿´½À´Ï´Ù";
-    if(retVal < 1) msg = "¹ßÇà Ãë¼Ò¸¦ ½ÇÆÐÇÏ¿´½À´Ï´Ù";*/
+  /*  msg = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
+    if(retVal < 1) msg = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";*/
     
    /* return alertAndExit(model, msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=editInvoiceRegist&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");*/		
 
@@ -2426,7 +2424,7 @@ public ActionForward BaroInvoiceCancel(ActionMapping actionMapping, ActionForm a
 }
 
 
-//¼öÁ¤¹ßÇà ÆË¾÷ ÇÃ·¹±×
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
 public ActionForward modifyInvoiceFlag(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse httpServletResponse, Map model) throws Exception{
 	
 	String USERID = UserBroker.getUserId(request);
@@ -2474,7 +2472,7 @@ public ActionForward modifyInvoiceFlag(ActionMapping actionMapping, ActionForm a
 }
 		
 
-//ÀÓ½Ã ¼öÁ¤¹ßÇà ÆË¾÷ ÇÃ·¹±×
+//ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
 public ActionForward cancel(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse httpServletResponse, Map model) throws Exception{
 	
 	String USERID = UserBroker.getUserId(request);
@@ -2518,8 +2516,8 @@ public ActionForward cancel(ActionMapping actionMapping, ActionForm actionForm, 
 	String msg="";
 	retVal = invoiceDao.cancelInvoiceOne(invoiceDto);
 	
-	    msg = "¹ßÇà Ãë¼Ò¸¦  ¼º°øÇÏ¿´½À´Ï´Ù";
-	    if(retVal < 1) msg = "¹ßÇà Ãë¼Ò¸¦ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+	    msg = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
+	    if(retVal < 1) msg = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 	    
 	 return alertAndExit(model, msg,request.getContextPath()+"/B_BaroInvoice.do?cmd=baroInvoicePageList&curPage="+curPageCnt+"&searchGb="+searchGb+"&searchtxt="+searchtxt,"back");		
 
@@ -2528,12 +2526,12 @@ public ActionForward cancel(ActionMapping actionMapping, ActionForm actionForm, 
 
 
 
-	//¹Ì¼öÃ¤±Ç ÇöÈ² ¸®½ºÆ®
+	//ï¿½Ì¼ï¿½Ã¤ï¿½ï¿½ ï¿½ï¿½È² ï¿½ï¿½ï¿½ï¿½Æ®
 	public ActionForward outstandingBondList(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 	
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-		//2013_05_28(È­)shbyeon. ´Þ·Â °Ë»ö ±â´É Ãß°¡.
+		//2013_05_28(È­)shbyeon. ï¿½Þ·ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
 		String IvStartDate = StringUtil.nvl(request.getParameter("IvStartDate"),DateUtil.getDayInterval3(-365));
 //		System.out.println("IvStartDate:"+IvStartDate);
 		String IvEndDate = StringUtil.nvl(request.getParameter("IvEndDate"),DateTimeUtil.getDateFormat(DateTimeUtil.getDate(),""));
@@ -2564,11 +2562,11 @@ public ActionForward cancel(ActionMapping actionMapping, ActionForm actionForm, 
 		return actionMapping.findForward("outstandingBondList");
 	}
 
-	//¹Ì¼öÃ¤±Ç ÇöÈ² Excel ¸®½ºÆ®
+	//ï¿½Ì¼ï¿½Ã¤ï¿½ï¿½ ï¿½ï¿½È² Excel ï¿½ï¿½ï¿½ï¿½Æ®
 	public ActionForward outstandingBondExcelList(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"),"");
 		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"),"");
-		//2013_05_28(È­)shbyeon. ´Þ·Â °Ë»ö ±â´É Ãß°¡.
+		//2013_05_28(È­)shbyeon. ï¿½Þ·ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
 		/*String IvStartDate = StringUtil.nvl(request.getParameter("IvStartDate"),DateUtil.getDayInterval3(-365));
 		System.out.println("IvStartDate:"+IvStartDate);
 		String IvEndDate = StringUtil.nvl(request.getParameter("IvEndDate"),DateTimeUtil.getDateFormat(DateTimeUtil.getDate(),""));

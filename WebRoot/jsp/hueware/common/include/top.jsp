@@ -228,18 +228,24 @@
 		$(".snb").addClass("display_none");
 	 	switch (menu){
 			
-			case "00" :		//총무지원 - 업체관리 메뉴활성화
+			case "00" :		//경영지원 - 업체관리 메뉴활성화
 				$("#M21000 a").addClass("on");
 				$(".lnb_01 a").eq(0).addClass("on");
 				$(".lnb_01 div").removeClass("display_none");
 				break;
 			
-			case "01" :		//총무지원 - 법인통장관리 메뉴활성화
+			case "01" :		//경영지원 - 법인통장관리 메뉴활성화
 				$("#M22000 a").addClass("on");
 				$(".lnb_01 a").eq(0).addClass("on");
 				$(".lnb_01 div").removeClass("display_none");
 				break;
-			
+//=======================================================================================			
+			case "02" :		//경영지원 - 휴폐업 조회 
+				$("#M23000 a").addClass("on");
+				$(".lnb_01 a").eq(0).addClass("on");
+				$(".lnb_01 div").removeClass("display_none");
+				break;
+//=======================================================================================				
 			case "10" :		//영업지원 -  영업진행현황
 				$("#M31000 a").addClass("on");
 				$(".lnb_02 a").eq(0).addClass("on");
@@ -393,13 +399,7 @@
 				$(".lnb_04 a").eq(0).addClass("on");
 				$(".lnb_04 div").removeClass("display_none");
 				break;
-//=======================================================================================			
-			case "37" :		//휴폐업 ----------------------------- 개발 진행중
-				$("#M68000 a").addClass("on");
-				$(".lnb_04 a").eq(0).addClass("on");
-				$(".lnb_04 div").removeClass("display_none");
-				break;
-//=======================================================================================			
+
 			case "40" :		//HUEHome관리 - 공지사항 메뉴활성화
 				$("#M51000 a").addClass("on");
 				$(".lnb_05 a").eq(0).addClass("on");
@@ -524,6 +524,10 @@
 			theUrl= '<%= request.getContextPath()%>/B_Common.do?cmd=mainPage';
 		}else if (menu=='00') {//업체관리
 			theUrl= '<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList';
+//==================================================================================================================			
+		}else if (menu=='02'){//휴폐업(2021.12.22)
+			theUrl= '<%= request.getContextPath()%>/B_CorpState.do?cmd=CorpStateSearchPage';
+//==================================================================================================================
 		}else if (menu=='01') {//법인통장관리
 			theUrl= '<%= request.getContextPath()%>/B_BankManage.do?cmd=bankPageList';
 		}else if (menu=='10') {//영업진행현황
@@ -600,10 +604,7 @@
 			theUrl= '<%= request.getContextPath()%>/B_DocumentFile.do?cmd=documentFilePageList';
 		}else if (menu=='36'){//추가게시판(2021.08.02)
 			theUrl= '<%= request.getContextPath()%>/B_AddBoard.do?cmd=addBoardList';
-//==================================================================================================================			
-		}else if (menu=='37'){//휴폐업(2021.12.07)
-			theUrl= '<%= request.getContextPath()%>/B_ClosureMg.do?cmd=closureMgList';
-//==================================================================================================================			
+			
 		}else if (menu=='50') {//도서신청
 			theUrl= '<%= request.getContextPath()%>/B_HueBookManageRe.do?cmd=hueBookRePageList';
 		}else if (menu=='51') {//도서결재
@@ -681,7 +682,7 @@
 		menuOption(m_index); //메뉴 열고닫기
 		selectMenu(m_index,s_index);//선택 서브메뉴 표기
 
-		if(m_index=='0'){  // 총무지원
+		if(m_index=='0'){  // 경영지원
 			if (menu=='00') {
 				theUrl= '<%= request.getContextPath()%>/B_Company.do?cmd=companyPageList';
 			}
@@ -783,16 +784,17 @@
 			<h2 class="hidden_obj">주메뉴</h2>
 			<ul class="lnb">
 			
-				<!-- 총무지원 -->
-				<li id="TM20000" style="display:none;" class="lnb_01"><a href="javascript:;" onclick="goMenu('00')" >총무지원</a><!-- 메뉴 활성화 : class="on" 추가 -->
+				<!-- 경영지원 -->
+				<li id="TM20000" style="display:none;" class="lnb_01"><a href="javascript:;" onclick="goMenu('00')" >경영지원</a><!-- 메뉴 활성화 : class="on" 추가 -->
 					<div class="snb">
 						<ul>
 							<li id="M21000" style="display:none"><a href="javascript:goMenu('00');" >업체관리</a></li><!-- 메뉴 활성화 : class="on" 추가 -->
-							<li id="M22000" style="display:none"><a href="javascript:goMenu('01');">법인통장관리</a></li>
+							<li id="M23000" style="display:none"><a href="javascript:goMenu('02');" >휴폐업 조회</a></li>
+							<li id="M22000" style="display:none"><a href="javascript:goMenu('01');" >법인통장관리</a></li>
 						</ul>
 					</div>
 				</li>
-				<!-- //총무지원 -->
+				<!-- //경영지원 -->
 				
 				<!-- 영업지원 -->
 				<li id="TM30000" style="display:none" class="lnb_02"><a href="javascript:;" onclick="goMenu('10')" >영업지원</a>
@@ -842,11 +844,6 @@
 							<li id="M65000" style="display:none"><a href="javascript:goMenu('34');">News &amp; Magazine</a></li>
 							<li id="M66000" style="display:none"><a href="javascript:goMenu('35');">업무Manual</a></li>
 							<li id="M67000"><a href="javascript:goMenu('36');">추가게시판</a></li>
-			<!-- ================================================================================================================== -->
-							<li id="M68000"><a href="javascript:goMenu('37');">휴폐업</a></li>
-							<!-- display=none인데 어떻게 나온거지 -->
-							<!-- <li id="M66000" style="display:none"><a href="javascript:goMenu('37');">휴폐업</a></li> -->
-			<!-- ================================================================================================================== -->
 						</ul>
 					</div>	
 				</li>

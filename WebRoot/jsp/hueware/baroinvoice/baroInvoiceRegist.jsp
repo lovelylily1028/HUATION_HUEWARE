@@ -12,6 +12,7 @@
 <%@ page import ="com.huation.common.CodeParam" %>
 <%@ page import ="com.huation.common.bankmanage.BankManageDTO" %>
 
+<!-- 개발 -->
 <%
 	Map model = (Map)request.getAttribute("MODEL");
 
@@ -598,7 +599,7 @@ function popContractNo(){
 }
 
 function popComp(){
-	var a = window.open("<%= request.getContextPath()%>/B_Common.do?cmd=searchComp_baro&sForm=baroInvoiceRegist","","width=850,height=619,left=20,top=20,toolbar=no, location=no, directories=no, menubar=no, resizable=no, scrollbars=no, status=no");
+	var a = window.open("<%= request.getContextPath()%>/B_Common.do?cmd=searchComp_baro&sForm=baroInvoiceRegist","","width=850,height=660,left=20,top=20,toolbar=no, location=no, directories=no, menubar=no, resizable=no, scrollbars=no, status=no");
 }
 
 
@@ -781,7 +782,7 @@ function addRow(){
 	
 	<!-- title -->	
 	<div class="content_navi">영업지원 &gt; (신)세금계산서등록</div>
-	<h3><span>(신)</span>세금계산서등록</h3><!-- 타이틀 앞글자는 <span></span>으로 감싸기 -->
+	<h3><span>(신)</span>BARO세금계산서등록</h3><!-- 타이틀 앞글자는 <span></span>으로 감싸기 -->
 	<!-- title -->
 		
 	<div class="con baroRegistForm">

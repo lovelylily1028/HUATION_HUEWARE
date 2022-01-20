@@ -35,6 +35,8 @@
 		<table width="100%" cellpadding=0 cellspacing=0 border="1" style="border-collapse:collapse;">
 			<tr height="25" bgcolor="#F8F9FA" >		
                  <td align="center"><strong>사업자등록번호</strong></td>
+                 <td align="center"><strong>구분</strong></td>
+                 <td align="center"><strong>상태</strong></td>
                  <td align="center"><strong>상호(법인명)</strong></td>
                  <td align="center"><strong>법인등록번호(주민등록번호)</strong></td>
                  <td align="center"><strong>대표자명</strong></td>
@@ -54,6 +56,8 @@
 
 			<tr bgcolor="#FFFFFF" height="23">
 				<td>&nbsp;<%=StringUtil.nvl(dto.getComp_code(),"") %></td>
+				<td>&nbsp;<%=StringUtil.nvl(dto.getComp_taxType(),"") %></td>
+				<td>&nbsp;<%=StringUtil.nvl(dto.getComp_state(),"") %></td>
 				<td>&nbsp;<%=StringUtil.nvl(dto.getComp_nm(),"")%></td>
 				<td>&nbsp;<%=StringUtil.nvl(dto.getComp_no(),"")%></td>
 				<td>&nbsp;<%=StringUtil.nvl(dto.getOwner_nm(),"")%></td>

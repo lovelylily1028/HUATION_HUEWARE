@@ -3,6 +3,7 @@
 <%@ page import = "com.huation.framework.persist.ListDTO"%>
 <%@ page import = "com.huation.framework.data.DataSet"%>
 <%@ include file="/jsp/hueware/common/base.jsp" %>
+<!-- 개발 -->
 <%
 	String sForm = (String)model.get("sForm");
 	String curPage = (String)model.get("curPage");
@@ -175,6 +176,7 @@
 				<caption>업체 리스트</caption>
 				<colgroup>
 					<col width="20%" />
+					<col width="15%" />
 					<col width="*" />
 					<col width="20%" />
 					<col width="20%" />
@@ -182,6 +184,7 @@
 				<thead>
 				<tr>
 					<th>사업자등록번호</th>
+					<th>구분(상태)</th>
 					<th>업체명</th>
 					<th>법인등록번호(주민등록번호)</th>
 					<th>대표자명(고객명)</th>
@@ -193,10 +196,29 @@
 				<%			
 					if(ld.getItemCount() > 0){	
 					    int i = 0;
+					    String COMP_TAXTYPE = "";
 						while(ds.next()){
+							
+							COMP_TAXTYPE = ds.getString("COMP_TAXTYPE");
+							
 				%>
 				<tr>
 					<td><%=ds.getString("PERMIT_NO")%></td>
+					
+				<%
+	           	if(COMP_TAXTYPE.equals("-")){
+	           %>
+            
+           			<td title="사업자 번호 조회전 항목입니다."><%=ds.getString("COMP_TAXTYPE")%>(<%=ds.getString("COMP_STATE") %>)</td>
+            
+	            <%
+	           	}else{
+	           	%>
+           			<td><%=ds.getString("COMP_TAXTYPE")%>(<%=ds.getString("COMP_STATE") %>)</td>
+           
+	           <%
+	           }
+	           %>
 					<td title="<%=ds.getString("COMP_NM")%>"><span class="ellipsis"><a href="javascript:goSelect('<%=ds.getString("COMP_CODE")%>','<%=ds.getString("PERMIT_NO")%>','<%=ds.getString("COMP_NM")%>','<%=ds.getString("OWNER_NM")%>','<%=ds.getString("BUSINESS")%>','<%=ds.getString("B_ITEM")%>','<%=ds.getString("POST")%>','<%=ds.getString("ADDRESS")%>','<%=ds.getString("ADDR_DETAIL")%>','<%=ds.getString("PERMIT_NO")%>')"><%=ds.getString("COMP_NM")%></a></span></td>
 					<td><%=ds.getString("COMP_NO")%></td>
 					<td title="<%=ds.getString("OWNER_NM")%>"><span class="ellipsis"><%=ds.getString("OWNER_NM")%></span></td>
@@ -208,7 +230,7 @@
 						}else{
 				%>
 				<tr>
-					<td colspan="4">조회된 내역이 없습니다. </td>
+					<td colspan="5">조회된 내역이 없습니다. </td>
 				</tr>
 				<% 
 				}
@@ -220,6 +242,8 @@
 	    <div class="paging">
 	      <%=ld.getPagging("goPage")%>
 	    </div>
+	    <p class="guide_txt">업체관리 화면에서 거래 부적격으로 등록된 회사는 선택할 수 없습니다</p>
+		<p class="guide_txt">업체관리 화면에서 휴업·폐업·확인요 상태인 회사는 선택할 수 없습니다</p>
 	    <!-- //paginate -->
 	    <!-- Bottom 버튼영역 -->
 		<div class="Bbtn_areaC"><a href="javascript:window.close()" class="btn_type02 btn_type02_gray"><span>닫기</span></a></div>

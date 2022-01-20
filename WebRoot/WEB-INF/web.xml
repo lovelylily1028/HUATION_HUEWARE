@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?><web-app xmlns="http://JAVA.sun.com/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-  version="3.0">	
+	version="3.0">
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/hueware</res-ref-name>
@@ -71,60 +71,85 @@
 	</servlet-mapping>
 
 	<servlet>
-    <servlet-name>dwr-invoker</servlet-name>
-    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
-    <init-param>
-      <param-name>debug</param-name>
-      <param-value>true</param-value>
-    </init-param>
-	<init-param>
-	  <param-name>crossDomainSessionSecurity</param-name>
-	  <param-value>false</param-value>
-	</init-param>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>dwr-invoker</servlet-name>
-    <url-pattern>/dwr/*</url-pattern>
-  </servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet
+		</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>crossDomainSessionSecurity</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
-        <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
-<error-page>
-  <error-code>404</error-code>
-  <location>/jsp/hueware/common/error.jsp</location>
- </error-page>
- <error-page>
-  <error-code>500</error-code>
-  <location>/jsp/hueware/common/error.jsp</location>
- </error-page>
-  
-<!-- <security-constraint>
-    <web-resource-collection>
-        <web-resource-name>SSL Forward</web-resource-name>
-        <url-pattern>/*</url-pattern>
-    </web-resource-collection>
-    <user-data-constraint>
-        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-    </user-data-constraint>
-</security-constraint> -->
- 
-<!-- <security-constraint>
-    <web-resource-collection>
-        <web-resource-name>HTTPS or HTTP</web-resource-name>
-        <url-pattern>/images/*</url-pattern>
-        <url-pattern>/css/*</url-pattern>
-    </web-resource-collection>
-    <user-data-constraint>
-        <transport-guarantee>NONE</transport-guarantee>
-    </user-data-constraint>
-</security-constraint> -->
- 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/hueware/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/hueware/common/error.jsp</location>
+	</error-page>
+
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>SSL 
+		Forward</web-resource-name> <url-pattern>/*</url-pattern> </web-resource-collection> 
+		<user-data-constraint> <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+		</user-data-constraint> </security-constraint> -->
+
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>HTTPS 
+		or HTTP</web-resource-name> <url-pattern>/images/*</url-pattern> <url-pattern>/css/*</url-pattern> 
+		</web-resource-collection> <user-data-constraint> <transport-guarantee>NONE</transport-guarantee> 
+		</user-data-constraint> </security-constraint> -->
+	<!-- Quartz setting -->
+	<servlet>
+		<servlet-name>QuartzInitializer</servlet-name>
+		<servlet-class>org.quartz.ee.servlet.QuartzInitializerServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config-file</param-name>
+			<param-value>${framework_ware.home}/config/quartz.properties</param-value>
+  			<!-- <param-name>config-file</param-name>
+			<param-value>com/scheduler/quartz.properties</param-value> -->
+		</init-param>
+		<init-param>
+			<param-name>shutdown-on-unload</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>start-scheduler-on-load</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet> <!-- //Quartz setting -->
+
+	<!-- Quartz run -->
+	<servlet>
+		<servlet-name>SchedulerInit</servlet-name>
+		<servlet-class>com.scheduler.SchedulerInit</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<!-- /Quartz run -->
+
+	<!-- Quartz run Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>SchedulerInit</servlet-name>
+		<url-pattern>/SchedulerInit</url-pattern>
+	</servlet-mapping>
+	<!-- //Quartzrun Servlet Mapping -->
+
+
 </web-app>
-
-
 
 

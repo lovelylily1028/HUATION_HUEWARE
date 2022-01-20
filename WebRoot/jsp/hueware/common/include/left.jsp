@@ -192,7 +192,7 @@
 <span id="M20000" style="display:none">
 <div class="lnb_menu">
   <div class="lnb_teb" id="menu">
-    <a href="javascript:;"  onClick="goMenu('00')" onMouseOver="MM_nbGroup('over','lnb_menu1','<%= request.getContextPath()%>/images/lnb_menu1_on.gif','<%= request.getContextPath()%>/images/lnb_menu1_on.gif',1)" onMouseOut="MM_nbGroup('out')"> <img src="<%= request.getContextPath()%>/images/lnb_menu1.gif" alt="총무지원" name="lnb_menu1" width="178" height="35" border="0" id="lnb_menu1" /> </a>
+    <a href="javascript:;"  onClick="goMenu('00')" onMouseOver="MM_nbGroup('over','lnb_menu1','<%= request.getContextPath()%>/images/lnb_menu1_on.gif','<%= request.getContextPath()%>/images/lnb_menu1_on.gif',1)" onMouseOut="MM_nbGroup('out')"> <img src="<%= request.getContextPath()%>/images/lnb_menu1.gif" alt="경영지원" name="lnb_menu1" width="178" height="35" border="0" id="lnb_menu1" /> </a>
   </div>
   <div class="lnb_sub"  id="menu_s"  style="display:none;">
     <ul>

@@ -1,15 +1,11 @@
 package com.huation.hueware.company.action;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -17,12 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import com.oreilly.servlet.MultipartRequest;
 
 import com.huation.common.*;
-import com.huation.framework.persist.DAOException;
-import com.huation.framework.util.HtmlXSSFilter;
-import com.huation.framework.util.SiteNavigation;
 import com.huation.framework.persist.ListDTO;
-import com.huation.framework.util.InJectionFilter;
-import com.huation.framework.Constants;
 import com.huation.framework.util.DateTimeUtil;
 import com.huation.framework.util.StringUtil;
 import com.huation.framework.util.FileUtil;
@@ -30,23 +21,15 @@ import com.huation.framework.util.UploadFile;
 import com.huation.framework.util.UploadFiles;
 import com.huation.framework.struts.StrutsDispatchAction;
 
-import com.huation.common.project.NonProjectDAO;
-import com.huation.common.project.NonProjectDTO;
 import com.huation.common.user.UserBroker;
-import com.huation.common.util.CommonUtil;
 import com.huation.common.util.DateSetter;
-import com.huation.common.user.UserMemDTO;
-import com.huation.common.user.UserConnectDTO;
-import com.huation.common.user.UserDAO;
-import com.huation.common.user.UserDTO;
 
 import com.huation.common.company.CompanyDAO;
 import com.huation.common.company.CompanyDTO;
-import com.huation.common.currentstatus.*;
 
 public class CompanyAction extends StrutsDispatchAction {
 	/**
-	 * ¾÷Ã¼¸®½ºÆ®
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -60,18 +43,19 @@ public class CompanyAction extends StrutsDispatchAction {
 			ActionForm actionForm, HttpServletRequest request,
 			HttpServletResponse response, Map model) throws Exception {
 
-		//¹Ìµî·Ï¾÷Ã¼ Á¶È¸ Ãß°¡ 2013_03_18(¿ù)shbyeon.(search) ÇöÀç»ç¿ë¾ÈÇÔ.
+		//ï¿½Ìµï¿½Ï¾ï¿½Ã¼ ï¿½ï¿½È¸ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon.(search) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		String search = StringUtil.nvl(request.getParameter("search"), "");
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), "");
-		String searchtxt = StringUtil
-				.nvl(request.getParameter("searchtxt"), "");
+		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"), "");
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
+		String TaxOpt = StringUtil.nvl(request.getParameter("TaxOpt"), "");
+		String StateOpt = StringUtil.nvl(request.getParameter("StateOpt"), "");
 
 		CompanyDAO compDao = new CompanyDAO();
 		CompanyDTO compDto = new CompanyDTO();
 
-		ListDTO ld = compDao.companyPageList(curPageCnt, search, searchGb, searchtxt,
-				"Y","Y", 20, 10);
+		ListDTO ld = compDao.companyPageList3(curPageCnt, search, searchGb, searchtxt, TaxOpt,StateOpt,"Y","Y", 20, 10);
+//		ListDTO ld = compDao.companyPageList(curPageCnt, search, searchGb, searchtxt, optionVal,"Y","Y", 20, 10);
 
 		model.put("listInfo", ld);
 		model.put("compDto", compDto);
@@ -79,13 +63,15 @@ public class CompanyAction extends StrutsDispatchAction {
 		model.put("search", search);
 		model.put("searchGb", searchGb);
 		model.put("searchtxt", searchtxt);
+		model.put("TaxOpt", TaxOpt);
+		model.put("StateOpt", StateOpt);
 
 		return actionMapping.findForward("companyPageList");
 	}
 	
 	
 	/**
-	 * ¾÷Ã¼¸®½ºÆ®
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -100,14 +86,14 @@ public class CompanyAction extends StrutsDispatchAction {
 			HttpServletResponse response, Map model) throws Exception {
 		
 		
-	// ·Î±×ÀÎ Ã³¸®
+	// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 			String USERID = UserBroker.getUserId(request);
 			if (USERID.equals("")) {
 				String rtnUrl = request.getContextPath()
 						+ "/B_Login.do?cmd=loginForm";
 				return goSessionOut(model, rtnUrl, "huation-sessionOut");
 			}
-			// ·Î±×ÀÎ Ã³¸® ³¡.
+			// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 	
 	
 		String FilePath = FileUtil.FILE_DIR + "company/"
@@ -117,7 +103,7 @@ public class CompanyAction extends StrutsDispatchAction {
 			MultipartRequest multipartRequest = null;
 			multipartRequest = uploadEntity.getMultipart();
 				
-		//¹Ìµî·Ï¾÷Ã¼ Á¶È¸ Ãß°¡ 2013_03_18(¿ù)shbyeon.(search) ÇöÀç»ç¿ë¾ÈÇÔ.
+		//ï¿½Ìµï¿½Ï¾ï¿½Ã¼ ï¿½ï¿½È¸ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon.(search) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		String search = StringUtil.nvl(multipartRequest.getParameter("search"), "");
 		String searchGb = StringUtil.nvl(multipartRequest.getParameter("searchGb"), "");
 		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"), "");
@@ -140,7 +126,7 @@ public class CompanyAction extends StrutsDispatchAction {
 
 
 	/**
-	 * ¾÷Ã¼µî·ÏÆû
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -154,7 +140,7 @@ public class CompanyAction extends StrutsDispatchAction {
 			ActionForm actionForm, HttpServletRequest request,
 			HttpServletResponse response, Map model) throws Exception {
 
-		log.debug("¾÷Ã¼µî·Ï");
+		log.debug("ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½");
 
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), "");
@@ -162,14 +148,14 @@ public class CompanyAction extends StrutsDispatchAction {
 				.nvl(request.getParameter("searchtxt"), "");
 		String sForm = StringUtil.nvl(request.getParameter("sForm"), "N");
 
-		// ·Î±×ÀÎ Ã³¸®
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		String USERID = UserBroker.getUserId(request);
 		if (USERID.equals("")) {
 			String rtnUrl = request.getContextPath()
 					+ "/B_Login.do?cmd=loginForm";
 			return goSessionOut(model, rtnUrl, "huation-sessionOut");
 		}
-		// ·Î±×ÀÎ Ã³¸® ³¡.
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 
 		CommonDAO comDao = new CommonDAO();
 		// String curDate = comDao.getCurrentDate();
@@ -187,7 +173,7 @@ public class CompanyAction extends StrutsDispatchAction {
 	}
 
 	/**
-	 * ¾÷Ã¼ µî·ÏÃ³¸®
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -201,14 +187,14 @@ public class CompanyAction extends StrutsDispatchAction {
 			ActionForm actionForm, HttpServletRequest request,
 			HttpServletResponse response, Map model) throws Exception {
 
-		// ·Î±×ÀÎ Ã³¸®
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		String USERID = UserBroker.getUserId(request);
 		if (USERID.equals("")) {
 			String rtnUrl = request.getContextPath()
 					+ "/B_Login.do?cmd=loginForm";
 			return goSessionOut(model, rtnUrl, "huation-sessionOut");
 		}
-		// ·Î±×ÀÎ Ã³¸® ³¡.
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 
 		int retVal = -1;
 		String msg = "";
@@ -243,26 +229,26 @@ public class CompanyAction extends StrutsDispatchAction {
 		String account_copy5 = "";
 
 		if (status.equals("E")) {
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("O")) {
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.ÃÖ´ë 10M ±îÁö °¡´ÉÇÕ´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.ï¿½Ö´ï¿½ 10M ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("I")) {
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("S")) {
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for (int i = 0; i < files.size(); i++) {
@@ -281,9 +267,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					filePath = uploadEntity.getUploadPath();
 					uploadFilePath = filePath + sFileName;
 
-					log.debug("ÆÄÀÏ ¿ÀºêÁ§Æ®¸í[" + objName + "]¿øÆÄÀÏ¸í[" + rFileName
-							+ "]ÀúÀåÆÄÀÏ¸í[" + sFileName + "]ÆÄÀÏ»çÀÌÁî[" + fileSize
-							+ "]ÀúÀåÆÄÀÏÆÐ½º[" + filePath + "]¾÷·Îµå °æ·Î["
+					log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½[" + objName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + rFileName
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½[" + sFileName + "]ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½[" + fileSize
+							+ "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½[" + filePath + "]ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½["
 							+ uploadFilePath + "]");
 
 					if (objName.equals("comp_file")) {
@@ -366,9 +352,9 @@ public class CompanyAction extends StrutsDispatchAction {
 		compDto.setCOMPANYEVALUATION(COMPANYEVALUATION);
 		retVal = compDao.addCompany(compDto);
 
-		msg = "¾÷Ã¼ µî·Ï¿¡ ¼º°øÇß½À´Ï´Ù.";
+		msg = "ï¿½ï¿½Ã¼ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";
 		if (retVal < 1)
-			msg = "¾÷Ã¼ µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			msg = "ï¿½ï¿½Ã¼ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 
 		return alertAndExit(model, msg, request.getContextPath()
 				+ "/B_Company.do?cmd=companyPageList&curPage=" + curPageCnt
@@ -377,7 +363,7 @@ public class CompanyAction extends StrutsDispatchAction {
 	}
 
 	/**
-	 * ¾÷Ã¼»ó¼¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -392,7 +378,7 @@ public class CompanyAction extends StrutsDispatchAction {
 			HttpServletResponse response, Map model) throws Exception {
 
 		int curPageCnt = 0;
-		String comp_code = ""; // ¾÷Ã¼ÄÚµå
+		String comp_code = ""; // ï¿½ï¿½Ã¼ï¿½Úµï¿½
 
 		curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), "");
@@ -421,7 +407,7 @@ public class CompanyAction extends StrutsDispatchAction {
 		System.out.println(compDto.getUnfit_id());
 
 		if (compDto == null) {
-			String msg = "ÇØ´ç  ¾÷Ã¼  Á¤º¸°¡ ¾ø½À´Ï´Ù.";
+			String msg = "ï¿½Ø´ï¿½  ï¿½ï¿½Ã¼  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/B_Company.do?cmd=companyPageList&curPage=" + curPageCnt
 					+ "&searchGb=" + searchGb + "&searchtxt=" + searchtxt,
@@ -432,7 +418,7 @@ public class CompanyAction extends StrutsDispatchAction {
 	}
 
 	/**
-	 * ¾÷Ã¼Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -490,20 +476,20 @@ public class CompanyAction extends StrutsDispatchAction {
 		String account_copy5 = "";
 
 		if (status.equals("E")) {
-			log.debug("Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏ ¿Ã¸®·Á´Ù ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("O")) {
-			log.debug("Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.");
-			msg = "Ã·ºÎÇÏ½Å ÆÄÀÏÀÌ ¿ë·®À» ÃÊ°úÇß½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
 		} else if (status.equals("I")) {
-			log.debug("Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
-			msg = "Ã·ºÎ ÆÄÀÏÀÇ Á¤º¸°¡ Àß¸øµÇ¾ú½À´Ï´Ù.";
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+			msg = "Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/jsp/hueware/common/error.jsp", "back");
 
@@ -530,8 +516,8 @@ public class CompanyAction extends StrutsDispatchAction {
 			account_copy5 = StringUtil.nvl(
 					multipartRequest.getParameter("p_account_copy5"), "");
 
-			// ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ µ¥ÀÌÅÍ º£ÀÌ½º¿¡ ³Ö´Â ÀÛ¾÷À» ÇØÁØ´Ù.
-			log.debug("Ã·ºÎ ÆÄÀÏÀ» Ã·ºÎÇÏ´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù.");
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
+			log.debug("Ã·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			ArrayList files = uploadEntity.getFiles();
 			UploadFile file = null;
 			for (int i = 0; i < files.size(); i++) {
@@ -544,9 +530,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						comp_file = filePath + sFileName;
 					}
@@ -556,9 +542,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						account_copy1 = filePath + sFileName;
 					}
@@ -568,9 +554,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						account_copy2 = filePath + sFileName;
 					}
@@ -580,9 +566,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						account_copy3 = filePath + sFileName;
 					}
@@ -592,9 +578,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						account_copy4 = filePath + sFileName;
 					}
@@ -604,9 +590,9 @@ public class CompanyAction extends StrutsDispatchAction {
 					if (!rFileName.equals("")) {
 						sFileName = file.getUploadName();
 						filePath = uploadEntity.getUploadPath();
-						log.debug(" ÆÄÀÏ ¿ÀºêÁ§Æ®¸í =>" + objName + ", ¿ø ÆÄÀÏ ¸í =>"
-								+ rFileName + ", ÀúÀåÆÄÀÏ¸í =>" + sFileName
-								+ ",ÆÄÀÏ »çÀÌÁî =>" + fileSize + ", ÀúÀå ÆÄÀÏ ÆÐ½º =>"
+						log.debug(" ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ =>" + objName + ", ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ =>"
+								+ rFileName + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ =>" + sFileName
+								+ ",ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ =>" + fileSize + ", ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ =>"
 								+ filePath);
 						account_copy5 = filePath + sFileName;
 					}
@@ -618,7 +604,7 @@ public class CompanyAction extends StrutsDispatchAction {
 		String comp_code = StringUtil.nvl(
 				multipartRequest.getParameter("comp_code"), "");
 		String permit_no = StringUtil.nvl(
-				multipartRequest.getParameter("permit_no"), ""); //¾÷Ã¼°ü¸®ÄÚµå Ãß°¡ 2013_03_18(¿ù) shbyeon.
+				multipartRequest.getParameter("permit_no"), ""); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½) shbyeon.
 		String comp_nm = StringUtil.nvl(
 				multipartRequest.getParameter("comp_nm"), "");
 		String comp_no = StringUtil.nvl(
@@ -693,9 +679,9 @@ public class CompanyAction extends StrutsDispatchAction {
 
 		model.put("curPage", String.valueOf(curPageCnt));
 		
-		msg = "¼öÁ¤¿¡  ¼º°øÇÏ¿´½À´Ï´Ù";
+		msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 		if (retVal < 1)
-			msg = "¼öÁ¤¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 		if (sForm.equals("N")) {
 			return alertAndExit(model, msg, request.getContextPath()
 					+ "/B_Company.do?cmd=companyPageList&curPage=" + curPageCnt
@@ -709,7 +695,7 @@ public class CompanyAction extends StrutsDispatchAction {
 
 	
 	/**
-	 * ¾÷Ã¼¸®½ºÆ®(Excel)
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Æ®(Excel)
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -724,8 +710,10 @@ public class CompanyAction extends StrutsDispatchAction {
 			HttpServletResponse response, Map model) throws Exception {
 
 		String searchGb = StringUtil.nvl(request.getParameter("searchGb"), "");
-		String searchtxt = StringUtil
-				.nvl(request.getParameter("searchtxt"), "");
+		String searchtxt = StringUtil.nvl(request.getParameter("searchtxt"), "");
+		String TaxOpt = StringUtil.nvl(request.getParameter("TaxOpt"), "");
+		String StateOpt = StringUtil.nvl(request.getParameter("StateOpt"), "");
+		
 		int curPageCnt = StringUtil.nvl(request.getParameter("curPage"), 1);
 
 		CompanyDAO dao = new CompanyDAO();
@@ -733,6 +721,8 @@ public class CompanyAction extends StrutsDispatchAction {
 
 		companyDTO.setSearchGb(searchGb);
 		companyDTO.setSearchTxt(searchtxt);
+		companyDTO.setComp_taxType(TaxOpt);
+		companyDTO.setComp_state(StateOpt);
 
 		ArrayList<CompanyDTO> arrlist = dao.getCompanyListExcel(companyDTO);
 
@@ -743,7 +733,7 @@ public class CompanyAction extends StrutsDispatchAction {
 	
 	/**
 	 * 2012.11.27(È­) bsh.
-	 * ¾÷Ã¼°ü¸® = »èÁ¦
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½
 	 * @param actionMapping
 	 * @param actionForm
 	 * @param request
@@ -787,9 +777,9 @@ public class CompanyAction extends StrutsDispatchAction {
 		compDto.setComp_code(comp_code);
 		retVal = dao.deleteCompanyOne1(compDto);
 
-		msg = "»èÁ¦¿¡  ¼º°øÇÏ¿´½À´Ï´Ù";
+		msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 		if (retVal < 1)
-			msg = "»èÁ¦¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù";
+			msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 
 		return alertAndExit(model, msg, request.getContextPath()
 				+ "/B_Company.do?cmd=companyPageList&curPage=" + curPageCnt
@@ -799,7 +789,7 @@ public class CompanyAction extends StrutsDispatchAction {
 
 	
 	/**
-	 * ºÎÀû°Ý ¾÷Ã¼
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -813,14 +803,14 @@ public class CompanyAction extends StrutsDispatchAction {
 			ActionForm actionForm, HttpServletRequest request,
 			HttpServletResponse response, Map model) throws Exception {
 	
-		// ·Î±×ÀÎ Ã³¸®
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		String USERID = UserBroker.getUserId(request);
 		if (USERID.equals("")) {
 			String rtnUrl = request.getContextPath()
 					+ "/B_Login.do?cmd=loginForm";
 			return goSessionOut(model, rtnUrl, "huation-sessionOut");
 		}
-		// ·Î±×ÀÎ Ã³¸® ³¡.
+		// ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½.
 		
 		
 	

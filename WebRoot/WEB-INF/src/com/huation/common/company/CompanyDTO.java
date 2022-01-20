@@ -6,6 +6,7 @@ public class CompanyDTO {
 	
 	protected String comp_code;
 	protected String permit_no;
+	
 	protected String comp_nm;
 	protected String comp_no;
 	protected String owner_nm;
@@ -21,18 +22,40 @@ public class CompanyDTO {
 	protected String open_dt;
 	protected String charge_nm;
 	protected String charge_email;
-	//¾÷Ã¼Æò°¡ Ä®·³Ãß°¡(CompanyEvaluation)
+	//ï¿½ï¿½Ã¼ï¿½ï¿½ Ä®ï¿½ï¿½ï¿½ß°ï¿½(CompanyEvaluation)
 	protected String COMPANYEVALUATION;
 	protected String unfit_reason;
 	protected String business_check;
 	protected String date;
 	protected String unfit_id;
 	protected String UserID;
-	//»èÁ¦À¯¹« Ãß°¡ 20200602±èÁøµ¿
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ 20200602ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	protected String deleted_yn;
+	//2020-12-22 ADD by YOUNGJU
+	protected String comp_taxType;
+	protected String comp_state;
+	protected String comp_statedate;
 	
 	
 	
+	public String getComp_statedate() {
+		return comp_statedate;
+	}
+	public void setComp_statedate(String comp_statedate) {
+		this.comp_statedate = comp_statedate;
+	}
+	public String getComp_taxType() {
+		return comp_taxType;
+	}
+	public void setComp_taxType(String comp_taxType) {
+		this.comp_taxType = comp_taxType;
+	}
+	public String getComp_state() {
+		return comp_state;
+	}
+	public void setComp_state(String comp_state) {
+		this.comp_state = comp_state;
+	}
 	
 	public String getDeleted_yn() {
 		return deleted_yn;
@@ -86,7 +109,7 @@ public class CompanyDTO {
 	protected String account_copy4;
 	protected String account_copy5;
 	
-	//ÆÄÀÏ¸í À¸·Î ´Ù¿î·Îµå Ç×¸ñ Ãß°¡(rFileName)ÆÄÀÏ¸í °¡Á®¿À±â
+	//ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½Îµï¿½ ï¿½×¸ï¿½ ï¿½ß°ï¿½(rFileName)ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	protected String COMPANY_FILENM;
 	protected String ACCOUNT_COPYNM1;
     public String getACCOUNT_COPYNM1() {
@@ -101,7 +124,7 @@ public class CompanyDTO {
 	public void setCOMPANY_FILENM(String cOMPANY_FILENM) {
 		COMPANY_FILENM = cOMPANY_FILENM;
 	}
-	//³Ñ¾î´Ù´Ï´Â ÆÄ¶ó¹ÌÅÍ
+	//ï¿½Ñ¾ï¿½Ù´Ï´ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½
     protected String curPage;
     protected String searchGb;
     protected String searchTxt;

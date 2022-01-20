@@ -16,10 +16,12 @@ import com.huation.framework.util.*;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
+
+// ê°œë°œ
 public class CompanyDAO extends AbstractDAO {
 	
 	/**
-	 * ¾÷Ã¼ MAXÄ«¿îÆ® ±¸ÇÏ±â.
+	 * ï¿½ï¿½Ã¼ MAXÄ«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ï±ï¿½.
 	 * @param 
 	 * @return ActionForward
 	 * @throws DAOException 
@@ -51,8 +53,8 @@ public class CompanyDAO extends AbstractDAO {
 	}
 
 	/**
-	 * ¾÷Ã¼ÄÚµå ±¸ÇÏ±â.
-	 * @param compCnt ¾÷Å× MAX Ä«¿îÆ®
+	 * ï¿½ï¿½Ã¼ï¿½Úµï¿½ ï¿½ï¿½ï¿½Ï±ï¿½.
+	 * @param compCnt ï¿½ï¿½ï¿½ï¿½ MAX Ä«ï¿½ï¿½Æ®
 	 * @return ActionForward
 	 * @throws DAOException
 	 */
@@ -82,28 +84,28 @@ public class CompanyDAO extends AbstractDAO {
 	}	
 	
 	/**
-	 * ¾÷Ã¼ µî·ÏÇÏ±â. 
-	 * @param compDto ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½. 
+	 * @param compDto ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
-	 * 2013_03_18(¿ù) shbyeon. SPº¯°æ
+	 * 2013_03_18(ï¿½ï¿½) shbyeon. SPï¿½ï¿½ï¿½ï¿½
 	 */
 	public int addCompany(CompanyDTO compDto) throws Exception{
 		
 		int retVal = 0;
-		//HashMap rtnMap = new HashMap(); ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
-		//BaseDAO dao = null; ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
+		//HashMap rtnMap = new HashMap(); ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//BaseDAO dao = null; ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		
 		String procedure = " { CALL hp_CompanyRegist (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) } ";
 		 QueryStatement sql = new QueryStatement();
-		 //StringBuffer sb = new StringBuffer(); ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
-		 //Connection conn = null; ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
-		//HashMap m = null; ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
-		//boolean a = false; ÇÁ·Î½ÃÀú º¯°æ ÈÄ »ç¿ë¾ÈÇÔ.
+		 //StringBuffer sb = new StringBuffer(); ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		 //Connection conn = null; ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//HashMap m = null; ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//boolean a = false; ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		
-		 sql.setSql(procedure); // ÇÁ·Î½ÃÁ® ¸í
-			sql.setString(compDto.getComp_code()); //¾÷Ã¼ÄÚµå ID ¾÷Ã¼°ü¸®¸¦ À§ÇÑ CODE°ª
-			sql.setString(compDto.getPermit_no()); //±âÁ¸ comp_code °ª.
+		 sql.setSql(procedure); // ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			sql.setString(compDto.getComp_code()); //ï¿½ï¿½Ã¼ï¿½Úµï¿½ ID ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ CODEï¿½ï¿½
+			sql.setString(compDto.getPermit_no()); //ï¿½ï¿½ï¿½ï¿½ comp_code ï¿½ï¿½.
 			sql.setString(compDto.getComp_nm());	
 			sql.setString(compDto.getComp_no());	
 			sql.setString(compDto.getOwner_nm());	
@@ -140,8 +142,8 @@ public class CompanyDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * ¾÷Ã¼ ¼öÁ¤ÇÏ±â. 
-	 * @param compDto ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½. 
+	 * @param compDto ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws Exception 
 	 */
@@ -164,7 +166,7 @@ public class CompanyDAO extends AbstractDAO {
 			 sb.append(" WHERE COMP_CODE = ?					 ");
 			
 	         sql.setSql(sb.toString());
-	         sql.setString(compDto.getPermit_no()); //¾÷Ã¼°ü¸® ÄÚµå Ãß°¡.2013_03_18(¿ù) shbyeon.
+	         sql.setString(compDto.getPermit_no()); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½.2013_03_18(ï¿½ï¿½) shbyeon.
 			 sql.setString(compDto.getComp_nm());
 			 sql.setString(compDto.getComp_no());
 			 sql.setString(compDto.getOwner_nm());
@@ -192,8 +194,6 @@ public class CompanyDAO extends AbstractDAO {
 			 sql.setString(compDto.getBusiness_check());
 			 sql.setString(compDto.getDate());
 			 sql.setString(compDto.getUnfit_id());
-			 
-			 
 			 
 			 sql.setString(compDto.getComp_code());
 			 
@@ -242,12 +242,12 @@ public class CompanyDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * ¾÷Ã¼¸í ¼öÁ¤ÇÏ±â.
-	 * @info ¼öµ¿ÀÔ·Â½Ã ±âÁ¸ ¾÷Ã¼ÄÚµåPK´Â °¡Áö°íÀÖ°í ¾÷Ã¼¸í¸¸ º¯°æÇÏ±âÀ§ÇØ. 
-	 * @param compDto ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½.
+	 * @info ï¿½ï¿½ï¿½ï¿½ï¿½Ô·Â½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½Úµï¿½PKï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½. 
+	 * @param compDto ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
-	 * 2013_03_18(¿ù) shbyeon. SPº¯°æ
+	 * 2013_03_18(ï¿½ï¿½) shbyeon. SPï¿½ï¿½ï¿½ï¿½
 	 */
 	public int updateCompany(CompanyDTO compDto) throws Exception{
 		
@@ -255,8 +255,8 @@ public class CompanyDAO extends AbstractDAO {
 			
 		String procedure = " { CALL hp_CompanyNameModify (?,?,?) } ";
 		 QueryStatement sql = new QueryStatement();
-		 sql.setSql(procedure); // ÇÁ·Î½ÃÁ® ¸í
-			sql.setString(compDto.getComp_code()); //¾÷Ã¼ÄÚµå ID ¾÷Ã¼°ü¸®¸¦ À§ÇÑ CODE°ª
+		 sql.setSql(procedure); // ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			sql.setString(compDto.getComp_code()); //ï¿½ï¿½Ã¼ï¿½Úµï¿½ ID ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ CODEï¿½ï¿½
 			sql.setString(compDto.getComp_nm());	
 			sql.setString(compDto.getMod_id());
 			
@@ -274,8 +274,8 @@ public class CompanyDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * ¾÷Ã¼¸¦  »èÁ¦ÇÑ´Ù.(´Ù°Ç)
-	 * @param commNos ¾÷Ã¼Å° ¹è¿­
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½Ù°ï¿½)
+	 * @param commNos ï¿½ï¿½Ã¼Å° ï¿½è¿­
 	 * @return ActionForward
 	 * @throws DAOException
 	 */	
@@ -336,8 +336,8 @@ public class CompanyDAO extends AbstractDAO {
 	}	
 	
 	/**
-	 * ¾÷Ã¼¸¦ »èÁ¦ÇÑ´Ù.(´Ü°Ç)
-	 * @param compDto ¾÷Ã¼Å°
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½Ü°ï¿½)
+	 * @param compDto ï¿½ï¿½Ã¼Å°
 	 * @return ActionForward
 	 * @throws DAOException
 	 */	
@@ -384,8 +384,8 @@ public class CompanyDAO extends AbstractDAO {
 	}	
 	
 	/**
-	 * ¾÷Ã¼¸¦ ¿ÏÀüÈ÷ »èÁ¦ÇÑ´Ù.(´Ü°Ç)
-	 * @param compDto ¾÷Ã¼Å°
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½Ü°ï¿½)
+	 * @param compDto ï¿½ï¿½Ã¼Å°
 	 * @return ActionForward
 	 * @throws DAOException
 	 */	
@@ -428,34 +428,38 @@ public class CompanyDAO extends AbstractDAO {
 		return retVal;
 	}	
 	
+	
 	/**
-	 * ¾÷Ã¼ ¸®½ºÆ®.(permit_no¾÷Ã¼°ü¸® ÄÚµå Ãß°¡)
-	 * 2013_03_20(¼ö) shbyeon. 
-	 * @param curpage   ÇöÀç ÆäÀÌÁö Ä«¿îÆ®
-	 * @param searchGb   °Ë»ö±¸ºÐ
-	 * @param searchtxt   °Ë»öÅ°
-	 * @param useyn   »ç¿ë´ë»ó°Ç¿©ºÎ
-	 * @param listScale   list °¹¼ö
-	 * @param pageScale   page °¹¼ö
-	 * @return ActionForward
+	 * 2021-12-27 CHOI YOUNGJU
+	 * @param curpage
+	 * @param search
+	 * @param searchGb
+	 * @param searchtxt
+	 * @param TaxOpt
+	 * @param StateOpt
+	 * @param useyn
+	 * @param deleted_yn
+	 * @param listScale
+	 * @param pageScale
+	 * @return
 	 * @throws DAOException
 	 */
-	public ListDTO companyPageList(int curpage, String search,  String searchGb, String searchtxt, String useyn, String deleted_yn, int listScale, int pageScale) throws DAOException {
+	public ListDTO companyPageList3(int curpage, String search,  String searchGb, String searchtxt, String TaxOpt, String StateOpt, String useyn, String deleted_yn, int listScale, int pageScale) throws DAOException {
 		ListDTO retVal = null;
 		String where = "";
 		Connection conn = null;
 		try{
-			//---- List Sql ¹®»ý¼º
+			//---- List Sql ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			ListStatement sql = new ListStatement();
 			
-			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ,UNFIT_ID,UNFIT_REASON ");
-			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE,UNFIT_ID,UNFIT_REASON ");
+			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ,UNFIT_ID,UNFIT_REASON,COMP_STATEDATE ");
+			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE,UNFIT_ID,UNFIT_REASON,COMP_STATEDATE ");
 			sql.setFrom	(" T_COMPANY \n");
 			
 			if(search.equals("S")){
 				where +=" PERMIT_NO = '' and USE_YN = 'Y' and DELETED_YN = 'N' ";
 			}else if(useyn.equals("Y") && deleted_yn.equals("Y")){
-				where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(Ãß°¡) 2013_03_18(¿ù)shbyeon. PERMIT_NOÃß°¡)
+				where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(ï¿½ß°ï¿½) 2013_03_18(ï¿½ï¿½)shbyeon. PERMIT_NOï¿½ß°ï¿½)
 			}else{
 				where += " 1=1  \n ";
 			}
@@ -469,13 +473,26 @@ public class CompanyDAO extends AbstractDAO {
 				}
 				if(searchGb.equals("B"))
 				{
-					where += " AND PERMIT_NO LIKE ? "; //»ç¾÷ÀÚ µî·Ï¹øÈ£ ±âÁ¸ COMP_CODE = > PERMIT_NO ·Î DB Ä®·³¸í º¯°æµÊ. COMP_CODE´Â ¾÷Ã¼°ü¸®ÄÚµå PERMIT_NO °¡ »ç¾÷ÀÚµî·Ï¹øÈ£.(2013_05_13(¿ù)shbyeon.)
+					where += " AND PERMIT_NO LIKE ? "; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ COMP_CODE = > PERMIT_NO ï¿½ï¿½ DB Ä®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½. COMP_CODEï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ PERMIT_NO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£.(2013_05_13(ï¿½ï¿½)shbyeon.)
 					sql.setString("%" + searchtxt + "%");
 				}
 				if(searchGb.equals("C"))
 				{
 					where += " AND OWNER_NM LIKE ? ";
 					sql.setString("%" + searchtxt + "%");
+				}
+				if(searchGb.equals("D")) //êµ¬ë¶„
+				{
+					if(StateOpt.equals("")) {
+						where += " AND COMP_TAXTYPE LIKE ? ";
+						sql.setString("%" + TaxOpt + "%");
+						
+					}else {
+						where+= " AND COMP_TAXTYPE LIKE ? AND COMP_STATE LIKE ?";
+						sql.setString("%" +  TaxOpt + "%");
+						sql.setString("%" +  StateOpt + "%");
+					}
+					
 				}
 				
 			}
@@ -487,7 +504,7 @@ public class CompanyDAO extends AbstractDAO {
 			conn = broker.getConnection();
 			conn.setAutoCommit(false);
 			
-			//---- Äõ¸®½ÇÇà ¹× ¹ÝÈ¯°ª ¼³Á¤
+			//---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if(listScale != -1 && pageScale != -1){
 				retVal = broker.executeListQuery(sql, curpage, listScale, pageScale);
 			}else{
@@ -524,18 +541,115 @@ public class CompanyDAO extends AbstractDAO {
 		return retVal;
 	}
 		
+	public ListDTO companyPageList(int curpage, String search,  String searchGb, String searchtxt, String useyn, String deleted_yn, int listScale, int pageScale) throws DAOException {
+		ListDTO retVal = null;
+		String where = "";
+		Connection conn = null;
+		try{
+			//---- List Sql ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			ListStatement sql = new ListStatement();
+			
+			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ,UNFIT_ID,UNFIT_REASON,COMP_STATEDATE ");
+			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE,UNFIT_ID,UNFIT_REASON,COMP_STATEDATE ");
+			sql.setFrom	(" T_COMPANY \n");
+			
+			if(search.equals("S")){
+				where +=" PERMIT_NO = '' and USE_YN = 'Y' and DELETED_YN = 'N' ";
+			}else if(useyn.equals("Y") && deleted_yn.equals("Y")){
+				where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(ï¿½ß°ï¿½) 2013_03_18(ï¿½ï¿½)shbyeon. PERMIT_NOï¿½ß°ï¿½)
+			}else{
+				where += " 1=1  \n ";
+			}
+			
+			if(searchGb != null && !searchGb.equals(""))
+			{
+				if(searchGb.equals("A"))
+				{
+					where += " AND COMP_NM LIKE ? ";
+					sql.setString("%" + searchtxt + "%");
+				}
+				if(searchGb.equals("B"))
+				{
+					where += " AND PERMIT_NO LIKE ? "; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ COMP_CODE = > PERMIT_NO ï¿½ï¿½ DB Ä®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½. COMP_CODEï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ PERMIT_NO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£.(2013_05_13(ï¿½ï¿½)shbyeon.)
+					sql.setString("%" + searchtxt + "%");
+				}
+				if(searchGb.equals("C"))
+				{
+					where += " AND OWNER_NM LIKE ? ";
+					sql.setString("%" + searchtxt + "%");
+				}
+				if(searchGb.equals("D"))
+				{
+					where += " AND COMP_TAXTYPE LIKE ? ";
+					sql.setString("%" + searchtxt + "%");
+				}
+				if(searchGb.equals("E"))
+				{
+					
+					where += " AND COMP_STATE LIKE ? ";
+					sql.setString("%" + searchtxt + "%");
+				}
+				
+			}
+			
+			
+			sql.setWhere(where);
+			sql.setOrderby(" REG_DT DESC "); 
+			
+			conn = broker.getConnection();
+			conn.setAutoCommit(false);
+			
+			//---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			if(listScale != -1 && pageScale != -1){
+				retVal = broker.executeListQuery(sql, curpage, listScale, pageScale);
+			}else{
+				retVal = broker.executeListQuery(sql, curpage);
+			}
+			
+			if(retVal != null){
+				conn.commit();
+			}else{
+				conn.rollback();
+			}
+			
+			
+		}catch(SQLException e){
+			try {
+				if(conn != null) conn.rollback(); 
+			} catch(SQLException ignore) {
+				log.error(ignore.getMessage(), ignore);
+			}
+			log.error(e);
+			throw new DAOException(e.getMessage());
+		}catch(Exception e){
+			try {
+				if(conn != null) conn.rollback(); 
+			} catch(SQLException ignore) {
+				log.error(ignore.getMessage(), ignore);
+			}
+			log.error(e.getMessage());
+			throw new DAOException(e.getMessage());
+		} finally {
+			if(conn != null)  try    {conn.close();}     catch (Exception e) {}
+		}	
+		
+		return retVal;
+	}
+	
 	/**
-	 * »ç¾÷ÀÚ ¾÷Ã¼ ¸®½ºÆ® Á¶È¸.
-	 * 2013_03_20(¼ö) shbyeon.   
-	 * @param curpage   ÇöÀç ÆäÀÌÁö Ä«¿îÆ®
-	 * @param searchGb   °Ë»ö±¸ºÐ
-	 * @param searchtxt   °Ë»öÅ°
-	 * @param useyn   »ç¿ë´ë»ó°Ç¿©ºÎ
-	 * @param listScale   list °¹¼ö
-	 * @param pageScale   page °¹¼ö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸.
+	 * 2013_03_20(ï¿½ï¿½) shbyeon.   
+	 * @param curpage   ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
+	 * @param searchGb   ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param searchtxt   ï¿½Ë»ï¿½Å°
+	 * @param useyn   ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½
+	 * @param listScale   list ï¿½ï¿½ï¿½ï¿½
+	 * @param pageScale   page ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
 	 */
+	
+	/*(ì‹ )ì„¸ê¸ˆê³„ì‚°ì„œ ë“±ë¡*/
 	public ListDTO companyPageListPop(int curpage, String searchGb, String searchtxt, String useyn, String deleted_yn, int listScale, int pageScale) throws DAOException {
 		ListDTO retVal = null;
 		String where = "";
@@ -543,13 +657,14 @@ public class CompanyDAO extends AbstractDAO {
 
 		try{
 			ListStatement sql = new ListStatement();
-			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ");
-			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ");
+			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ");
+			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,DATE ");
 			sql.setFrom	(" T_COMPANY \n");
 			
 			
 			if(useyn.equals("Y") && deleted_yn.equals("Y")){
-				where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(Ãß°¡) 2013_03_18(¿ù)shbyeon. PERMIT_NOÃß°¡
+				//where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(ï¿½ß°ï¿½) 2013_03_18(ï¿½ï¿½)shbyeon. PERMIT_NOï¿½ß°ï¿½
+				where +=  " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' and COMP_STATE NOT IN ('íœ´ì—…','íì—…','í™•ì¸ìš”') and ( LEN(UNFIT_ID)=0 OR UNFIT_ID IS NULL ) \n  " ; // 2022.01.08 YJCHOI ::: COMP_STATE, UNFIT_ID ì¡°ê±´ ì¶”ê°€
 			}else{
 				where += " 1=1  \n ";
 			}
@@ -562,8 +677,8 @@ public class CompanyDAO extends AbstractDAO {
 				}
 				if(searchGb.equals("B"))
 				{
-					where += " AND PERMIT_NO LIKE ? "; //»ç¾÷ÀÚ µî·Ï¹øÈ£ ±âÁ¸ COMP_CODE => PERMIT_NO ·Î º¯°æµÊ COMP_CODE´Â ¾÷Ã¼°ü¸®ÄÚµå·Î PK·Î »ç¿ëµÊ.
-					sql.setString("%" + searchtxt + "%"); // ±âÁ¸PKº¯°æ.´Ü »ç¾÷ÀÚµî·Ï¹øÈ£´Â Áßº¹µÇ¸é ¾ÈµÊ.
+					where += " AND PERMIT_NO LIKE ? "; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ COMP_CODE => PERMIT_NO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ COMP_CODEï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ PKï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+					sql.setString("%" + searchtxt + "%"); // ï¿½ï¿½ï¿½ï¿½PKï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½ßºï¿½ï¿½Ç¸ï¿½ ï¿½Èµï¿½.
 				}
 				if(searchGb.equals("C"))
 				{
@@ -578,7 +693,7 @@ public class CompanyDAO extends AbstractDAO {
 			conn = broker.getConnection();
 			conn.setAutoCommit(false);
 			
-			//---- Äõ¸®½ÇÇà ¹× ¹ÝÈ¯°ª ¼³Á¤
+			//---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if(listScale != -1 && pageScale != -1){
 				retVal = broker.executeListQuery(sql, curpage, listScale, pageScale);
 			}else{
@@ -617,17 +732,18 @@ public class CompanyDAO extends AbstractDAO {
 	
 	
 	/**
-	 * »ç¾÷ÀÚ ¾÷Ã¼ ¸®½ºÆ® Á¶È¸.(ºÎÀû°Ý ¾÷Ã¼´Â ¸®½ºÆ®¿¡¼­ Á¦¿Ü)
-	 * 2013_03_20(¼ö) shbyeon.   
-	 * @param curpage   ÇöÀç ÆäÀÌÁö Ä«¿îÆ®
-	 * @param searchGb   °Ë»ö±¸ºÐ
-	 * @param searchtxt   °Ë»öÅ°
-	 * @param useyn   »ç¿ë´ë»ó°Ç¿©ºÎ
-	 * @param listScale   list °¹¼ö
-	 * @param pageScale   page °¹¼ö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+	 * 2013_03_20(ï¿½ï¿½) shbyeon.   
+	 * @param curpage   ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®
+	 * @param searchGb   ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param searchtxt   ï¿½Ë»ï¿½Å°
+	 * @param useyn   ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½
+	 * @param listScale   list ï¿½ï¿½ï¿½ï¿½
+	 * @param pageScale   page ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
 	 */
+	/*ì˜ì—…ì§€ì› - ê²¬ì ì„œ ë°œí–‰ ë©”ë‰´*/
 	public ListDTO companyPageListPop(int curpage, String searchGb, String searchtxt, String useyn, String deleted_yn, String UNFIT_ID, int listScale, int pageScale) throws DAOException {
 		ListDTO retVal = null;
 		String where = "";
@@ -635,16 +751,20 @@ public class CompanyDAO extends AbstractDAO {
 
 		try{
 			ListStatement sql = new ListStatement();
-			sql.setAlias(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,UNFIT_ID ");
-			sql.setSelect(" COMP_CODE,PERMIT_NO,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,UNFIT_ID ");
+			sql.setAlias(
+					" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,UNFIT_ID ");
+			sql.setSelect(
+					" COMP_CODE,PERMIT_NO,COMP_TAXTYPE,COMP_STATE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL,COMP_FILE,ACCOUNT_COPY1,COMPANY_FILENM,ACCOUNT_COPYNM1,UNFIT_ID ");
 			sql.setFrom	(" T_COMPANY \n");
 			
 			
 			if(useyn.equals("Y") && deleted_yn.equals("Y") && !UNFIT_ID.isEmpty()){
-				where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != ''  \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(Ãß°¡) 2013_03_18(¿ù)shbyeon. PERMIT_NOÃß°¡
+				//where += " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' and COMP_STATE NOT IN ('íœ´ì—…','íì—…','í™•ì¸ìš”') \n  " ; //2012.11.27(È­)shbyeon. DELETED_YN(ï¿½ß°ï¿½) 2013_03_18(ï¿½ï¿½)shbyeon. PERMIT_NOï¿½ß°ï¿½
+				where +=  " USE_YN = 'Y' and DELETED_YN = 'N' and PERMIT_NO != '' and COMP_STATE NOT IN ('íœ´ì—…','íì—…','í™•ì¸ìš”') and ( UNFIT_ID='' OR UNFIT_ID IS NULL ) \n  " ; // 2022.01.08 YJCHOI ::: COMP_STATE, UNFIT_ID ì¡°ê±´ ì¶”ê°€
 			}else{
 				where += " 1=1  \n ";
 			}
+			
 			if(searchGb != null && !searchGb.equals(""))
 			{
 				if(searchGb.equals("A"))
@@ -654,14 +774,16 @@ public class CompanyDAO extends AbstractDAO {
 				}
 				if(searchGb.equals("B"))
 				{
-					where += " AND PERMIT_NO LIKE ? "; //»ç¾÷ÀÚ µî·Ï¹øÈ£ ±âÁ¸ COMP_CODE => PERMIT_NO ·Î º¯°æµÊ COMP_CODE´Â ¾÷Ã¼°ü¸®ÄÚµå·Î PK·Î »ç¿ëµÊ.
-					sql.setString("%" + searchtxt + "%"); // ±âÁ¸PKº¯°æ.´Ü »ç¾÷ÀÚµî·Ï¹øÈ£´Â Áßº¹µÇ¸é ¾ÈµÊ.
+					where += " AND PERMIT_NO LIKE ? "; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ COMP_CODE => PERMIT_NO ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ COMP_CODEï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ PKï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+					sql.setString("%" + searchtxt + "%"); // ï¿½ï¿½ï¿½ï¿½PKï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£ï¿½ï¿½ ï¿½ßºï¿½ï¿½Ç¸ï¿½ ï¿½Èµï¿½.
 				}
 				if(searchGb.equals("C"))
 				{
 					where += " AND OWNER_NM LIKE ? ";
 					sql.setString("%" + searchtxt + "%");
 				}
+				
+				
 			}
 
 			sql.setWhere(where);
@@ -670,7 +792,7 @@ public class CompanyDAO extends AbstractDAO {
 			conn = broker.getConnection();
 			conn.setAutoCommit(false);
 			
-			//---- Äõ¸®½ÇÇà ¹× ¹ÝÈ¯°ª ¼³Á¤
+			//---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if(listScale != -1 && pageScale != -1){
 				retVal = broker.executeListQuery(sql, curpage, listScale, pageScale);
 			}else{
@@ -708,8 +830,8 @@ public class CompanyDAO extends AbstractDAO {
 	}
 	
 	/**
-	 * ¾÷Ã¼ View Á¤º¸.
-	 * @param compCode ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ View ï¿½ï¿½ï¿½ï¿½.
+	 * @param compCode ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
 	 */
@@ -733,8 +855,8 @@ public class CompanyDAO extends AbstractDAO {
 			if(ds.next()){ 
 				compDto = new CompanyDTO();
 				
-				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(¿ù)Å×½ºÆ®¿Ï·á ÈÄ ºÎÅÍ´Â ÄÚµå°ü¸® Å°°ªÀ¸·Îº¯°æÇÔ.
-				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //¾÷Ã¼°ü¸®ÄÚµå Ãß°¡ 2013_03_18(¿ù)shbyeon. ±âÁ¸COMP_CODE = >PERMIT_NOº¯°æ.
+				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(ï¿½ï¿½)ï¿½×½ï¿½Æ®ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½.
+				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon. ï¿½ï¿½ï¿½ï¿½COMP_CODE = >PERMIT_NOï¿½ï¿½ï¿½ï¿½.
 				compDto.setComp_nm(StringUtil.nvl(ds.getString("COMP_NM"),""));
 				compDto.setComp_no(StringUtil.nvl(ds.getString("COMP_NO"),""));
 				compDto.setOwner_nm(StringUtil.nvl(ds.getString("OWNER_NM"),""));
@@ -760,6 +882,9 @@ public class CompanyDAO extends AbstractDAO {
 				compDto.setBusiness_check(StringUtil.nvl(ds.getString("BUSINESS_CHECK"),""));
 				compDto.setDate(StringUtil.nvl(ds.getString("DATE"),""));
 				compDto.setUnfit_id(StringUtil.nvl(ds.getString("UNFIT_ID"),""));
+				/* 2021-12-29 íœ´íì—… ì¶”ê°€ */
+				compDto.setComp_state(StringUtil.nvl(ds.getString("COMP_STATE")));
+				compDto.setComp_taxType(StringUtil.nvl(ds.getString("COMP_TAXTYPE")));
 			
 				
 			}
@@ -776,11 +901,11 @@ public class CompanyDAO extends AbstractDAO {
 	
 	
 	/**
-	 * ¾÷Ã¼ View Á¤º¸2.
-	 * @param »ç¾÷¹øÈ£·Î Ã£±â ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ View ï¿½ï¿½ï¿½ï¿½2.
+	 * @param ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
-	 * 20200602 ±èÁøµ¿ ±âÁ¸ ·ÎÁ÷  Ãß°¡
+	 * 20200602 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½ß°ï¿½
 	 */
 	public CompanyDTO getCompanyView2( String searchtxt) throws DAOException{
 		
@@ -799,8 +924,8 @@ public class CompanyDAO extends AbstractDAO {
 			if(ds.next()){ 
 				compDto = new CompanyDTO();
 				
-				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(¿ù)Å×½ºÆ®¿Ï·á ÈÄ ºÎÅÍ´Â ÄÚµå°ü¸® Å°°ªÀ¸·Îº¯°æÇÔ.
-				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //¾÷Ã¼°ü¸®ÄÚµå Ãß°¡ 2013_03_18(¿ù)shbyeon. ±âÁ¸COMP_CODE = >PERMIT_NOº¯°æ.
+				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(ï¿½ï¿½)ï¿½×½ï¿½Æ®ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½.
+				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon. ï¿½ï¿½ï¿½ï¿½COMP_CODE = >PERMIT_NOï¿½ï¿½ï¿½ï¿½.
 				compDto.setComp_nm(StringUtil.nvl(ds.getString("COMP_NM"),""));
 				compDto.setComp_no(StringUtil.nvl(ds.getString("COMP_NO"),""));
 				compDto.setOwner_nm(StringUtil.nvl(ds.getString("OWNER_NM"),""));
@@ -844,8 +969,8 @@ public class CompanyDAO extends AbstractDAO {
 	
 	
 	/**
-	 * ¾÷Ã¼ EXCEL ¸®½ºÆ®
-	 * @param dto ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½Ã¼ EXCEL ï¿½ï¿½ï¿½ï¿½Æ®
+	 * @param dto ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return jsp
 	 * @throws DAOException
 	 */
@@ -857,7 +982,7 @@ public class CompanyDAO extends AbstractDAO {
 		try{			
 			String searchGb=dto.getSearchGb();
 			
-			sbSql.append(" SELECT COMP_CODE,COMP_NM,COMP_NO, OWNER_NM, BUSINESS, B_ITEM, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL ");
+			sbSql.append(" SELECT COMP_CODE,COMP_NM,COMP_NO,COMP_TAXTYPE,COMP_STATE, OWNER_NM, BUSINESS, B_ITEM, B_ITEM,ADDRESS,ADDR_DETAIL,POST,REG_DT,OPENYMD,CHARGE_NM,CHARGE_EMAIL ");
 			sbSql.append(" FROM T_COMPANY ");
 			sbSql.append(" WHERE USE_YN='Y' ");
 			
@@ -868,7 +993,16 @@ public class CompanyDAO extends AbstractDAO {
 					sbSql.append(" and COMP_CODE like '%"+dto.getSearchTxt()+"%' ");
 				} else if ("C".equals(searchGb)  && !("").equals(dto.getSearchTxt()) ){
 					sbSql.append(" and OWNER_NM like '%"+dto.getSearchTxt()+"%' ");
-				}
+				} else if ("D".equals(searchGb)){
+					
+					if(("").equals(dto.getComp_state())) {
+						sbSql.append(" and COMP_TAXTYPE like '%"+dto.getComp_taxType()+"%' ");
+					}else {
+						sbSql.append(" and COMP_TAXTYPE like '%"+dto.getComp_taxType()+"%' ");
+						sbSql.append(" and COMP_STATE like '%"+dto.getComp_state()+"%' ");
+					}
+					
+				} 
 			}
 			//sbSql.append(" ORDER BY REG_DT DESC ");
 			
@@ -889,6 +1023,8 @@ public class CompanyDAO extends AbstractDAO {
 					 companyDto.setB_item(ds.getString("B_ITEM"));
 					 companyDto.setOpen_dt(ds.getString("OPENYMD"));
 					 companyDto.setCharge_nm(ds.getString("CHARGE_NM"));
+					 companyDto.setComp_taxType(ds.getString("COMP_TAXTYPE"));
+					 companyDto.setComp_state(ds.getString("COMP_STATE"));
 					 
 					 arrlist.add(companyDto);
 				 }
@@ -909,7 +1045,7 @@ public class CompanyDAO extends AbstractDAO {
 	
 	/**
 	 * 2012.11.27(È­) bsh.
-	 * ¾÷Ã¼°ü¸® = > »èÁ¦
+	 * ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ = > ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param actionMapping
 	 * @param actionForm
@@ -927,7 +1063,7 @@ public class CompanyDAO extends AbstractDAO {
 
 		QueryStatement sql = new QueryStatement();
 
-		sql.setSql(procedure); // ÇÁ·Î½ÃÁ® ¸í
+		sql.setSql(procedure); // ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		sql.setString(compDto.getComp_code());
 
 		try {
@@ -958,7 +1094,7 @@ public class CompanyDAO extends AbstractDAO {
 		QueryStatement sql = new QueryStatement();
 		
 		sql.setKey(userDto.getLogid()); 
-		sql.setSql(procedure); // ÇÁ·Î½ÃÁ® ¸í
+		sql.setSql(procedure); // ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		sql.setString(compDto.getComp_code());
 		sql.setString(compDto.getUnfit_id());
 		try{
@@ -969,8 +1105,8 @@ public class CompanyDAO extends AbstractDAO {
 			 while(ds.next()){ 
 				
 					
-					compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(¿ù)Å×½ºÆ®¿Ï·á ÈÄ ºÎÅÍ´Â ÄÚµå°ü¸® Å°°ªÀ¸·Îº¯°æÇÔ.
-					compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //¾÷Ã¼°ü¸®ÄÚµå Ãß°¡ 2013_03_18(¿ù)shbyeon. ±âÁ¸COMP_CODE = >PERMIT_NOº¯°æ.
+					compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(ï¿½ï¿½)ï¿½×½ï¿½Æ®ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½.
+					compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon. ï¿½ï¿½ï¿½ï¿½COMP_CODE = >PERMIT_NOï¿½ï¿½ï¿½ï¿½.
 					compDto.setComp_nm(StringUtil.nvl(ds.getString("COMP_NM"),""));
 					compDto.setComp_no(StringUtil.nvl(ds.getString("COMP_NO"),""));
 					compDto.setOwner_nm(StringUtil.nvl(ds.getString("OWNER_NM"),""));
@@ -1020,8 +1156,8 @@ public class CompanyDAO extends AbstractDAO {
 
 	
 	/**
-	 * ºÎÀû°Ý ¾÷Ã¼ View Á¤º¸.
-	 * @param compCode ¾÷Ã¼Á¤º¸
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ View ï¿½ï¿½ï¿½ï¿½.
+	 * @param compCode ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	 * @return ActionForward
 	 * @throws DAOException
 	 */
@@ -1042,7 +1178,7 @@ public class CompanyDAO extends AbstractDAO {
 		String procedure = " { CALL hp_CompanyUnfitView (?) } ";
 
 
-		sql.setSql(procedure); // ÇÁ·Î½ÃÁ® ¸í
+		sql.setSql(procedure); // ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		sql.setString(compDto.getComp_code());
 	
 		
@@ -1054,8 +1190,8 @@ public class CompanyDAO extends AbstractDAO {
 			if(ds.next()){ 
 				compDto = new CompanyDTO();
 				
-				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(¿ù)Å×½ºÆ®¿Ï·á ÈÄ ºÎÅÍ´Â ÄÚµå°ü¸® Å°°ªÀ¸·Îº¯°æÇÔ.
-				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //¾÷Ã¼°ü¸®ÄÚµå Ãß°¡ 2013_03_18(¿ù)shbyeon. ±âÁ¸COMP_CODE = >PERMIT_NOº¯°æ.
+				compDto.setComp_code(StringUtil.nvl(ds.getString("COMP_CODE"),"")); //2013_03_18(ï¿½ï¿½)ï¿½×½ï¿½Æ®ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½.
+				compDto.setPermit_no(StringUtil.nvl(ds.getString("PERMIT_NO"),"")); //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß°ï¿½ 2013_03_18(ï¿½ï¿½)shbyeon. ï¿½ï¿½ï¿½ï¿½COMP_CODE = >PERMIT_NOï¿½ï¿½ï¿½ï¿½.
 				compDto.setComp_nm(StringUtil.nvl(ds.getString("COMP_NM"),""));
 				compDto.setComp_no(StringUtil.nvl(ds.getString("COMP_NO"),""));
 				compDto.setOwner_nm(StringUtil.nvl(ds.getString("OWNER_NM"),""));

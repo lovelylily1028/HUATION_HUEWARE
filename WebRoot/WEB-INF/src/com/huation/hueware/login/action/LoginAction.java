@@ -25,6 +25,7 @@ import com.huation.framework.struts.StrutsDispatchAction;
 
 import com.huation.common.user.UserBroker;
 import com.huation.common.util.CommonUtil;
+import com.huation.common.util.EncryptUtil;
 import com.huation.common.user.UserMemDTO;
 import com.huation.common.user.UserConnectDTO;
 import com.huation.common.user.UserDAO;
@@ -34,7 +35,7 @@ import com.huation.common.BaseAction;
 
 public class LoginAction extends StrutsDispatchAction{
 		/**
-		 * °ü¸®ÀÚ ·Î±×ÀÎ °ü·Ã ÆäÀÌÁö
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * @param actionMapping
 		 * @param actionForm
 		 * @param request
@@ -45,16 +46,16 @@ public class LoginAction extends StrutsDispatchAction{
 		 */
 		public ActionForward loginForm(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
-			log.debug(" ·Î±×ÀÎ Æû");
+			log.debug(" ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½");
 
 			return actionMapping.findForward("loginForm");
 		}
 		public ActionForward loginProcess(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
-			//·Î±×ÀÎ Ã³¸® 		
+			//ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 		
 			boolean bLogin = BaseAction.isSession(request);			
 
-			log.debug("¼¼¼ÇÁ¤º¸"+bLogin);
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+bLogin);
 				
 			if(bLogin == true){		
 				return actionMapping.findForward("loginProcess");
@@ -65,24 +66,24 @@ public class LoginAction extends StrutsDispatchAction{
 		}
 		public ActionForward loginError(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
-			log.debug("°ü¸®ÀÚ ·Î±×ÀÎ ¿¡·¯");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
 			return actionMapping.findForward("loginError");
 		}
 		public ActionForward loginOut(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
-			log.debug("°ü¸®ÀÚ ·Î±×¾Æ¿ô");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×¾Æ¿ï¿½");
 
 			return actionMapping.findForward("loginOut");
 		}
 		public ActionForward adminMain(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response, Map model) throws Exception{
 
-			log.debug("°ü¸®ÀÚ ¸ÞÀÎÆäÀÌÁö");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 			return actionMapping.findForward("adminMain");
 		}
 		/**
-		 * °ü¸®ÀÚ ·Î±×ÀÎ Ã³¸®.
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½.
 		 * @param actionMapping
 		 * @param actionForm
 		 * @param request
@@ -110,34 +111,33 @@ public class LoginAction extends StrutsDispatchAction{
 			String encPasswd =userDao.setPasswdEncode(passWd);
 			
 			log.debug("encPasswd["+encPasswd+"]userInfo.getPasswd()["+userInfo.getPassword()+"]");
-			// È¸¿ø Á¸ÀçÀÇ Á¸ÀçÀ¯¹« ÆÇ´Ü.
-			
+			// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½.
 			
 			if(!"".equals(userInfo.getID())) { 
 				
-				// ÆÐ½º¿öµå°¡ ¸Â´ÂÁö ÆÇ´ÜÇÑ´Ù.
+				// ï¿½Ð½ï¿½ï¿½ï¿½ï¿½å°¡ ï¿½Â´ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ï¿½Ñ´ï¿½.
 				if(!encPasswd.equals(userInfo.getPassword())) {
-					msg = "ÆÐ½º¿öµå°¡ Æ²·È½À´Ï´Ù.";
+					msg = "ï¿½Ð½ï¿½ï¿½ï¿½ï¿½å°¡ Æ²ï¿½È½ï¿½ï¿½Ï´ï¿½.";
 				} else {
 
-					// ¼¼¼Ç¿¡ ¼ÂÆÃ 
-					log.debug("¼¼¼Ç¿¡ ¼ÂÆÃ");
+					// ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+					log.debug("ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½");
 					setUserInfoMem(request, userDao, userInfo);
 
-					msg = "·Î±×ÀÎ ¼º°ø!!";
+					msg = "ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!";
 					log.debug(msg);
 					isSuccess = true;
 					
 				}
 			} else {
-				msg = "ÇØ´ç °ü¸®ÀÚÀÇ ID°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+				msg = "ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.";
 				isSuccess = false;
 			}
 			log.debug("isSuccess:"+isSuccess);
 			log.debug("msg:"+msg);
 			request.setAttribute("msg", msg);
 			
-			//·Î±×ÀÎÃ³¸®°¡ ¼º°øÇÏ¸é °øÅë ¾×¼ÇÀÎ Common¿¡ mainPage ¸¦Ã£¾Æ°£´Ù.
+			//ï¿½Î±ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¼ï¿½ï¿½ï¿½ Commonï¿½ï¿½ mainPage ï¿½ï¿½Ã£ï¿½Æ°ï¿½ï¿½ï¿½.
 			if(isSuccess){
 				return alertAndExit(model, "", request.getContextPath()
 						+ "/B_Common.do?cmd=mainPage",
@@ -147,8 +147,9 @@ public class LoginAction extends StrutsDispatchAction{
 			}
 			
 		}
+		
 		/**
-		 * ¼¼¼Ç Á¤º¸ ¼ÂÆÃ.
+		 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		 * @param request
 		 * @param userdao
 		 * @param userinfo
@@ -158,12 +159,12 @@ public class LoginAction extends StrutsDispatchAction{
 			
 			HttpSession session = request.getSession(false);    
 			
-			// ¼¼¼Ç Á¤º¸¸¦ ¼ÂÆÃÇØ ÁØ´Ù.   
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½.   
 			//session.setMaxInactiveInterval(60*30);
 	        session.setAttribute(Constants.LOGIN_USERID, userinfo.getID());
 	        session.setAttribute(Constants.LOGIN_PASSWD, userinfo.getPassword());
 	        session.setAttribute(Constants.LOGIN_USERNAME,userinfo.getName());
-	        // È¸¿ø Á¤º¸¸¦ »õ·Ó°Ô »ý¼ºÇÑ´Ù.
+	        // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			UserMemDTO newUserInfo =  new UserMemDTO();
 			newUserInfo.setUserId(userinfo.getID());
 			newUserInfo.setPasswd(userinfo.getPassword());
@@ -172,11 +173,11 @@ public class LoginAction extends StrutsDispatchAction{
 			newUserInfo.setPhone(userinfo.getOfficeTellNo());
 			newUserInfo.setEmail(userinfo.getEmail());
 			newUserInfo.setPosition(userinfo.getPosition());
-			// »õ·Î¿î È¸¿ø Á¤º¸¸¦ ¼ÂÆÃÇØÁØ´Ù.
+			// ï¿½ï¿½ï¿½Î¿ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 			session.setAttribute("USERINFO",newUserInfo);
 		}
 		/**
-		 * ·Î±×¾Æ¿ô.
+		 * ï¿½Î±×¾Æ¿ï¿½.
 		 * @param actionMapping
 		 * @param actionForm
 		 * @param request
