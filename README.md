@@ -42,8 +42,8 @@
 ```
      <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
      maxActive="100" maxIdle="20" maxWait="-1" name="jdbc/hueware" password="비밀번호" 
-     type="javax.sql.DataSource" url="jdbc:sqlserver://192.168.2.82:1433;databaseName=HUEWARE"
-     username="Hueware" validationQuery="SELECT 1"/>
+     type="javax.sql.DataSource" url="jdbc:sqlserver://192.168.x.xx:1433;databaseName=DB이름"
+     username="유저네임" validationQuery="SELECT 1"/>
 ```
 ***
  #### 해당부분까지 마치고 난뒤에 예상 오류 
